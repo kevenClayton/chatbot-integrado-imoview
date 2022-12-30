@@ -1,4 +1,4 @@
-## Como utilizar chat em seu site
+## Como utilizar o chatbot integrado com o IMOVIEW em seu site
 
 Veja abaixo os passos necessários utilizar o chatbot do Imoview.
 
@@ -9,11 +9,7 @@ Inserir entre as tags **HEAD** o arquivo de estilização do chatbot
 Exemplo:
 
 ```html {.line-numbers}
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="<?php echo BASE_URL ?>assets/css/chatbot.css"
-/>
+<link rel="stylesheet" type="text/css" href="https://app.imoview.com.br/scripts/chatbot.css"/>
 ```
 
 ### 2º - Importação arquivos javascript e execução do chatbot
@@ -21,7 +17,7 @@ Exemplo:
 Copie e cole a linha abaixo em entre as tags **BODY**</br>
 
 ```html {.line-numbers}
-<script src="assets/js/home/chatbot-imoview.js" type="text/javascript"></script>
+<script src="https://app.imoview.com.br/scripts/chatbot-imoview.js" type="text/javascript"></script>
 ```
 
 ### 3º - Copie e cole o código abaixo, após a importação do aquivo acima(é necessário informar alguns dados)</br>
