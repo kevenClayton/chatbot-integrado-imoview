@@ -20,7 +20,9 @@ Exemplo:
 
 Copie e cole a linha abaixo em entre as tags **BODY**</br>
 
+```html {.line-numbers}
 <script src="assets/js/home/chatbot-imoview.js" type="text/javascript"></script>
+```
 
 ### 3º - Copie e cole o código abaixo, após a importação do aquivo acima(é necessário informar alguns dados)</br>
 
