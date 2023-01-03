@@ -1,0 +1,4265 @@
+/* Icons */
+
+
+
+@font-face {
+  font-family: 'Open Sans Regular';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans Regular'), local('OpenSans-Regular');
+}
+
+.imoview-icon {
+    font-family: 'Poppins' !important;
+}
+
+/* Animations */
+
+@keyframes imoview-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes imoview-pop-in {
+    from {
+        opacity: 0;
+        transform: scale(0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+}
+
+@keyframes imoview-super-pop-in {
+    0% {
+        opacity: 0;
+        transform: scale(0, 0);
+    }
+    30% {
+        opacity: 1;
+        background-color: white;
+        transform: scale(1.5, 1.5);
+    }
+    80% {
+        transform: scale(1, 1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+}
+
+@keyframes imoview-pop-in-middle {
+    from {
+        opacity: 0;
+        transform: translateY(-50%) scale(0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(-50%) scale(1, 1);
+    }
+}
+
+@keyframes imoview-pop-out {
+    from {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0, 0);
+    }
+}
+
+@keyframes imoview-slide-in {
+    from {
+        display: block;
+        opacity: 0;
+        transform: translate(0, 100px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes imoview-slide-out {
+    from {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+    to {
+        display: none;
+        opacity: 0;
+        transform: translate(0, 100px);
+    }
+}
+
+@keyframes imoview-slide-out-up {
+    from {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+    to {
+        display: none;
+        opacity: 0;
+        height: 0;
+        overflow: hidden;
+        transform: translate(0, -100px);
+    }
+}
+
+@keyframes imoview-blink {
+    50% {
+        opacity: 1;
+        transform: scale(0.5);
+    }
+}
+
+/* Elements */
+
+.imoview-chatbot * {
+    position: initial;
+}
+
+.imoview-chatbot {
+    color: inherit;
+    font: inherit;
+    font-family: "Helvetica Neue", "Neue Helvetica W01", Helvetica, Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    box-sizing: content-box;
+}
+
+.imoview-chatbot * {
+    font: inherit!important;
+    color: inherit;
+    margin: initial;
+    box-sizing: content-box!important;
+}
+
+.imoview-chatbot b {
+    font-weight: bold!important;
+}
+
+.imoview-chatbot i {
+    font-style: italic!important;
+}
+
+.imoview-chatbot strong {
+    display: initial !important;
+    font-weight: bold !important;
+}
+
+.imoview-chatbot p {
+    color: #555;
+}
+.card-chatbot-imoview .imoview-opt{
+  float: right;
+}
+
+.imoview-chatbot {
+    all: initial;
+    font-size: initial;
+
+    position: absolute;
+    z-index: 99999999;
+
+    top: 0;
+    left: 0;
+}
+
+.imoview-chatbot>.imoview-avatar {
+    /* Form */
+    width: 60px;
+    height: 60px;
+    border-radius: 30px!important;
+
+    /* Position */
+    display: inline-block;
+    position: fixed;
+    z-index: 32767;
+
+    bottom: 24px;
+    right: 18px;
+
+    vertical-align: middle;
+
+    /* Looks */
+    background-size: cover;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.15);
+
+    /* Typography */
+    font-size: 16px!important;
+}
+
+.imoview-chatbot.imoview-moving>.imoview-avatar {
+    bottom: 12px;
+    right: 24px;
+}
+
+.imoview-chatbot>.imoview-avatar:hover {
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.imoview-chatbot .imoview-avatar::after {
+    content: "";
+
+    /* Form */
+    width: 15px;
+    height: 15px;
+    border-radius: 9px !important;
+
+    /* Position */
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    /* Looks */
+    background-color: #2ecc71;
+
+    animation: imoview-super-pop-in 0.5s cubic-bezier(0,.35,.28,.9) forwards;
+    animation-delay: 1s;
+
+    transform: scale(0, 0);
+}
+
+.imoview-chatbot .imoview-clear {
+    clear: both;
+}
+
+.imoview-chatbot .imoview-invite-message-container {
+    float: right;
+    max-width: 305px;
+    margin-right: 8px;
+    margin-top: 0;
+
+    display: flex;
+    align-items: center;
+}
+
+.imoview-chatbot .imoview-chatbot-invite-container {
+    right: 72px;
+
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 305px;
+
+    position: absolute;
+}
+
+.imoview-chatbot .imoview-chatbot-invite-message {
+    position: relative;
+    float: right;
+
+    border-radius: 8px!important;
+    padding: 9px;
+    padding-left: 17px;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.25);
+    border: 1px solid #d6d6d6;
+    color: #555 !important;
+    background: white;
+    line-height: 1.5em!important;
+    font-family: "Helvetica Neue", "Neue Helvetica W01", Helvetica, Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif!important;
+    font-size: 16px!important;
+}
+
+.imoview-chatbot .imoview-invite-message-text {
+    font-family: "Helvetica Neue", "Neue Helvetica W01", Helvetica, Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !important;
+}
+
+.imoview-chatbot .imoview-invite-message-text strong {
+    font-weight: bold !important
+}
+
+.imoview-chatbot .imoview-invite-message-text em {
+    font-style: italic !important
+}
+
+.imoview-chatbot .imoview-invite-message-text p {
+    margin-bottom: 0 !important;
+}
+
+.imoview-chatbot .imoview-chatbot-invite-message::after {
+    content: "";
+
+    /* Form */
+    width: 16px;
+    height: 32px;
+
+    /* Position */
+    position: absolute;
+    top: 50%;
+    margin-top: -16px;
+    right: -16px;
+
+    /* Looks */
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMvSURBVHic7ZpPi9NAGMafbKtbd6vrrn8KXqTYo5dlv4D3epBC8SuIJ2/2c4i3eigFpVfBuyctpVePS0vBq4UeSui/vB6aMZPZzGTiip1J5wcvmSaTJc+T951MZgM4HA6HY3/xwpBB/+tCdkWaASK5MySrATy5MOM6BjCsNsIDcKDRT0eklUZ4AAqSYzJBaUKtMoI3gC+FJBHiPpVQa0woInkMSBsXiOuTJFZ1zCg8ADc0+lHGtuxc4+AzQLzrsjLwhDbr50nOke03AmaArAxEcWxLCeeIhlhBEfHHoFi7aXeVFy1uk/obhywDxDRnbVVZWGnCge/775vN5iG2mSALZpL4mzdPtjUbIqLVavW90+k8AXDCxZ0wbodRBnAM4AjALQAlAIcAbmL7JCmGUQgjySjzTKGQzWbzs9/vPwNwGsbdMJgZzAhdE1TZYgweEf2pSyKaj0aj17Va7QvXhyQRKI4Rdy6/heT37qCrBNPp9F2lUnkI4D6AewDOEGUFy4Yy1JlgRxYkGEBERPP5/HOj0XgM4AEiI0QT+HJQlYJ9BhARLZfLH+12+wJ6JtiZBSoDwsHx12AweAGAlQQrhxNcLYUkA8zOgjQDiIiCIFiMx+M3iDLhDOossKcMdAxgzGaz7vn5+SNEpSBmQZYyMIMsBhAR+b7/tdVq1RDPgrQyyI8BRETr9fqy2+0+RdyAY1hoQGwilIXFYvGtVCo9RzQhCoS2amIktneGzoqwDCMEXJe/MmCz2Vz2er1X3C7j7qw2bhDMQB4fg0WdTkS0nEwmb6vV6kekD24QjkHSxwhSx4AgCKbD4fBltVr9BL3XYLvGA1XK7/XL0D6/Du/VgkhsEKR/vyRmPuy27+uiqFsW933/Q71eP0UklI8y4sKziDf/7mN7UUeQX5z4TBcnP6olcJ2PLHZOEXERSR82qARaLR7YGhBA/kWHzAgdg2R/xyj4DFB9IKFa0LBr6ivADADUFy8TqSPeaFN4A9LIKjztmBEUkPz/fJ06tlo4g58K6wpME2eNeCCeASp0RFklnCH7TDYLVgpnaC2JSbBaOCOrAbkQzZNmQO4EOxwOh8MR8RsgtSyqPuIxtgAAAABJRU5ErkJggg==);
+    background-size: 32px 32px;
+}
+
+.imoview-chatbot .imoview-conversation {
+    /* Form */
+    width: 420px;
+    max-height: 370px;
+    min-height: 300px;
+    height: calc(100vh - 72px);
+    border-radius: 12px!important;
+
+    /* Position */
+    z-index: 32767;
+    position: fixed;
+    bottom: 48px;
+    right: 24px;
+
+    /* Looks */
+    background: white;
+    box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.15);
+}
+
+.imoview-chatbot .imoview-bg {
+    position: absolute;
+
+    top: 0; left: 0;
+    bottom: 0; right: 0;
+    border-radius: 8px!important;
+
+    background: white;
+}
+
+.imoview-chatbot .imoview-conversation.imoview-full {
+    max-height: 550px;
+    transition: max-height 0.5s ease-in-out;
+}
+
+.imoview-chatbot .imoview-conversation>.imoview-ctx {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0;
+    right:0;
+
+    border-radius: 8px!important;
+}
+
+.imoview-chatbot .imoview-typing-indicator {
+    width: 54px;
+
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.imoview-chatbot .imoview-typing-indicator>span {
+    width: 12px;
+    height: 12px;
+    border-radius: 6px!important;
+
+    margin-right: 6px;
+
+    float: left;
+
+    opacity: 0.5;
+
+    background: #2ecc71;
+}
+
+.imoview-chatbot .imoview-typing-indicator>span:nth-child(1) {
+    animation: 1s imoview-blink infinite .1666s;
+}
+
+.imoview-chatbot .imoview-typing-indicator>span:nth-child(2) {
+    animation: 1s imoview-blink infinite .3332s;
+}
+
+.imoview-chatbot .imoview-typing-indicator>span:nth-child(3) {
+    animation: 1s imoview-blink infinite .5s;
+}
+
+/* States */
+
+.imoview-nodisplay {
+    display: none !important;
+}
+
+.imoview-chatbot .imoview-hidden {
+    /* Animations */
+    animation-name: imoview-pop-out;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+}
+
+.imoview-chatbot .imoview-shown {
+    /* Animations */
+    animation-name: imoview-pop-in;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+}
+
+.imoview-chatbot .imoview-shown-middle {
+    /* Animations */
+    animation-name: imoview-pop-in-middle;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.imoview-chatbot .imoview-hidden-slide {
+    /* Animations */
+    animation-name: imoview-slide-out;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.imoview-chatbot .imoview-hidden-slideup {
+    /* Animations */
+    animation-name: imoview-slide-out-up;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.imoview-chatbot .imoview-shown-slide {
+    /* Animations */
+    animation-name: imoview-slide-in;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.imoview-chatbot .imoview-close {
+    position: absolute;
+    top: 23px;
+    right: 24px;
+
+    width: 25px;
+    height: 25px;
+
+    z-index: 9999999;
+}
+
+.imoview-chatbot.imoview-lado-left .imoview-chatbot-invite-message .imoview-close {
+    top: -12px;
+    right: -12px;
+    left: auto;
+
+    background: #aaa;
+    border-radius: 13px!important;
+}
+
+.imoview-chatbot .imoview-chatbot-invite-message .imoview-close {
+    top: -12px;
+    left: -12px;
+
+    background: #aaa;
+    border-radius: 13px!important;
+}
+
+.imoview-chatbot .imoview-close-white {
+    display: block;
+}
+
+.imoview-chatbot .imoview-close-black {
+    display: none;
+}
+
+.imoview-chatbot .imoview-close:hover {
+    cursor: pointer;
+}
+
+.imoview-chatbot .imoview-close>img {
+    all: inherit;
+    width: 25px;
+    top: 0;
+    left: 0;
+}
+
+/* Modifiers */
+
+/* Left */
+
+.imoview-chatbot.imoview-lado-left>.imoview-avatar {
+    left: 18px;
+}
+
+.imoview-chatbot.imoview-lado-left .imoview-chatbot-invite-container {
+    left: 72px;
+}
+
+.imoview-chatbot.imoview-lado-left .imoview-chatbot-invite-message {
+    float: left;
+}
+
+.imoview-chatbot.imoview-lado-left .imoview-conversation {
+    left: 24px;
+}
+
+.imoview-chatbot.imoview-lado-left .imoview-chatbot-invite-message::after {
+    left: -16px;
+    right: initial;
+    transform: scale(-1, 1);
+}
+
+/* Center */
+
+.imoview-chatbot.imoview-center>.imoview-avatar {
+    left: 50%;
+    margin-left: -30px;
+}
+
+.imoview-chatbot.imoview-center .imoview-chatbot-invite-container {
+    left: 72px;
+}
+
+.imoview-chatbot.imoview-center .imoview-chatbot-invite-message {
+    float: left;
+}
+
+.imoview-chatbot.imoview-center .imoview-conversation {
+    left: calc(100vw/2 - 360px);
+    width: 100vw;
+    max-width: 720px;
+}
+
+.imoview-chatbot.imoview-center .imoview-chatbot-invite-message::after {
+    left: -16px;
+    right: initial;
+    transform: scale(-1, 1);
+}
+
+.imoview-chatbot .imoview-conversation-header {
+    width: 100%;
+    height: 100px;
+
+    border-radius: 40px 8px 0 0!important;
+
+}
+
+.imoview-chatbot .imoview-mobile-brand {
+    position: absolute;
+
+    bottom: 0; left: 0;
+
+    width: 100%;
+    text-align: center;
+
+    margin-bottom: -28px;
+}
+
+.imoview-chatbot .imoview-mobile-brand .imoview-logo {
+    width: 160px;
+    opacity: 0.5;
+}
+
+.imoview-chatbot .imoview-brand {
+    position: absolute;
+
+    display: inline-block;
+    width: 100%;
+
+    margin: 0;
+
+    text-align: center;
+
+    bottom: -1.70em;
+}
+
+.imoview-chatbot .imoview-brand a {
+    padding-top: 8px;
+    background: #eee;
+
+    margin-top: 1px;
+
+    box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.15);
+
+    border-radius: 0 0 6px 6px!important;
+
+    border: 1px solid #ddd;
+
+    display: inline-block !important;
+}
+
+.imoview-chatbot .imoview-brand a img {
+    padding: 0;
+    margin: 0;
+    vertical-align: baseline;
+    opacity: 0.7;
+}
+
+.imoview-chatbot .imoview-brand a img:hover {
+    opacity: 1;
+}
+
+.imoview-chatbot img.imoview-3rdparty-branding {
+    height: 58px;
+    width: auto !important;
+
+    margin: 0 auto;
+    padding-top: 6px;
+
+    display: none;
+}
+
+.imoview-chatbot .imoview-logo {
+    width: 200px;
+}
+
+.imoview-infobar {
+    color: white;
+
+    border-radius: 8px 8px 0 0!important;
+
+    font-family: "Open Sans Regular",sans-serif !important;
+
+    height: 72px;
+
+    display: flex;
+    align-items: center;
+}
+
+.imoview-chatbot .imoview-infobar>.imoview-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px!important;
+
+    left: 12px;
+    top: 11px;
+
+    position: absolute;
+
+    background-size: cover;
+}
+
+.imoview-chatbot .imoview-infobar>.imoview-avatar::after {
+    border: 2px solid #cf0237;
+}
+
+.imoview-chatbot .imoview-infobar .imoview-info {
+    margin: 0;
+    margin-left: 68px;
+}
+
+.imoview-chatbot .imoview-info .imoview-title {
+    font-size: 1em !important;
+    margin-bottom: 6px;
+    margin-top: -6px;
+}
+
+.imoview-chatbot .imoview-info .imoview-subtitle {
+    font-size: 0.75em !important;
+}
+
+/* Conversational Form Implementation */
+
+.imoview-chatbot .imoview-ctx {
+    font-family: "Open Sans Regular",sans-serif !important;
+}
+
+/* Conversation container */
+
+.imoview-chatbot .imoview-ctx>div>.imoview-container {
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right:0;
+    bottom: 64px;
+    padding-bottom: 60px;
+    border-radius: 8px 8px 0 0!important;
+
+    background-color: white;
+
+    overflow: hidden;
+}
+
+.imoview-chatbot .imoview-container:focus-visible, .imoview-chatbot .imoview-group {
+    outline: none;
+}
+
+.imoview-chatbot .imoview-ctx>div>.imoview-container.imoview-full {
+    bottom: 0;
+    border-radius: 8px 8px 8px 8px!important;
+}
+
+.imoview-chatbot .imoview-ctx>div>.imoview-overlay {
+    position: absolute;
+
+    top: 72px;
+    left: 0;
+    right: 0;
+
+    height: 36px;
+
+    background: white;
+
+    background: linear-gradient(to bottom, white, rgba(255,255,255,0));
+    background: -moz-linear-gradient(to bottom, white, rgba(255,255,255,0));
+    background: -webkit-linear-gradient(to bottom, white, rgba(255,255,255,0));
+}
+
+/* Bubbles */
+
+.imoview-chatbot .imoview-msg .imoview-bubble {
+    padding: 16px 24px;
+    margin: 12px;
+    margin-bottom: 0;
+
+    background: #f0f0f0;
+
+    line-height: 1.5 !important;
+    font-size: 0.9em !important;
+
+    display: inline-block;
+
+    border-radius: 24px!important;
+
+    clear: both;
+}
+
+.imoview-chatbot .imoview-msg .imoview-bubble img {
+    margin-top: 6px;
+    width: 100%;
+}
+
+.imoview-chatbot .imoview-msg .imoview-bubble b {
+    font-weight: bold !important;
+    display: initial !important;
+}
+
+.imoview-chatbot .imoview-msg .imoview-bubble a {
+    text-decoration: underline;
+    color: #07C;
+}
+
+/* Bubble left/right styles */
+
+.imoview-chatbot .imoview-ctx .imoview-group.imoview-right .imoview-bubble {
+    background-image: linear-gradient(to right, #bc002c, #ea083d);
+
+    color: white;
+}
+
+.imoview-chatbot .imoview-ctx .imoview-group.imoview-left .imoview-bubble {
+    color: black;
+}
+
+.imoview-chatbot .imoview-ctx .imoview-group.imoview-left .imoview-bubble p {
+    color: #000;
+}
+
+/* Middle Bubbles
+
+   .imoview-ctx .imoview-group.imoview-right .imoview-bubble {
+   border-radius: 8px 0 0 8px;
+   margin-top: 2px;
+   margin-bottom: 2px;
+   }
+
+   .imoview-ctx .imoview-group.imoview-left .imoview-bubble {
+   border-radius: 0 8px 8px 0;
+   margin-top: 2px;
+   margin-bottom: 2px;
+   }
+
+ */
+
+/* Bottom Bubbles
+
+   .imoview-ctx .imoview-group.imoview-right .imoview-msg:last-child .imoview-bubble {
+   border-radius: 8px 0 8px 8px;
+   margin-top: 2px;
+   }
+
+   .imoview-ctx .imoview-group.imoview-left .imoview-msg:last-child .imoview-bubble {
+   border-radius: 0 8px 8px 8px;
+   margin-top: 2px;
+   }
+
+ */
+
+.imoview-chatbot .imoview-ctx .imoview-group.imoview-right .imoview-msg:last-child .imoview-bubble {
+    margin-bottom: 6px;
+}
+
+.imoview-chatbot .imoview-ctx .imoview-group.imoview-left .imoview-msg:last-child .imoview-bubble {
+    margin-bottom: 6px;
+}
+
+/* Top Bubbles
+
+   .imoview-ctx .imoview-group.imoview-right .imoview-msg:first-child .imoview-bubble {
+   border-radius: 8px 8px 0 8px;
+   margin-top: 0;
+   }
+
+   .imoview-ctx .imoview-group.imoview-left .imoview-msg:first-child .imoview-bubble {
+   border-radius: 8px 8px 8px 0;
+   margin-top: 0;
+   }
+
+ */
+
+.imoview-chatbot .imoview-ctx .imoview-group.imoview-right .imoview-msg:first-child .imoview-bubble {
+    margin-top: 0;
+}
+
+.imoview-chatbot .imoview-ctx .imoview-group.imoview-left .imoview-msg:first-child .imoview-bubble {
+    margin-top: 0;
+}
+
+/* Message groups (blocks of speech) */
+
+.imoview-chatbot .imoview-ctx .imoview-group {
+    display: block;
+
+    clear: both;
+
+    max-width: 90%;
+
+    margin: 6px;
+}
+
+.imoview-chatbot .imoview-ctx .imoview-group.imoview-full {
+    display: block;
+
+    clear: both;
+
+    width: 100%;
+    max-width: calc(100% - 48px);
+
+    margin-bottom: 16px;
+    margin-top: 16px;
+}
+
+.imoview-chatbot .imoview-ctx .imoview-group.imoview-nomargin {
+    position: relative;
+    display: block;
+
+    clear: both;
+
+    width: calc(100% + 6px);
+    max-width: calc(100% + 6px);
+
+    right: -6px;
+
+    margin: 0;
+    padding: 0;
+}
+
+/* Left/Right message groups */
+
+.imoview-chatbot .imoview-ctx .imoview-group.imoview-left {
+    float: left;
+    text-align: left;
+}
+
+.imoview-chatbot .imoview-ctx .imoview-group.imoview-right {
+    float: right;
+    text-align: right;
+}
+
+/*
+ * Message containers (inside groups). Used to allow for custom
+ * content like avatars side by side inside message groups.
+ */
+
+.imoview-chatbot .imoview-ctx .imoview-group.imoview-left .imoview-container {
+    max-width: calc(100% - 40px);
+    min-width: 200px;
+}
+
+.imoview-chatbot .imoview-ctx .imoview-group.imoview-full .imoview-container {
+    max-width: 21em;
+    width: 100%;
+}
+
+.imoview-chatbot .imoview-ctx .imoview-group.imoview-left .imoview-container {
+    float: left;
+}
+
+.imoview-chatbot .imoview-ctx .imoview-group.imoview-right .imoview-container {
+    float: right;
+}
+
+/* Message group avatar */
+
+.imoview-chatbot .imoview-group.imoview-left .imoview-msg-avatar {
+    float: left;
+    margin-left: 8px;
+}
+
+.imoview-chatbot .imoview-group.imoview-right .imoview-msg-avatar {
+    float: right;
+    margin-right: 8px;
+}
+
+.imoview-chatbot .imoview-msg-avatar>.imoview-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 16px!important;
+
+    object-fit: cover;
+}
+
+/* Timestamps */
+
+.imoview-chatbot .imoview-timestamp {
+    display: block;
+    color: #979797;
+    font-size: 0.75em!important;
+
+    margin: 6px 0 6px 6px;
+}
+
+.imoview-chatbot .imoview-group.imoview-left .imoview-timestamp {
+    float: right;
+}
+
+.imoview-chatbot .imoview-group.imoview-right .imoview-timestamp {
+    float: right;
+    color: #f5f5f5;
+}
+
+/* Text Input */
+
+.imoview-chatbot .imoview-input {
+    position: absolute;
+
+    left: 0; right: 0;
+
+    bottom: 16px;
+    height: 48px;
+
+    border-radius: 0 0 8px 8px!important;
+}
+
+.imoview-chatbot .imoview-input.imoview-plain {
+    box-shadow: none;
+}
+
+.imoview-chatbot .imoview-input.imoview-hide {
+    height: 0;
+}
+
+.imoview-chatbot .imoview-input.imoview-hide .imoview-submit{
+    display: none;
+}
+
+.imoview-chatbot .imoview-input>.imoview-submit {
+    box-sizing: content-box;
+
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFzSURBVGiB7dkxa9ZQFAbgk9LFycGhg4g6ODpUunXs0PoDtODgIvgX3J2k/0DoIA5uOtil0Klbl24iFDp1KwgODkVUHpeGihb7ff1uvJF7HsiYw3lJbnJzEpFSSimllFJKKZWHRbzCA3S1+xkcdpzZx/3aPQ0K7/xpF8u1exsENs4J3NvBvdo9FoWnfwkMP/AGd2r3WgRWLgjc+4bXuFW755ng5oSBe1/xEgu1e78UzOFkytDwBS9wtXaGqeHjJQL3PuEZrtTOMTG8nyFw7whPMF+yt7mSxX5xWKDGjYjYjIgPeGjMuzY8KnCFf7ePtdrZzoUOj/EWnwsHH/euDfNYxnPs4Xuh4Fu4O20//3xd4FpErETE6ulxfYZyJxFxu+u640lPGOqh1a6x3dKD0NpDy4hfS0Ot4aWCtQ4iYj0ilrqu2y5Ytxwj3loOQksfD1r7PNTgAKC5EU9zQ7zmxrTNDeKb+9XS1s+0lFJKKaWUUkr/o581mM0INt+/SAAAAABJRU5ErkJggg==');
+    background-size: 30px 30px;
+
+    width: 30px;
+    height: 30px;
+
+    display: inline-block;
+    position: absolute;
+    right: 24px;
+    bottom: 6px;
+
+    border-radius: 16px!important;
+    border: 1px solid;
+}
+
+.imoview-chatbot .imoview-input>.imoview-submit:hover {
+    cursor: pointer;
+}
+
+.imoview-chatbot .imoview-input>.imoview-submit.imoview-only {
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: auto;
+    text-align: center;
+    line-height: 30px !important;
+    text-transform: uppercase;
+
+    background: transparent !important;
+}
+
+.imoview-chatbot .imoview-input>input {
+    width: calc(100% - 64px) !important;
+    height: 46px !important;
+
+    background: white;
+    color: black!important;
+
+    border-radius: 32px!important;
+    outline: none;
+    border: 2px solid #eee;
+    margin: 0 14px;
+
+    padding: 0 16px !important;
+    padding-bottom: 2px;
+
+    font-size: 1em!important;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* iOS Fix */
+input[type=text] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+}
+/* Select Box */
+
+.imoview-chatbot .imoview-input select {
+    width: calc(100% - 64px) !important;
+    height: 46px !important;
+
+    background: white;
+    color: black!important;
+    position: relative;
+
+    border-radius: 32px!important;
+    outline: none;
+    border: 2px solid #eee;
+    margin: 0 14px;
+
+    padding: 0 16px !important;
+    padding-bottom: 2px;
+
+    font-size: 1em!important;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.imoview-chatbot .imoview-input > .custom-select {
+    position: relative;
+}
+
+.imoview-chatbot .imoview-input > .custom-select:after {
+    content: "▼";
+    position: absolute;
+    color: #4c4c4c;
+    top: 4px;
+    right: 60px;
+    padding: 12px 7px;
+    pointer-events: none;
+}
+
+.imoview-chatbot .imoview-input>select::-ms-expand {
+    display: none;
+}
+
+/* Selectors (Single/Multi option) */
+
+.imoview-chatbot .imoview-sel {
+    padding: 24px 0;
+    margin: 0;
+    right: 6px;
+    position: relative;
+}
+
+.imoview-chatbot .imoview-sel>.imoview-opt {
+    padding: 12px 24px;
+    border-radius: 24px!important;
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    background-image: linear-gradient(to right, #bc002c, #ea083d);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.15);
+    margin: 3px;
+    text-align: center;
+}
+
+.imoview-chatbot .imoview-sel>.imoview-opt:hover {
+    box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.3);
+}
+
+.imoview-chatbot .imoview-sel.imoview-multi {
+    padding: 12px 0;
+}
+
+.imoview-chatbot .imoview-sel.imoview-multi>.imoview-opt.imoview-selected {
+    background-image: linear-gradient(to right, #f31448, #ff6084);
+}
+
+.imoview-chatbot .imoview-sel.imoview-multi>.imoview-opt {
+    background: transparent;
+    border: 1px solid #f31448;
+    color: #222;
+}
+
+.imoview-chatbot .imoview-secondary {
+    padding: 4px 8px;
+    background: transparent !important;
+    color: #0592ff !important;
+    box-shadow: none !important;
+    border: none!important;
+    font-size: 12px!important;
+    text-decoration: underline!important;
+}
+
+.imoview-chatbot .imoview-secondary:hover {
+    box-shadow: none !important;
+    color: #0277d1!important;
+}
+
+.imoview-chatbot .imoview-secondary.imoview-selected {
+    background-image: none!important;
+}
+
+/* Message-Selector */
+
+.imoview-chatbot .imoview-sel.imoview-messages {
+    padding: 0;
+    margin: 0;
+
+    padding-top: 12px;
+}
+
+.imoview-opt {
+    margin: 6px 6px 0 0;
+    padding: 12px 16px;
+    
+    border-radius: 24px!important;
+
+    display: inline-block;
+
+    cursor: pointer;
+
+    color: white;
+
+    background-image: linear-gradient(to right, #bc002c, #ea083d);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.15);
+}
+
+.imoview-opt:hover {
+    background-image: linear-gradient(to right, #bc002c, #ea083d);
+    box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.3);
+}
+
+.imoview-opt.imoview-selected {
+    background-image: linear-gradient(to right, #f31448, #ff6084);
+}
+
+/* Time Selector */
+
+.imoview-chatbot .imoview-sel.imoview-time {
+    margin-right: 16px;
+
+    border-radius: 8px!important;
+
+    border: 1px solid #bc002c;
+
+    overflow: hidden;
+}
+
+.imoview-chatbot .imoview-timedisplay {
+    background-image: linear-gradient(to right, #bc002c, #ea083d);
+
+    font-size: 3em!important;
+    color: rgba(255, 255, 255, 0.8);
+
+    padding: 6px 24px;
+}
+
+.imoview-chatbot .imoview-timepicker {
+    background: white;
+
+    padding: 6px;
+}
+
+.imoview-chatbot .imoview-timepicker .imoview-clock {
+    width: 14em;
+    height: 14em;
+    border-radius: 7em!important;
+
+    background: #eee;
+
+    position: relative;
+}
+
+.imoview-chatbot .imoview-clock .imoview-num-container {
+    width: 11em;
+    height: 11em;
+
+    top: 1.5em;
+    left: 1.5em;
+
+    position: relative;
+}
+
+.imoview-chatbot .imoview-clock .imoview-pivot {
+    box-sizing: content-box;
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    margin-top: -0.25em;
+    margin-left: -0.25em;
+
+    width: 0.5em;
+    height: 0.5em;
+
+    border-radius: 0.5em!important;
+
+    border: 2px solid #ea083d;
+}
+
+.imoview-chatbot .imoview-clock .imoview-pointer {
+    position: absolute;
+
+    top: 0.25em;
+    left: 0.5em;
+
+    margin-top: -1px;
+
+    width: 4.55em;
+    height: 2px;
+
+    transform-origin: -0.25em 1px;
+
+    background: #ea083d;
+}
+
+.imoview-chatbot .imoview-clock .imoview-clock-num {
+    position: absolute;
+
+    width: 2em;
+    height: 2em;
+
+    margin-top: -1em;
+    margin-left: -1em;
+
+    line-height: 2em !important;
+
+    text-align: center;
+    vertical-align: middle;
+
+    cursor: pointer;
+
+    color: #888;
+
+    border-radius: 1em!important;
+}
+
+.imoview-chatbot .imoview-clock .imoview-clock-num.imoview-disabled {
+    color: #ddd;
+}
+
+.imoview-chatbot .imoview-clock .imoview-clock-num:hover {
+    color: black;
+}
+
+.imoview-chatbot .imoview-clock .imoview-clock-num.imoview-selected {
+    color: white;
+    background: #ea083d;
+}
+
+.imoview-chatbot .imoview-timedisplay .imoview-hours {
+    display: inline-block;
+
+    cursor: pointer;
+}
+
+.imoview-chatbot .imoview-timedisplay .imoview-minutes {
+    display: inline-block;
+
+    cursor: pointer;
+}
+
+.imoview-chatbot .imoview-timedisplay .imoview-sep {
+    display: inline-block;
+
+    color: #eee;
+}
+
+.imoview-chatbot .imoview-hours.imoview-selected {
+    color: white;
+
+    border-bottom: 3px solid white;
+}
+
+.imoview-chatbot .imoview-minutes.imoview-selected {
+    color: white;
+
+    border-bottom: 3px solid white;
+}
+
+.imoview-chatbot .imoview-timedisplay .imoview-period {
+    float: right;
+    font-size: 0.33em!important;
+    margin-top: 0.8em;
+    margin-left: 1em;
+}
+
+.imoview-chatbot .imoview-period .imoview-day {
+    cursor: pointer;
+}
+
+.imoview-chatbot .imoview-period .imoview-night {
+    cursor: pointer;
+}
+
+.imoview-chatbot .imoview-period .imoview-day.imoview-selected {
+    color: white;
+    font-weight: bold !important;
+}
+
+.imoview-chatbot .imoview-period .imoview-night.imoview-selected {
+    color: white;
+    font-weight: bold !important;
+}
+
+/* Date selector */
+
+.imoview-chatbot .imoview-sel.imoview-date {
+    padding: 0;
+    padding-bottom: 12px;
+
+    right: 6px;
+
+    position: relative;
+}
+
+.imoview-chatbot .imoview-cal {
+    position: relative;
+
+    min-width: 18em;
+    width: 100%;
+    height: 16em;
+
+    background: white;
+
+    border-radius: 8px!important;
+
+    border: 1px solid #cf0237;
+
+    color: #444;
+
+    font-size: 0.8em!important;
+
+    overflow: hidden;
+}
+
+.imoview-chatbot .imoview-cal>.imoview-row {
+    width: 100%;
+    height: 2em;
+
+    text-align: center;
+}
+
+.imoview-chatbot .imoview-row.imoview-title {
+    font-weight: bold!important;
+
+    color: white;
+
+    background-image: linear-gradient(to right, #bc002c, #ea083d);
+}
+
+.imoview-chatbot .imoview-row.imoview-header {
+    font-weight: bold!important;
+    color: white;
+    background-image: linear-gradient(to right, #bc002c, #ea083d);
+    border-radius: 6px 6px 0 0!important;
+    vertical-align: middle;
+}
+
+.imoview-chatbot .imoview-row.imoview-header>.imoview-header {
+    padding-top: 0.5em;
+}
+
+.imoview-chatbot .imoview-cal .imoview-prev {
+    float: left;
+    padding-left: 12px;
+
+    cursor: pointer;
+
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+
+    width: 16px;
+    height: 16px;
+
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAB7SURBVFiF7dexCoAgFIXhW/R4bRYO9fj1FEV/i+BiUEPdkHPAxeV8oMjVTHkQoAfWtIIHYCFnA6In4HsEEFKpK2IoIHZgFkIIIYRIiFhAfP5Y3Ua0LxmOwl5jZt1LfTmuRwCMF5dwUrnKVV5Nue9Qyg/GcvePie/XrMqcOOCgDspkl64AAAAASUVORK5CYII=');
+    background-size: 16px;
+
+    background-repeat: no-repeat;
+}
+
+.imoview-chatbot .imoview-cal .imoview-next {
+    float: right;
+    margin-right: 12px;
+
+    cursor: pointer;
+
+    width: 16px;
+    height: 16px;
+
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAB7SURBVFiF7dexCoAgFIXhW/R4bRYO9fj1FEV/i+BiUEPdkHPAxeV8oMjVTHkQoAfWtIIHYCFnA6In4HsEEFKpK2IoIHZgFkIIIYRIiFhAfP5Y3Ua0LxmOwl5jZt1LfTmuRwCMF5dwUrnKVV5Nue9Qyg/GcvePie/XrMqcOOCgDspkl64AAAAASUVORK5CYII=');
+    background-size: 16px;
+}
+
+.imoview-chatbot .imoview-next.imoview-full,.imoview-chatbot .imoview-prev.imoview-full {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACMSURBVFiF7ZdRC0AwFEYv+Xne0B74+fwKcrwoysWwGrlf7WWn9p3aWpuIRQmQA908iqs8hEDLkh5wV3hogU3JGQ8hUMyLqiVnPJREqZQMQOPDTcIkTOIXEk4pWV9Wh/w1EulDh1GZS0Qk8+T3E3ULgGrnkNU+3Mqt3Mo/UR73UcoLnuXRPyZxv2a/ygRSxkAo9hmBFQAAAABJRU5ErkJggg==');
+}
+
+.imoview-chatbot .imoview-cal .imoview-cell {
+    box-sizing: content-box;
+    display: inline-block;
+
+    width: 14.2857%;
+    height: 50%;
+
+    padding: 0.5em 0;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    user-select: none;
+
+    position: relative;
+}
+
+.imoview-chatbot .imoview-cell.imoview-this-month {
+}
+
+.imoview-chatbot .imoview-cell.imoview-disabled {
+    background-color: #eee;
+    cursor: not-allowed;
+}
+
+.imoview-chatbot .imoview-cell.imoview-next-month {
+    color: #bbb;
+}
+
+.imoview-chatbot .imoview-cell.imoview-prev-month {
+    color: #999;
+}
+
+.imoview-chatbot .imoview-cell.imoview-today {
+    font-weight: bold!important;
+    color: black;
+}
+
+.imoview-chatbot .imoview-cell.imoview-selected {
+    font-weight: bold!important;
+    color: black;
+}
+
+.imoview-chatbot .imoview-cell.imoview-selected::after {
+    box-sizing: content-box;
+
+    width: calc(100% - 8px);
+    height: calc(100% - 6px);
+
+    border-radius: 6px!important;
+
+    border: 1px solid #cf0237;
+
+    opacity: 0.5;
+
+    position: absolute;
+
+    top: 3px; left: 3px;
+
+    content: "";
+}
+
+/* Carousel */
+
+/* Hide scrollbar */
+.glider {
+    margin-bottom: -50px!important;
+    padding-bottom: 50px!important;
+}
+.imoview-chatbot .imoview-carousel {
+    overflow: hidden;
+}
+
+.imoview-chatbot .imoview-carousel .imoview-prev, .imoview-chatbot .imoview-carousel .imoview-next {
+    position: absolute;
+
+    width: 2em; height: 2em;
+
+    top: 25%; margin-top: -1em;
+    left: 0;
+    margin: 0.25em;
+
+    z-index: 1;
+
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 0.25em!important;
+
+    color: #888;
+
+    cursor: pointer;
+
+    user-select: none;
+}
+
+.imoview-chatbot .imoview-carousel .imoview-next {
+    right: 0;
+    left: auto;
+}
+
+.imoview-chatbot .imoview-carousel .imoview-card {
+    background: white;
+
+    border: 1px solid #ddd;
+
+    margin: 0.25em 0.5em;
+    margin-bottom: 1em;
+    padding: 0;
+
+    border-radius: 0.5em!important;
+
+    overflow: hidden;
+}
+
+.imoview-chatbot .imoview-carousel .imoview-card .imoview-card-body {
+    min-height: 12em;
+
+    text-align: left;
+
+    background-size: cover;
+
+    color: white;
+}
+
+.imoview-chatbot .imoview-carousel .imoview-card .imoview-card-title {
+    padding: 0.5em;
+    margin: 0;
+
+    text-align: left;
+}
+
+.imoview-chatbot .imoview-carousel .imoview-card .imoview-sel {
+    padding: 0;
+    right: 0;
+
+    margin: 6px;
+    margin-bottom: 12px;
+}
+
+.imoview-chatbot .imoview-carousel .imoview-card .imoview-opt {
+    display: block;
+    margin: 6px;
+}
+
+/* Scrollbar */
+
+.imoview-chatbot .imoview-scrollable {
+    width: calc(100% - 6px);
+    height: 100%;
+
+    box-sizing: content-box;
+
+    overflow-y: scroll;
+
+    margin-right: -50px;
+    padding-right: 50px;
+}
+
+.imoview-chatbot .imoview-scrollbar {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 6px;
+    height: 100%;
+}
+
+.imoview-chatbot .imoview-handle {
+    width: 100%;
+
+    position: absolute;
+
+    border-radius: 3px!important;
+
+    background: #ea083d;
+
+    opacity: 0.8;
+}
+
+.imoview-chatbot .imoview-whitespace {
+    width: 100%;
+    height: 1em;
+    background: none;
+}
+
+.imoview-chatbot .imoview-input .imoview-tooltip-error {
+    position: absolute;
+    display: flex;
+    background-color: #CB2134;
+    color: #FFF;
+    margin: 0px 20px;
+    width: calc(100% - 64px) !important;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px !important;
+    transform: translateY(-135%);
+    box-shadow: 0 1px 8px rgb(0 0 0 / 50%);
+}
+
+.imoview-chatbot .imoview-input .imoview-tooltip-error:after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 14px;
+    height: 14px;
+    transform-origin: 50% 50%;
+    transform: rotate(45deg) translateX(-50%);
+    background-color: inherit;
+    z-index: -10;
+    left: 20px;
+    top: auto;
+    bottom: -10px;
+    border-radius: 2px;
+}
+
+.imoview-chatbot .imoview-multi .imoview-tooltip-error {
+    position: absolute;
+    display: flex;
+    background-color: #CB2134;
+    color: #FFF;
+    border-radius: 8px;
+    padding: 5px 10px;
+    right: 0;
+    font-size: 14px !important;
+    transform: translateY(-135%);
+    box-shadow: 0 1px 8px rgb(0 0 0 / 50%);
+}
+
+.imoview-chatbot .imoview-multi .imoview-tooltip-error:after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 14px;
+    height: 14px;
+    transform-origin: 50% 50%;
+    transform: rotate(45deg) translateX(-50%);
+    background-color: inherit;
+    z-index: -10;
+    right: 20px;
+    top: auto;
+    bottom: -10px;
+    border-radius: 2px;
+}
+
+.imoview-chatbot .imoview-bubble a.whatsapp-link {
+    text-decoration: none;
+}
+
+.imoview-chatbot .imoview-bubble a.whatsapp-link > div {
+    background: #455a64;
+    color: white;
+    padding: 1em;
+    border-radius: 0.5em;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    font-weight: bold;
+    margin-top: 1em;
+}
+
+.imoview-chatbot .imoview-bubble a.whatsapp-link > div > img {
+    width: 2em;
+    height: 2em;
+    margin-top: -0.25em;
+    margin-right: 0.25em;
+    float: left;
+}
+
+
+.imoview-chatbot .imoview-bubble a.reset-chat {
+    color: #FFFFFF;
+    font-weight: bold !important;
+}
+
+.imoview-chatbot .imoview-bubble a.reset-chat > img {
+    margin-left: 10px;
+    vertical-align: -5px;
+    margin-top: 0 !important;
+    width: inherit !important;
+}
+
+
+/* Media Queries */
+@media only screen and (max-device-width: 720px) {
+    .imoview-chatbot.imoview-center .imoview-conversation {
+        width: auto;
+        height: auto;
+        max-height: none;
+        min-height: none;
+
+        position: fixed;
+
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+
+        z-index: 32767;
+    }
+
+}
+
+@media only screen and (max-width: 720px) {
+    .imoview-chatbot.imoview-center>.imoview-avatar {
+        left: 0!important;
+        margin-left: 0!important;
+    }
+}
+
+@media only screen and (max-device-width: 720px) {
+    .imoview-chatbot .imoview-conversation {
+        border-radius: 0!important;
+    }
+
+    .imoview-chatbot .imoview-conversation-header {
+        border-radius: 0!important;
+    }
+
+    .imoview-chatbot .imoview-avatar {
+        bottom: 48px;
+    }
+
+    .imoview-chatbot .imoview-conversation,
+    .imoview-chatbot.imoview-lado-left .imoview-conversation,
+    .imoview-chatbot.imoview-lado-right .imoview-conversation {
+        width: auto;
+        height: auto;
+        max-height: none !important;
+        min-height: none !important;
+
+        position: fixed;
+
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+
+        z-index: 32767;
+    }
+
+    .imoview-chatbot .imoview-invite-message-container {
+        max-width: 200px;
+        max-width: calc(100vw - 138px);
+    }
+
+    .imoview-chatbot .imoview-invite-message-container.imoview-notification .imoview-invite-message-text {
+        min-width: 0!important;
+    }
+
+    .imoview-chatbot .imoview-invite-message-container.imoview-notification .imoview-footer.imoview-verified {
+        display: none!important;
+    }
+
+    .imoview-chatbot .imoview-ctx>div>.imoview-container, .imoview-ctx>div>.imoview-overlay {
+        top: 72px;
+        border-radius: 0 !important;
+    }
+
+    .imoview-chatbot .imoview-ctx>div>.imoview-container {
+        bottom: 76px;
+    }
+
+    .imoview-chatbot .imoview-ctx>div>.imoview-container.imoview-full {
+        bottom: 18px;
+    }
+
+    .imoview-chatbot .imoview-close-white {
+        display: block;
+    }
+
+    .imoview-chatbot .imoview-close-black {
+        display: none;
+    }
+
+    .imoview-chatbot .imoview-input>input {
+        font-size: 1.1em!important;
+    }
+
+    .imoview-chatbot .imoview-input {
+        bottom: 28px;
+    }
+
+    .imoview-chatbot .imoview-msg .imoview-bubble {
+        font-size: 1em!important;
+    }
+}
+
+/* Waiting Spinnner */
+
+.imoview-chatbot .imoview-input .imoview-spinner {
+    position: relative;
+    width: 2em; height: 2em;
+
+    top: 50%;
+    left: 50%;
+    margin-left: -1em;
+    margin-top: -1em;
+}
+
+.imoview-chatbot .imoview-input .imoview-spinner div {
+    position: absolute;
+    border-width: 0.25em;
+    border-style: solid;
+    border-color: inherit;
+    margin-top: -0.25em;
+    border-radius: 50%!important;
+    animation: imoview-spinner 1.6s cubic-bezier(0,.35,.28,.9) infinite;
+}
+
+.imoview-chatbot .imoview-input .imoview-spinner div:nth-child(2) {
+    animation-delay: -0.64s;
+}
+
+@keyframes imoview-spinner {
+    0% { top: 50%; left: 50%; width: 0; height: 0; opacity: 1; }
+    80% {  top: 0; left: 0; width: 100%; height: 100%; opacity: 0; }
+    100% { opacity: 0; top: 50%; left: 50%; width: 0; height: 0; }
+}
+
+/* Social Proof Icon */
+.imoview-chatbot .imoview-sp-icon {
+    margin: -4px;
+
+    min-width: 64px;
+    height: 64px;
+    border-radius: 50%!important;
+    background-size: 0%;
+}
+
+.imoview-chatbot .imoview-sp-icon div:not(:nth-child(3)) {
+    position: absolute;
+
+    background: inherit;
+    border-radius: 50%!important;
+
+    animation: imoview-pulse 2.6s cubic-bezier(0,.35,.28,.9) infinite;
+}
+
+.imoview-chatbot .imoview-sp-icon div:nth-child(2) {
+    animation-delay: -0.64s;
+}
+
+.imoview-chatbot .imoview-sp-icon .imoview-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%!important;
+    background-size: 100%;
+}
+
+.imoview-chatbot .imoview-sp-icon.imoview-right {
+    margin-right: 0;
+    margin-left: 12px;
+
+    animation: imoview-slide-in 0.8s cubic-bezier(0,.35,.28,.9) forwards;
+}
+
+.imoview-chatbot .imoview-sp-icon.imoview-left {
+    margin-left: 0;
+    margin-right: 12px;
+
+    animation: imoview-slide-in 0.4s cubic-bezier(0,.35,.28,.9) forwards;
+}
+
+.imoview-chatbot .imoview-footer {
+    display: none;
+}
+
+.imoview-chatbot .imoview-footer.imoview-verified::before {
+    position: absolute;
+
+    top: 50%; left: -1.2em;
+    width: 1em; height: 1em;
+
+    margin-top: -0.5em;
+
+    content: "C";
+    font-family: 'Poppins' !important;
+
+    color: white;
+    background: #58f;
+
+    border-radius: 50%!important;
+
+    line-height: 1em !important;
+}
+
+.imoview-chatbot .imoview-invite-message-container.imoview-notification .imoview-footer.imoview-verified {
+    display: block;
+    opacity: 0;
+
+    text-align: right;
+
+    position: absolute;
+    right: 8px; bottom: 0;
+
+    font-size: 75%!important;
+    color: #58f;
+
+    animation: imoview-slide-in 0.4s cubic-bezier(0,.35,.28,.9) forwards;
+    animation-delay: 0.5s;
+}
+
+.imoview-chatbot .imoview-invite-message-container.imoview-notification .imoview-footer.imoview-time {
+    display: block;
+    opacity: 0;
+
+    position: absolute;
+    left: 92px; bottom: 0;
+
+    font-size: 75%!important;
+    color: #aaa;
+
+    animation: imoview-slide-in 0.4s cubic-bezier(0,.35,.28,.9) forwards;
+    animation-delay: 0.25s;
+}
+
+.imoview-chatbot.imoview-lado-left .imoview-invite-message-container.imoview-notification .imoview-footer.imoview-time {
+    left: 16px;
+    text-align: left;
+}
+
+.imoview-chatbot.imoview-lado-left .imoview-invite-message-container.imoview-notification .imoview-footer.imoview-verified {
+    right: 86px;
+    text-align: right;
+}
+
+.imoview-chatbot .imoview-invite-message-container.imoview-notification .imoview-invite-message-text {
+    min-width: 180px;
+    margin-bottom: 16px;
+    line-height: 1.2em !important;
+
+    align-self: flex-start;
+}
+
+@keyframes imoview-pulse {
+    0% { top: 50%; left: 50%; width: 0; height: 0; opacity: 1; }
+    60% {  top: -25%; left: -25%; width: 150%; height: 150%; opacity: 0; }
+    100% { opacity: 0; top: 50%; left: 50%; width: 0; height: 0; }
+}
+
+.imoview-chatbot .imoview-popup-container {
+    position: absolute;
+    bottom: 3.5em;
+    width: 100%;
+    left: 0;
+}
+
+.imoview-chatbot .imoview-popup-container .imoview-popup {
+   margin: 0 0.75em;
+   background: #fff0f1;
+   border-radius: 0.5em;
+   box-shadow: 0 4px 6px -5px rgba(0, 0, 0, 0.2);
+   border: 1px solid #f2dcd0;
+   color: #a33;
+   padding: 1em 2em;
+   text-align: center;
+   font-size: 1.25em!important;
+}
+
+/* Glider.js */
+
+.glider-contain {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+.glider {
+    margin: 0 auto;
+    position: relative;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    transform: translateZ(0);
+}
+.glider-track {
+    transform: translateZ(0);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    z-index: 1;
+}
+.glider.draggable {
+    user-select: none;
+    cursor: -webkit-grab;
+    cursor: grab;
+}
+.glider.draggable .glider-slide img {
+    user-select: none;
+    pointer-events: none;
+}
+.glider.drag {
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+}
+.glider-slide {
+    user-select: none;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+}
+.glider-slide img {
+    max-width: 100%;
+}
+.glider::-webkit-scrollbar {
+    opacity: 0;
+    height: 0;
+}
+.glider-prev,.glider-next {
+    user-select: none;
+    position: absolute;
+    outline: none;
+    background: none;
+    padding: 0;
+    z-index: 2;
+    font-size: 40px;
+    text-decoration: none;
+    left: -23px;
+    border: 0;
+    top: 30%;
+    cursor: pointer;
+    color: #666;
+    opacity: 1;
+    line-height: 1 !important;
+    transition: opacity .5s cubic-bezier(.17,.67,.83,.67),
+    color .5s cubic-bezier(.17,.67,.83,.67);
+}
+.glider-prev:hover,
+.glider-next:hover,
+.glider-prev:focus,
+.glider-next:focus {
+    color: #a89cc8;
+}
+.glider-next {
+    right: -23px;
+    left: auto;
+}
+.glider-next.disabled,
+.glider-prev.disabled {
+    opacity: .25;
+    color: #666;
+    cursor: default;
+}
+.glider-slide {
+    min-width: 150px;
+}
+.glider-hide {
+    opacity: 0;
+}
+.glider-dots {
+    user-select: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0;
+}
+.glider-dot {
+    background: none;
+    border: 0;
+    padding: 0;
+    user-select: none;
+    outline: none;
+    display: block;
+    cursor: pointer;
+    color: #ccc;
+    border-radius: 999px!important;
+    background: #ccc;
+    width: 12px;
+    height: 12px;
+    margin: 7px;
+}
+.glider-dot:hover,
+.glider-dot:focus,
+.glider-dot.active {
+    background: #a89cc8;
+}
+@media(max-width: 36em){
+    .glider::-webkit-scrollbar {
+        opacity: 1;
+        -webkit-appearance: none;
+        width: 7px;
+        height: 3px;
+    }
+    .glider::-webkit-scrollbar-thumb {
+        opacity: 1;
+        border-radius: 99px!important;
+        background-color: rgba(156, 156, 156, 0.25);
+        box-shadow: 0 0 1px rgba(255,255,255,.25);
+    }
+}
+
+.opacity-hover:hover {
+  opacity: 0.9;
+}
+
+.imoview-chatbot .countries_list_btn {
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    background-color: transparent;
+    outline: none;
+    height: 30px;
+    bottom: 6px;
+    left: 24px
+  }
+  
+  .imoview-chatbot .countries_list_btn:focus{
+    outline-style: none;
+  }
+  
+  .imoview-chatbot .countriesList {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .imoview-chatbot .countries_list_content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    height: 350px;
+    overflow: auto;
+    background-color: #fff;
+    bottom: 50px;
+    left: 15px;
+    right: 15px;
+    border: solid 2px;
+    border-radius: 10px;
+  }
+  
+  
+  .imoview-chatbot .countries_list_content a {
+    color: black;
+    padding: 0px 10px;
+    text-decoration: none;
+    cursor: pointer;
+    display: block;
+  }
+  
+  .imoview-chatbot .countries_list_content a:hover {background-color: #f1f1f1}
+  
+  .imoview-chatbot .countriesList:hover .countries_list_content {
+    display: block;
+  }
+    
+  .imoview-chatbot .arrow {
+    border: solid gray;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 2px;
+  }
+    
+  .imoview-chatbot .down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    margin: 5px;
+  }
+    
+  .imoview-chatbot .telinput {
+    border: 0;
+  }
+    
+  .imoview-chatbot .telinput:focus{
+    outline: none;
+  }
+    
+  .imoview-chatbot .tel {
+    align-items: center;
+    border: solid 1px grey;
+    width: fit-content;
+  }
+  
+  .imoview-chatbot .iti {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .imoview-chatbot .iti * {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+  }
+  
+  .imoview-chatbot .iti__flag-box {
+    margin-right: 10px;
+  }
+  
+  .imoview-chatbot .iti__dial-code {
+    color: #999;
+  }
+  
+  .imoview-chatbot .iti__flag-country {
+    display: flex;
+    align-items: center;
+    padding: 5px 0px;
+  }
+  
+  .imoview-chatbot .iti__dial-code {
+    padding-left: 10px;
+  }
+  
+  .imoview-chatbot .iti__flag {
+    width: 20px;
+  }
+  
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .imoview-chatbot .iti__flag {
+      background-size: 5652px 15px;
+    }
+  }
+  
+  .imoview-chatbot .iti__flag.iti__be {
+    width: 18px; }
+  .imoview-chatbot .iti__flag.iti__ch {
+    width: 15px; }
+  .imoview-chatbot .iti__flag.iti__mc {
+    width: 19px; }
+  .imoview-chatbot .iti__flag.iti__ne {
+    width: 18px; }
+  .imoview-chatbot .iti__flag.iti__np {
+    width: 13px; }
+  .imoview-chatbot .iti__flag.iti__va {
+    width: 15px; }
+  .imoview-chatbot .iti__flag.iti__ac {
+    height: 10px;
+    background-position: 0px 0px; }
+  .imoview-chatbot .iti__flag.iti__ad {
+    height: 14px;
+    background-position: -22px 0px; }
+  .imoview-chatbot .iti__flag.iti__ae {
+    height: 10px;
+    background-position: -44px 0px; }
+  .imoview-chatbot .iti__flag.iti__af {
+    height: 14px;
+    background-position: -66px 0px; }
+  .imoview-chatbot .iti__flag.iti__ag {
+    height: 14px;
+    background-position: -88px 0px; }
+  .imoview-chatbot .iti__flag.iti__ai {
+    height: 10px;
+    background-position: -110px 0px; }
+  .imoview-chatbot .iti__flag.iti__al {
+    height: 15px;
+    background-position: -132px 0px; }
+  .imoview-chatbot .iti__flag.iti__am {
+    height: 10px;
+    background-position: -154px 0px; }
+  .imoview-chatbot .iti__flag.iti__ao {
+    height: 14px;
+    background-position: -176px 0px; }
+  .imoview-chatbot .iti__flag.iti__aq {
+    height: 14px;
+    background-position: -198px 0px; }
+  .imoview-chatbot .iti__flag.iti__ar {
+    height: 13px;
+    background-position: -220px 0px; }
+  .imoview-chatbot .iti__flag.iti__as {
+    height: 10px;
+    background-position: -242px 0px; }
+  .imoview-chatbot .iti__flag.iti__at {
+    height: 14px;
+    background-position: -264px 0px; }
+  .imoview-chatbot .iti__flag.iti__au {
+    height: 10px;
+    background-position: -286px 0px; }
+  .imoview-chatbot .iti__flag.iti__aw {
+    height: 14px;
+    background-position: -308px 0px; }
+  .imoview-chatbot .iti__flag.iti__ax {
+    height: 13px;
+    background-position: -330px 0px; }
+  .imoview-chatbot .iti__flag.iti__az {
+    height: 10px;
+    background-position: -352px 0px; }
+  .imoview-chatbot .iti__flag.iti__ba {
+    height: 10px;
+    background-position: -374px 0px; }
+  .imoview-chatbot .iti__flag.iti__bb {
+    height: 14px;
+    background-position: -396px 0px; }
+  .imoview-chatbot .iti__flag.iti__bd {
+    height: 12px;
+    background-position: -418px 0px; }
+  .imoview-chatbot .iti__flag.iti__be {
+    height: 15px;
+    background-position: -440px 0px; }
+  .imoview-chatbot .iti__flag.iti__bf {
+    height: 14px;
+    background-position: -460px 0px; }
+  .imoview-chatbot .iti__flag.iti__bg {
+    height: 12px;
+    background-position: -482px 0px; }
+  .imoview-chatbot .iti__flag.iti__bh {
+    height: 12px;
+    background-position: -504px 0px; }
+  .imoview-chatbot .iti__flag.iti__bi {
+    height: 12px;
+    background-position: -526px 0px; }
+  .imoview-chatbot .iti__flag.iti__bj {
+    height: 14px;
+    background-position: -548px 0px; }
+  .imoview-chatbot .iti__flag.iti__bl {
+    height: 14px;
+    background-position: -570px 0px; }
+  .imoview-chatbot .iti__flag.iti__bm {
+    height: 10px;
+    background-position: -592px 0px; }
+  .imoview-chatbot .iti__flag.iti__bn {
+    height: 10px;
+    background-position: -614px 0px; }
+  .imoview-chatbot .iti__flag.iti__bo {
+    height: 14px;
+    background-position: -636px 0px; }
+  .imoview-chatbot .iti__flag.iti__bq {
+    height: 14px;
+    background-position: -658px 0px; }
+  .imoview-chatbot .iti__flag.iti__br {
+    height: 14px;
+    background-position: -680px 0px; }
+  .imoview-chatbot .iti__flag.iti__bs {
+    height: 10px;
+    background-position: -702px 0px; }
+  .imoview-chatbot .iti__flag.iti__bt {
+    height: 14px;
+    background-position: -724px 0px; }
+  .imoview-chatbot .iti__flag.iti__bv {
+    height: 15px;
+    background-position: -746px 0px; }
+  .imoview-chatbot .iti__flag.iti__bw {
+    height: 14px;
+    background-position: -768px 0px; }
+  .imoview-chatbot .iti__flag.iti__by {
+    height: 10px;
+    background-position: -790px 0px; }
+  .imoview-chatbot .iti__flag.iti__bz {
+    height: 14px;
+    background-position: -812px 0px; }
+  .imoview-chatbot .iti__flag.iti__ca {
+    height: 10px;
+    background-position: -834px 0px; }
+  .imoview-chatbot .iti__flag.iti__cc {
+    height: 10px;
+    background-position: -856px 0px; }
+  .imoview-chatbot .iti__flag.iti__cd {
+    height: 15px;
+    background-position: -878px 0px; }
+  .imoview-chatbot .iti__flag.iti__cf {
+    height: 14px;
+    background-position: -900px 0px; }
+  .imoview-chatbot .iti__flag.iti__cg {
+    height: 14px;
+    background-position: -922px 0px; }
+  .imoview-chatbot .iti__flag.iti__ch {
+    height: 15px;
+    background-position: -944px 0px; }
+  .imoview-chatbot .iti__flag.iti__ci {
+    height: 14px;
+    background-position: -961px 0px; }
+  .imoview-chatbot .iti__flag.iti__ck {
+    height: 10px;
+    background-position: -983px 0px; }
+  .imoview-chatbot .iti__flag.iti__cl {
+    height: 14px;
+    background-position: -1005px 0px; }
+  .imoview-chatbot .iti__flag.iti__cm {
+    height: 14px;
+    background-position: -1027px 0px; }
+  .imoview-chatbot .iti__flag.iti__cn {
+    height: 14px;
+    background-position: -1049px 0px; }
+  .imoview-chatbot .iti__flag.iti__co {
+    height: 14px;
+    background-position: -1071px 0px; }
+  .imoview-chatbot .iti__flag.iti__cp {
+    height: 14px;
+    background-position: -1093px 0px; }
+  .imoview-chatbot .iti__flag.iti__cr {
+    height: 12px;
+    background-position: -1115px 0px; }
+  .imoview-chatbot .iti__flag.iti__cu {
+    height: 10px;
+    background-position: -1137px 0px; }
+  .imoview-chatbot .iti__flag.iti__cv {
+    height: 12px;
+    background-position: -1159px 0px; }
+  .imoview-chatbot .iti__flag.iti__cw {
+    height: 14px;
+    background-position: -1181px 0px; }
+  .imoview-chatbot .iti__flag.iti__cx {
+    height: 10px;
+    background-position: -1203px 0px; }
+  .imoview-chatbot .iti__flag.iti__cy {
+    height: 14px;
+    background-position: -1225px 0px; }
+  .imoview-chatbot .iti__flag.iti__cz {
+    height: 14px;
+    background-position: -1247px 0px; }
+  .imoview-chatbot .iti__flag.iti__de {
+    height: 12px;
+    background-position: -1269px 0px; }
+  .imoview-chatbot .iti__flag.iti__dg {
+    height: 10px;
+    background-position: -1291px 0px; }
+  .imoview-chatbot .iti__flag.iti__dj {
+    height: 14px;
+    background-position: -1313px 0px; }
+  .imoview-chatbot .iti__flag.iti__dk {
+    height: 15px;
+    background-position: -1335px 0px; }
+  .imoview-chatbot .iti__flag.iti__dm {
+    height: 10px;
+    background-position: -1357px 0px; }
+  .imoview-chatbot .iti__flag.iti__do {
+    height: 14px;
+    background-position: -1379px 0px; }
+  .imoview-chatbot .iti__flag.iti__dz {
+    height: 14px;
+    background-position: -1401px 0px; }
+  .imoview-chatbot .iti__flag.iti__ea {
+    height: 14px;
+    background-position: -1423px 0px; }
+  .imoview-chatbot .iti__flag.iti__ec {
+    height: 14px;
+    background-position: -1445px 0px; }
+  .imoview-chatbot .iti__flag.iti__ee {
+    height: 13px;
+    background-position: -1467px 0px; }
+  .imoview-chatbot .iti__flag.iti__eg {
+    height: 14px;
+    background-position: -1489px 0px; }
+  .imoview-chatbot .iti__flag.iti__eh {
+    height: 10px;
+    background-position: -1511px 0px; }
+  .imoview-chatbot .iti__flag.iti__er {
+    height: 10px;
+    background-position: -1533px 0px; }
+  .imoview-chatbot .iti__flag.iti__es {
+    height: 14px;
+    background-position: -1555px 0px; }
+  .imoview-chatbot .iti__flag.iti__et {
+    height: 10px;
+    background-position: -1577px 0px; }
+  .imoview-chatbot .iti__flag.iti__eu {
+    height: 14px;
+    background-position: -1599px 0px; }
+  .imoview-chatbot .iti__flag.iti__fi {
+    height: 12px;
+    background-position: -1621px 0px; }
+  .imoview-chatbot .iti__flag.iti__fj {
+    height: 10px;
+    background-position: -1643px 0px; }
+  .imoview-chatbot .iti__flag.iti__fk {
+    height: 10px;
+    background-position: -1665px 0px; }
+  .imoview-chatbot .iti__flag.iti__fm {
+    height: 11px;
+    background-position: -1687px 0px; }
+  .imoview-chatbot .iti__flag.iti__fo {
+    height: 15px;
+    background-position: -1709px 0px; }
+  .imoview-chatbot .iti__flag.iti__fr {
+    height: 14px;
+    background-position: -1731px 0px; }
+  .imoview-chatbot .iti__flag.iti__ga {
+    height: 15px;
+    background-position: -1753px 0px; }
+  .imoview-chatbot .iti__flag.iti__gb {
+    height: 10px;
+    background-position: -1775px 0px; }
+  .imoview-chatbot .iti__flag.iti__gd {
+    height: 12px;
+    background-position: -1797px 0px; }
+  .imoview-chatbot .iti__flag.iti__ge {
+    height: 14px;
+    background-position: -1819px 0px; }
+  .imoview-chatbot .iti__flag.iti__gf {
+    height: 14px;
+    background-position: -1841px 0px; }
+  .imoview-chatbot .iti__flag.iti__gg {
+    height: 14px;
+    background-position: -1863px 0px; }
+  .imoview-chatbot .iti__flag.iti__gh {
+    height: 14px;
+    background-position: -1885px 0px; }
+  .imoview-chatbot .iti__flag.iti__gi {
+    height: 10px;
+    background-position: -1907px 0px; }
+  .imoview-chatbot .iti__flag.iti__gl {
+    height: 14px;
+    background-position: -1929px 0px; }
+  .imoview-chatbot .iti__flag.iti__gm {
+    height: 14px;
+    background-position: -1951px 0px; }
+  .imoview-chatbot .iti__flag.iti__gn {
+    height: 14px;
+    background-position: -1973px 0px; }
+  .imoview-chatbot .iti__flag.iti__gp {
+    height: 14px;
+    background-position: -1995px 0px; }
+  .imoview-chatbot .iti__flag.iti__gq {
+    height: 14px;
+    background-position: -2017px 0px; }
+  .imoview-chatbot .iti__flag.iti__gr {
+    height: 14px;
+    background-position: -2039px 0px; }
+  .imoview-chatbot .iti__flag.iti__gs {
+    height: 10px;
+    background-position: -2061px 0px; }
+  .imoview-chatbot .iti__flag.iti__gt {
+    height: 13px;
+    background-position: -2083px 0px; }
+  .imoview-chatbot .iti__flag.iti__gu {
+    height: 11px;
+    background-position: -2105px 0px; }
+  .imoview-chatbot .iti__flag.iti__gw {
+    height: 10px;
+    background-position: -2127px 0px; }
+  .imoview-chatbot .iti__flag.iti__gy {
+    height: 12px;
+    background-position: -2149px 0px; }
+  .imoview-chatbot .iti__flag.iti__hk {
+    height: 14px;
+    background-position: -2171px 0px; }
+  .imoview-chatbot .iti__flag.iti__hm {
+    height: 10px;
+    background-position: -2193px 0px; }
+  .imoview-chatbot .iti__flag.iti__hn {
+    height: 10px;
+    background-position: -2215px 0px; }
+  .imoview-chatbot .iti__flag.iti__hr {
+    height: 10px;
+    background-position: -2237px 0px; }
+  .imoview-chatbot .iti__flag.iti__ht {
+    height: 12px;
+    background-position: -2259px 0px; }
+  .imoview-chatbot .iti__flag.iti__hu {
+    height: 10px;
+    background-position: -2281px 0px; }
+  .imoview-chatbot .iti__flag.iti__ic {
+    height: 14px;
+    background-position: -2303px 0px; }
+  .imoview-chatbot .iti__flag.iti__id {
+    height: 14px;
+    background-position: -2325px 0px; }
+  .imoview-chatbot .iti__flag.iti__ie {
+    height: 10px;
+    background-position: -2347px 0px; }
+  .imoview-chatbot .iti__flag.iti__il {
+    height: 15px;
+    background-position: -2369px 0px; }
+  .imoview-chatbot .iti__flag.iti__im {
+    height: 10px;
+    background-position: -2391px 0px; }
+  .imoview-chatbot .iti__flag.iti__in {
+    height: 14px;
+    background-position: -2413px 0px; }
+  .imoview-chatbot .iti__flag.iti__io {
+    height: 10px;
+    background-position: -2435px 0px; }
+  .imoview-chatbot .iti__flag.iti__iq {
+    height: 14px;
+    background-position: -2457px 0px; }
+  .imoview-chatbot .iti__flag.iti__ir {
+    height: 12px;
+    background-position: -2479px 0px; }
+  .imoview-chatbot .iti__flag.iti__is {
+    height: 15px;
+    background-position: -2501px 0px; }
+  .imoview-chatbot .iti__flag.iti__it {
+    height: 14px;
+    background-position: -2523px 0px; }
+  .imoview-chatbot .iti__flag.iti__je {
+    height: 12px;
+    background-position: -2545px 0px; }
+  .imoview-chatbot .iti__flag.iti__jm {
+    height: 10px;
+    background-position: -2567px 0px; }
+  .imoview-chatbot .iti__flag.iti__jo {
+    height: 10px;
+    background-position: -2589px 0px; }
+  .imoview-chatbot .iti__flag.iti__jp {
+    height: 14px;
+    background-position: -2611px 0px; }
+  .imoview-chatbot .iti__flag.iti__ke {
+    height: 14px;
+    background-position: -2633px 0px; }
+  .imoview-chatbot .iti__flag.iti__kg {
+    height: 12px;
+    background-position: -2655px 0px; }
+  .imoview-chatbot .iti__flag.iti__kh {
+    height: 13px;
+    background-position: -2677px 0px; }
+  .imoview-chatbot .iti__flag.iti__ki {
+    height: 10px;
+    background-position: -2699px 0px; }
+  .imoview-chatbot .iti__flag.iti__km {
+    height: 12px;
+    background-position: -2721px 0px; }
+  .imoview-chatbot .iti__flag.iti__kn {
+    height: 14px;
+    background-position: -2743px 0px; }
+  .imoview-chatbot .iti__flag.iti__kp {
+    height: 10px;
+    background-position: -2765px 0px; }
+  .imoview-chatbot .iti__flag.iti__kr {
+    height: 14px;
+    background-position: -2787px 0px; }
+  .imoview-chatbot .iti__flag.iti__kw {
+    height: 10px;
+    background-position: -2809px 0px; }
+  .imoview-chatbot .iti__flag.iti__ky {
+    height: 10px;
+    background-position: -2831px 0px; }
+  .imoview-chatbot .iti__flag.iti__kz {
+    height: 10px;
+    background-position: -2853px 0px; }
+  .imoview-chatbot .iti__flag.iti__la {
+    height: 14px;
+    background-position: -2875px 0px; }
+  .imoview-chatbot .iti__flag.iti__lb {
+    height: 14px;
+    background-position: -2897px 0px; }
+  .imoview-chatbot .iti__flag.iti__lc {
+    height: 10px;
+    background-position: -2919px 0px; }
+  .imoview-chatbot .iti__flag.iti__li {
+    height: 12px;
+    background-position: -2941px 0px; }
+  .imoview-chatbot .iti__flag.iti__lk {
+    height: 10px;
+    background-position: -2963px 0px; }
+  .imoview-chatbot .iti__flag.iti__lr {
+    height: 11px;
+    background-position: -2985px 0px; }
+  .imoview-chatbot .iti__flag.iti__ls {
+    height: 14px;
+    background-position: -3007px 0px; }
+  .imoview-chatbot .iti__flag.iti__lt {
+    height: 12px;
+    background-position: -3029px 0px; }
+  .imoview-chatbot .iti__flag.iti__lu {
+    height: 12px;
+    background-position: -3051px 0px; }
+  .imoview-chatbot .iti__flag.iti__lv {
+    height: 10px;
+    background-position: -3073px 0px; }
+  .imoview-chatbot .iti__flag.iti__ly {
+    height: 10px;
+    background-position: -3095px 0px; }
+  .imoview-chatbot .iti__flag.iti__ma {
+    height: 14px;
+    background-position: -3117px 0px; }
+  .imoview-chatbot .iti__flag.iti__mc {
+    height: 15px;
+    background-position: -3139px 0px; }
+  .imoview-chatbot .iti__flag.iti__md {
+    height: 10px;
+    background-position: -3160px 0px; }
+  .imoview-chatbot .iti__flag.iti__me {
+    height: 10px;
+    background-position: -3182px 0px; }
+  .imoview-chatbot .iti__flag.iti__mf {
+    height: 14px;
+    background-position: -3204px 0px; }
+  .imoview-chatbot .iti__flag.iti__mg {
+    height: 14px;
+    background-position: -3226px 0px; }
+  .imoview-chatbot .iti__flag.iti__mh {
+    height: 11px;
+    background-position: -3248px 0px; }
+  .imoview-chatbot .iti__flag.iti__mk {
+    height: 10px;
+    background-position: -3270px 0px; }
+  .imoview-chatbot .iti__flag.iti__ml {
+    height: 14px;
+    background-position: -3292px 0px; }
+  .imoview-chatbot .iti__flag.iti__mm {
+    height: 14px;
+    background-position: -3314px 0px; }
+  .imoview-chatbot .iti__flag.iti__mn {
+    height: 10px;
+    background-position: -3336px 0px; }
+  .imoview-chatbot .iti__flag.iti__mo {
+    height: 14px;
+    background-position: -3358px 0px; }
+  .imoview-chatbot .iti__flag.iti__mp {
+    height: 10px;
+    background-position: -3380px 0px; }
+  .imoview-chatbot .iti__flag.iti__mq {
+    height: 14px;
+    background-position: -3402px 0px; }
+  .imoview-chatbot .iti__flag.iti__mr {
+    height: 14px;
+    background-position: -3424px 0px; }
+  .imoview-chatbot .iti__flag.iti__ms {
+    height: 10px;
+    background-position: -3446px 0px; }
+  .imoview-chatbot .iti__flag.iti__mt {
+    height: 14px;
+    background-position: -3468px 0px; }
+  .imoview-chatbot .iti__flag.iti__mu {
+    height: 14px;
+    background-position: -3490px 0px; }
+  .imoview-chatbot .iti__flag.iti__mv {
+    height: 14px;
+    background-position: -3512px 0px; }
+  .imoview-chatbot .iti__flag.iti__mw {
+    height: 14px;
+    background-position: -3534px 0px; }
+  .imoview-chatbot .iti__flag.iti__mx {
+    height: 12px;
+    background-position: -3556px 0px; }
+  .imoview-chatbot .iti__flag.iti__my {
+    height: 10px;
+    background-position: -3578px 0px; }
+  .imoview-chatbot .iti__flag.iti__mz {
+    height: 14px;
+    background-position: -3600px 0px; }
+  .imoview-chatbot .iti__flag.iti__na {
+    height: 14px;
+    background-position: -3622px 0px; }
+  .imoview-chatbot .iti__flag.iti__nc {
+    height: 10px;
+    background-position: -3644px 0px; }
+  .imoview-chatbot .iti__flag.iti__ne {
+    height: 15px;
+    background-position: -3666px 0px; }
+  .imoview-chatbot .iti__flag.iti__nf {
+    height: 10px;
+    background-position: -3686px 0px; }
+  .imoview-chatbot .iti__flag.iti__ng {
+    height: 10px;
+    background-position: -3708px 0px; }
+  .imoview-chatbot .iti__flag.iti__ni {
+    height: 12px;
+    background-position: -3730px 0px; }
+  .imoview-chatbot .iti__flag.iti__nl {
+    height: 14px;
+    background-position: -3752px 0px; }
+  .imoview-chatbot .iti__flag.iti__no {
+    height: 15px;
+    background-position: -3774px 0px; }
+  .imoview-chatbot .iti__flag.iti__np {
+    height: 15px;
+    background-position: -3796px 0px; }
+  .imoview-chatbot .iti__flag.iti__nr {
+    height: 10px;
+    background-position: -3811px 0px; }
+  .imoview-chatbot .iti__flag.iti__nu {
+    height: 10px;
+    background-position: -3833px 0px; }
+  .imoview-chatbot .iti__flag.iti__nz {
+    height: 10px;
+    background-position: -3855px 0px; }
+  .imoview-chatbot .iti__flag.iti__om {
+    height: 10px;
+    background-position: -3877px 0px; }
+  .imoview-chatbot .iti__flag.iti__pa {
+    height: 14px;
+    background-position: -3899px 0px; }
+  .imoview-chatbot .iti__flag.iti__pe {
+    height: 14px;
+    background-position: -3921px 0px; }
+  .imoview-chatbot .iti__flag.iti__pf {
+    height: 14px;
+    background-position: -3943px 0px; }
+  .imoview-chatbot .iti__flag.iti__pg {
+    height: 15px;
+    background-position: -3965px 0px; }
+  .imoview-chatbot .iti__flag.iti__ph {
+    height: 10px;
+    background-position: -3987px 0px; }
+  .imoview-chatbot .iti__flag.iti__pk {
+    height: 14px;
+    background-position: -4009px 0px; }
+  .imoview-chatbot .iti__flag.iti__pl {
+    height: 13px;
+    background-position: -4031px 0px; }
+  .imoview-chatbot .iti__flag.iti__pm {
+    height: 14px;
+    background-position: -4053px 0px; }
+  .imoview-chatbot .iti__flag.iti__pn {
+    height: 10px;
+    background-position: -4075px 0px; }
+  .imoview-chatbot .iti__flag.iti__pr {
+    height: 14px;
+    background-position: -4097px 0px; }
+  .imoview-chatbot .iti__flag.iti__ps {
+    height: 10px;
+    background-position: -4119px 0px; }
+  .imoview-chatbot .iti__flag.iti__pt {
+    height: 14px;
+    background-position: -4141px 0px; }
+  .imoview-chatbot .iti__flag.iti__pw {
+    height: 13px;
+    background-position: -4163px 0px; }
+  .imoview-chatbot .iti__flag.iti__py {
+    height: 11px;
+    background-position: -4185px 0px; }
+  .imoview-chatbot .iti__flag.iti__qa {
+    height: 8px;
+    background-position: -4207px 0px; }
+  .imoview-chatbot .iti__flag.iti__re {
+    height: 14px;
+    background-position: -4229px 0px; }
+  .imoview-chatbot .iti__flag.iti__ro {
+    height: 14px;
+    background-position: -4251px 0px; }
+  .imoview-chatbot .iti__flag.iti__rs {
+    height: 14px;
+    background-position: -4273px 0px; }
+  .imoview-chatbot .iti__flag.iti__ru {
+    height: 14px;
+    background-position: -4295px 0px; }
+  .imoview-chatbot .iti__flag.iti__rw {
+    height: 14px;
+    background-position: -4317px 0px; }
+  .imoview-chatbot .iti__flag.iti__sa {
+    height: 14px;
+    background-position: -4339px 0px; }
+  .imoview-chatbot .iti__flag.iti__sb {
+    height: 10px;
+    background-position: -4361px 0px; }
+  .imoview-chatbot .iti__flag.iti__sc {
+    height: 10px;
+    background-position: -4383px 0px; }
+  .imoview-chatbot .iti__flag.iti__sd {
+    height: 10px;
+    background-position: -4405px 0px; }
+  .imoview-chatbot .iti__flag.iti__se {
+    height: 13px;
+    background-position: -4427px 0px; }
+  .imoview-chatbot .iti__flag.iti__sg {
+    height: 14px;
+    background-position: -4449px 0px; }
+  .imoview-chatbot .iti__flag.iti__sh {
+    height: 10px;
+    background-position: -4471px 0px; }
+  .imoview-chatbot .iti__flag.iti__si {
+    height: 10px;
+    background-position: -4493px 0px; }
+  .imoview-chatbot .iti__flag.iti__sj {
+    height: 15px;
+    background-position: -4515px 0px; }
+  .imoview-chatbot .iti__flag.iti__sk {
+    height: 14px;
+    background-position: -4537px 0px; }
+  .imoview-chatbot .iti__flag.iti__sl {
+    height: 14px;
+    background-position: -4559px 0px; }
+  .imoview-chatbot .iti__flag.iti__sm {
+    height: 15px;
+    background-position: -4581px 0px; }
+  .imoview-chatbot .iti__flag.iti__sn {
+    height: 14px;
+    background-position: -4603px 0px; }
+  .imoview-chatbot .iti__flag.iti__so {
+    height: 14px;
+    background-position: -4625px 0px; }
+  .imoview-chatbot .iti__flag.iti__sr {
+    height: 14px;
+    background-position: -4647px 0px; }
+  .imoview-chatbot .iti__flag.iti__ss {
+    height: 10px;
+    background-position: -4669px 0px; }
+  .imoview-chatbot .iti__flag.iti__st {
+    height: 10px;
+    background-position: -4691px 0px; }
+  .imoview-chatbot .iti__flag.iti__sv {
+    height: 12px;
+    background-position: -4713px 0px; }
+  .imoview-chatbot .iti__flag.iti__sx {
+    height: 14px;
+    background-position: -4735px 0px; }
+  .imoview-chatbot .iti__flag.iti__sy {
+    height: 14px;
+    background-position: -4757px 0px; }
+  .imoview-chatbot .iti__flag.iti__sz {
+    height: 14px;
+    background-position: -4779px 0px; }
+  .imoview-chatbot .iti__flag.iti__ta {
+    height: 10px;
+    background-position: -4801px 0px; }
+  .imoview-chatbot .iti__flag.iti__tc {
+    height: 10px;
+    background-position: -4823px 0px; }
+  .imoview-chatbot .iti__flag.iti__td {
+    height: 14px;
+    background-position: -4845px 0px; }
+  .imoview-chatbot .iti__flag.iti__tf {
+    height: 14px;
+    background-position: -4867px 0px; }
+  .imoview-chatbot .iti__flag.iti__tg {
+    height: 13px;
+    background-position: -4889px 0px; }
+  .imoview-chatbot .iti__flag.iti__th {
+    height: 14px;
+    background-position: -4911px 0px; }
+  .imoview-chatbot .iti__flag.iti__tj {
+    height: 10px;
+    background-position: -4933px 0px; }
+  .imoview-chatbot .iti__flag.iti__tk {
+    height: 10px;
+    background-position: -4955px 0px; }
+  .imoview-chatbot .iti__flag.iti__tl {
+    height: 10px;
+    background-position: -4977px 0px; }
+  .imoview-chatbot .iti__flag.iti__tm {
+    height: 14px;
+    background-position: -4999px 0px; }
+  .imoview-chatbot .iti__flag.iti__tn {
+    height: 14px;
+    background-position: -5021px 0px; }
+  .imoview-chatbot .iti__flag.iti__to {
+    height: 10px;
+    background-position: -5043px 0px; }
+  .imoview-chatbot .iti__flag.iti__tr {
+    height: 14px;
+    background-position: -5065px 0px; }
+  .imoview-chatbot .iti__flag.iti__tt {
+    height: 12px;
+    background-position: -5087px 0px; }
+  .imoview-chatbot .iti__flag.iti__tv {
+    height: 10px;
+    background-position: -5109px 0px; }
+  .imoview-chatbot .iti__flag.iti__tw {
+    height: 14px;
+    background-position: -5131px 0px; }
+  .imoview-chatbot .iti__flag.iti__tz {
+    height: 14px;
+    background-position: -5153px 0px; }
+  .imoview-chatbot .iti__flag.iti__ua {
+    height: 14px;
+    background-position: -5175px 0px; }
+  .imoview-chatbot .iti__flag.iti__ug {
+    height: 14px;
+    background-position: -5197px 0px; }
+  .imoview-chatbot .iti__flag.iti__um {
+    height: 11px;
+    background-position: -5219px 0px; }
+  .imoview-chatbot .iti__flag.iti__un {
+    height: 14px;
+    background-position: -5241px 0px; }
+  .imoview-chatbot .iti__flag.iti__us {
+    height: 11px;
+    background-position: -5263px 0px; }
+  .imoview-chatbot .iti__flag.iti__uy {
+    height: 14px;
+    background-position: -5285px 0px; }
+  .imoview-chatbot .iti__flag.iti__uz {
+    height: 10px;
+    background-position: -5307px 0px; }
+  .imoview-chatbot .iti__flag.iti__va {
+    height: 15px;
+    background-position: -5329px 0px; }
+  .imoview-chatbot .iti__flag.iti__vc {
+    height: 14px;
+    background-position: -5346px 0px; }
+  .imoview-chatbot .iti__flag.iti__ve {
+    height: 14px;
+    background-position: -5368px 0px; }
+  .imoview-chatbot .iti__flag.iti__vg {
+    height: 10px;
+    background-position: -5390px 0px; }
+  .imoview-chatbot .iti__flag.iti__vi {
+    height: 14px;
+    background-position: -5412px 0px; }
+  .imoview-chatbot .iti__flag.iti__vn {
+    height: 14px;
+    background-position: -5434px 0px; }
+  .imoview-chatbot .iti__flag.iti__vu {
+    height: 12px;
+    background-position: -5456px 0px; }
+  .imoview-chatbot .iti__flag.iti__wf {
+    height: 14px;
+    background-position: -5478px 0px; }
+  .imoview-chatbot .iti__flag.iti__ws {
+    height: 10px;
+    background-position: -5500px 0px; }
+  .imoview-chatbot .iti__flag.iti__xk {
+    height: 15px;
+    background-position: -5522px 0px; }
+  .imoview-chatbot .iti__flag.iti__ye {
+    height: 14px;
+    background-position: -5544px 0px; }
+  .imoview-chatbot .iti__flag.iti__yt {
+    height: 14px;
+    background-position: -5566px 0px; }
+  .imoview-chatbot .iti__flag.iti__za {
+    height: 14px;
+    background-position: -5588px 0px; }
+  .imoview-chatbot .iti__flag.iti__zm {
+    height: 14px;
+    background-position: -5610px 0px; }
+  .imoview-chatbot .iti__flag.iti__zw {
+    height: 10px;
+    background-position: -5632px 0px; }
+    
+  .imoview-chatbot .iti__flag {
+    height: 15px;
+    box-shadow: 0px 0px 1px 0px #888;
+    background-image: url("https://cdn.leadster.com.br/leadster/app/image/flags.png");
+    background-repeat: no-repeat;
+    background-color: #DBDBDB;
+    background-position: 20px 0;
+  }
+  
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .imoview-chatbot .iti__flag {
+      background-image: url("https://cdn.leadster.com.br/leadster/app/image/flags@2x.png");
+    }
+  }
+  
+  
+  .imoview-chatbot .iti__flag.iti__np {
+    background-color: transparent; }
+  
+    /* Icons */
+
+
+.imoview-chatbot .imoview-invite-message-container {
+    float: right;
+    max-width: 305px;
+    margin-right: 8px;
+    margin-top: 0;
+
+    display: flex;
+    align-items: center;
+}
+
+.imoview-chatbot .imoview-chatbot-invite-container {
+    right: 72px;
+
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 305px;
+
+    position: absolute;
+}
+
+.imoview-chatbot .imoview-chatbot-invite-message {
+    position: relative;
+    float: right;
+
+    border-radius: 8px!important;
+    padding: 9px;
+    padding-left: 17px;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.25);
+    border: 1px solid #d6d6d6;
+    color: #555 !important;
+    background: white;
+    line-height: 1.5em!important;
+    font-family: "Helvetica Neue", "Neue Helvetica W01", Helvetica, Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif!important;
+    font-size: 16px!important;
+}
+
+.imoview-chatbot .imoview-invite-message-text {
+    font-family: "Helvetica Neue", "Neue Helvetica W01", Helvetica, Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !important;
+}
+
+.imoview-chatbot .imoview-invite-message-text strong {
+    font-weight: bold !important
+}
+
+.imoview-chatbot .imoview-invite-message-text em {
+    font-style: italic !important
+}
+
+.imoview-chatbot .imoview-invite-message-text p {
+    margin-bottom: 0 !important;
+}
+
+.imoview-chatbot .imoview-chatbot-invite-message::after {
+    content: "";
+
+    /* Form */
+    width: 16px;
+    height: 32px;
+
+    /* Position */
+    position: absolute;
+    top: 50%;
+    margin-top: -16px;
+    right: -16px;
+
+    /* Looks */
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMvSURBVHic7ZpPi9NAGMafbKtbd6vrrn8KXqTYo5dlv4D3epBC8SuIJ2/2c4i3eigFpVfBuyctpVePS0vBq4UeSui/vB6aMZPZzGTiip1J5wcvmSaTJc+T951MZgM4HA6HY3/xwpBB/+tCdkWaASK5MySrATy5MOM6BjCsNsIDcKDRT0eklUZ4AAqSYzJBaUKtMoI3gC+FJBHiPpVQa0woInkMSBsXiOuTJFZ1zCg8ADc0+lHGtuxc4+AzQLzrsjLwhDbr50nOke03AmaArAxEcWxLCeeIhlhBEfHHoFi7aXeVFy1uk/obhywDxDRnbVVZWGnCge/775vN5iG2mSALZpL4mzdPtjUbIqLVavW90+k8AXDCxZ0wbodRBnAM4AjALQAlAIcAbmL7JCmGUQgjySjzTKGQzWbzs9/vPwNwGsbdMJgZzAhdE1TZYgweEf2pSyKaj0aj17Va7QvXhyQRKI4Rdy6/heT37qCrBNPp9F2lUnkI4D6AewDOEGUFy4Yy1JlgRxYkGEBERPP5/HOj0XgM4AEiI0QT+HJQlYJ9BhARLZfLH+12+wJ6JtiZBSoDwsHx12AweAGAlQQrhxNcLYUkA8zOgjQDiIiCIFiMx+M3iDLhDOossKcMdAxgzGaz7vn5+SNEpSBmQZYyMIMsBhAR+b7/tdVq1RDPgrQyyI8BRETr9fqy2+0+RdyAY1hoQGwilIXFYvGtVCo9RzQhCoS2amIktneGzoqwDCMEXJe/MmCz2Vz2er1X3C7j7qw2bhDMQB4fg0WdTkS0nEwmb6vV6kekD24QjkHSxwhSx4AgCKbD4fBltVr9BL3XYLvGA1XK7/XL0D6/Du/VgkhsEKR/vyRmPuy27+uiqFsW933/Q71eP0UklI8y4sKziDf/7mN7UUeQX5z4TBcnP6olcJ2PLHZOEXERSR82qARaLR7YGhBA/kWHzAgdg2R/xyj4DFB9IKFa0LBr6ivADADUFy8TqSPeaFN4A9LIKjztmBEUkPz/fJ06tlo4g58K6wpME2eNeCCeASp0RFklnCH7TDYLVgpnaC2JSbBaOCOrAbkQzZNmQO4EOxwOh8MR8RsgtSyqPuIxtgAAAABJRU5ErkJggg==);
+    background-size: 32px 32px;
+}
+
+.imoview-chatbot .imoview-conversation {
+    /* Form */
+    width: 420px;
+    max-height: 420px;
+    min-height: 300px;
+    height: calc(100vh - 72px);
+    border-radius: 48px!important;
+
+    /* Position */
+    z-index: 32767;
+    position: fixed;
+    bottom: 48px;
+    right: 24px;
+
+    /* Looks */
+    background: white;
+    box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.15);
+}
+
+.imoview-chatbot .imoview-bg {
+    position: absolute;
+
+    top: 0; left: 0;
+    bottom: 0; right: 0;
+    border-radius: 48px!important;
+
+    background: white;
+}
+
+.imoview-chatbot .imoview-conversation.imoview-full {
+    max-height: 550px;
+    transition: max-height 0.5s ease-in-out;
+}
+
+.imoview-chatbot .imoview-conversation>.imoview-ctx {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0;
+    right:0;
+
+    border-radius: 8px!important;
+}
+
+.imoview-chatbot .imoview-typing-indicator {
+    width: 54px;
+
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.imoview-chatbot .imoview-typing-indicator>span {
+    width: 12px;
+    height: 12px;
+    border-radius: 6px!important;
+
+    margin-right: 6px;
+
+    float: left;
+
+    opacity: 0.5;
+
+    background: #2ecc71;
+}
+
+.imoview-chatbot .imoview-typing-indicator>span:nth-child(1) {
+    animation: 1s imoview-blink infinite .1666s;
+}
+
+.imoview-chatbot .imoview-typing-indicator>span:nth-child(2) {
+    animation: 1s imoview-blink infinite .3332s;
+}
+
+.imoview-chatbot .imoview-typing-indicator>span:nth-child(3) {
+    animation: 1s imoview-blink infinite .5s;
+}
+
+/* States */
+
+.imoview-nodisplay {
+    display: none !important;
+}
+
+.imoview-chatbot .imoview-hidden {
+    /* Animations */
+    animation-name: imoview-pop-out;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+}
+
+.imoview-chatbot .imoview-shown {
+    /* Animations */
+    animation-name: imoview-pop-in;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+}
+
+.imoview-chatbot .imoview-shown-middle {
+    /* Animations */
+    animation-name: imoview-pop-in-middle;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.imoview-chatbot .imoview-hidden-slide {
+    /* Animations */
+    animation-name: imoview-slide-out;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.imoview-chatbot .imoview-hidden-slideup {
+    /* Animations */
+    animation-name: imoview-slide-out-up;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.imoview-chatbot .imoview-shown-slide {
+    /* Animations */
+    animation-name: imoview-slide-in;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.imoview-chatbot .imoview-close {
+    /* position: absolute;
+    top: 23px;
+    right: 24px;
+
+    width: 25px;
+    height: 25px; */
+
+    z-index: 9999999;
+    z-index: 9999999;
+    margin: 8px;
+    position: absolute;
+    cursor: pointer;
+    top: 0px;
+    right: 0px;
+    width: 35px;
+    height: 35px;
+    max-width: 40px;
+    border-radius: 50%;
+    background-color: rgba(32, 37, 42, 0.5);
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+
+.imoview-chatbot .imoview-maximar {
+    z-index: 9999999;
+    z-index: 9999999;
+    margin: 8px;
+    position: absolute;
+    cursor: pointer;
+    top: 3px;
+    right: 45px;
+    width: 25px;
+    height: 28px;
+    max-width: 40px;
+    border-radius: 50%;
+    /* background-color: rgba(32, 37, 42, 0.5); */
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+
+.imoview-chatbot textarea::placeholder {
+    padding-top: 13px;
+}
+
+
+.imoview-chatbot.imoview-lado-left .imoview-chatbot-invite-message .imoview-close {
+    top: -12px;
+    right: -12px;
+    left: auto;
+
+    background: #aaa;
+    border-radius: 13px!important;
+}
+
+.imoview-chatbot .imoview-chatbot-invite-message .imoview-close {
+    top: -12px;
+    left: -12px;
+
+    background: #aaa;
+    border-radius: 13px!important;
+}
+
+.imoview-chatbot .imoview-close-white {
+    display: block;
+}
+
+.imoview-chatbot .imoview-close-black {
+    display: none;
+}
+
+.imoview-chatbot .imoview-close:hover {
+    cursor: pointer;
+}
+
+.imoview-chatbot .imoview-close>img {
+    all: inherit;
+    width: 25px;
+    top: 0;
+    left: 0;
+}
+
+/* Modifiers */
+
+/* Left */
+
+.imoview-chatbot.imoview-lado-left>.imoview-avatar {
+    left: 18px;
+}
+
+.imoview-chatbot.imoview-lado-left .imoview-chatbot-invite-container {
+    left: 72px;
+}
+
+.imoview-chatbot.imoview-lado-left .imoview-chatbot-invite-message {
+    float: left;
+}
+
+.imoview-chatbot.imoview-lado-left .imoview-conversation {
+    left: 24px;
+}
+
+.imoview-chatbot.imoview-lado-left .imoview-chatbot-invite-message::after {
+    left: -16px;
+    right: initial;
+    transform: scale(-1, 1);
+}
+
+/* Center */
+
+.imoview-chatbot.imoview-center>.imoview-avatar {
+    left: 50%;
+    margin-left: -30px;
+}
+
+.imoview-chatbot.imoview-center .imoview-chatbot-invite-container {
+    left: 72px;
+}
+
+.imoview-chatbot.imoview-center .imoview-chatbot-invite-message {
+    float: left;
+}
+
+.imoview-chatbot.imoview-center .imoview-conversation {
+    left: calc(100vw/2 - 360px);
+    width: 100vw;
+    max-width: 720px;
+}
+
+.imoview-chatbot.imoview-center .imoview-chatbot-invite-message::after {
+    left: -16px;
+    right: initial;
+    transform: scale(-1, 1);
+}
+
+.imoview-chatbot .imoview-conversation-header {
+    width: 100%;
+    height: 100px;
+
+    border-radius: 48px 8px 0 0!important;
+
+}
+
+.imoview-chatbot .imoview-mobile-brand {
+    position: absolute;
+
+    bottom: 0; left: 0;
+
+    width: 100%;
+    text-align: center;
+
+    margin-bottom: -28px;
+}
+
+.imoview-chatbot .imoview-mobile-brand .imoview-logo {
+    width: 160px;
+    opacity: 0.5;
+}
+
+.imoview-chatbot .imoview-brand {
+    position: absolute;
+
+    display: inline-block;
+    width: 100%;
+
+    margin: 0;
+
+    text-align: center;
+
+    bottom: -1.70em;
+}
+
+.imoview-chatbot .imoview-brand a {
+    padding-top: 8px;
+    background: #eee;
+
+    margin-top: 1px;
+
+    box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.15);
+
+    border-radius: 0 0 6px 6px!important;
+
+    border: 1px solid #ddd;
+
+    display: inline-block !important;
+}
+
+.imoview-chatbot .imoview-brand a img {
+    padding: 0;
+    margin: 0;
+    vertical-align: baseline;
+    opacity: 0.7;
+}
+
+.imoview-chatbot .imoview-brand a img:hover {
+    opacity: 1;
+}
+
+.imoview-chatbot img.imoview-3rdparty-branding {
+    height: 58px;
+    width: auto !important;
+
+    margin: 0 auto;
+    padding-top: 6px;
+
+    display: none;
+}
+
+.imoview-chatbot .imoview-logo {
+    width: 200px;
+}
+
+.imoview-infobar {
+    color: white;
+
+    border-radius: 8px 8px 0 0!important;
+
+    font-family: "Open Sans Regular",sans-serif !important;
+
+    height: 72px;
+
+    display: flex;
+    align-items: center;
+}
+
+.imoview-chatbot .imoview-infobar>.imoview-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px!important;
+
+    left: 12px;
+    top: 11px;
+
+    position: absolute;
+
+    background-size: cover;
+}
+
+.imoview-chatbot .imoview-infobar>.imoview-avatar::after {
+    border: 2px solid #cf0237;
+}
+
+.imoview-chatbot .imoview-infobar .imoview-info {
+    margin: 0;
+    margin-left: 68px;
+}
+
+.imoview-chatbot .imoview-info .imoview-title {
+    font-size: 1em !important;
+    margin-bottom: 6px;
+    margin-top: -6px;
+}
+
+.imoview-chatbot .imoview-info .imoview-subtitle {
+    font-size: 0.75em !important;
+}
+
+/* Conversational Form Implementation */
+
+.imoview-chatbot .imoview-ctx {
+    font-family: "Open Sans Regular",sans-serif !important;
+}
+
+/* Conversation container */
+
+.imoview-chatbot .imoview-ctx>div>.imoview-container {
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right:0;
+    bottom: 64px;
+    padding-bottom: 60px;
+    border-radius: 8px 8px 0 0!important;
+
+    background-color: white;
+
+    overflow: hidden;
+}
+
+.imoview-chatbot .imoview-container:focus-visible, .imoview-chatbot .imoview-group {
+    outline: none;
+}
+
+.imoview-chatbot .imoview-ctx>div>.imoview-container.imoview-full {
+    bottom: 0;
+    border-radius: 8px 8px 8px 8px!important;
+}
+
+.imoview-chatbot .imoview-ctx>div>.imoview-overlay {
+    position: absolute;
+
+    top: 72px;
+    left: 0;
+    right: 0;
+
+    height: 36px;
+
+    background: white;
+
+    background: linear-gradient(to bottom, white, rgba(255,255,255,0));
+    background: -moz-linear-gradient(to bottom, white, rgba(255,255,255,0));
+    background: -webkit-linear-gradient(to bottom, white, rgba(255,255,255,0));
+}
+
+/* Bubbles */
+
+.imoview-chatbot .imoview-msg .imoview-bubble {
+    padding: 16px 24px;
+    margin: 12px;
+    margin-bottom: 0;
+
+    background: #f0f0f0;
+
+    line-height: 1.5 !important;
+    font-size: 0.9em !important;
+
+    display: inline-block;
+
+    border-radius: 24px !important;
+    border-bottom-left-radius: 5px !important;
+    clear: both;
+}
+
+.imoview-right .imoview-msg .imoview-bubble {
+    padding: 16px 24px;
+    margin: 12px;
+    margin-bottom: 0;
+
+    background: #f0f0f0;
+
+    line-height: 1.5 !important;
+    font-size: 0.9em !important;
+
+    display: inline-block;
+
+    border-radius: 24px !important;
+    border-bottom-left-radius: 24px !important;
+    border-bottom-right-radius: 5px !important;
+    clear: both;
+}
+
+
+
+.imoview-chatbot .imoview-msg .imoview-bubble img {
+    margin-top: 6px;
+    width: 100%;
+}
+
+.imoview-chatbot .imoview-msg .imoview-bubble b {
+    font-weight: bold !important;
+    display: initial !important;
+}
+
+.imoview-chatbot .imoview-msg .imoview-bubble a {
+    text-decoration: underline;
+    color: #07C;
+}
+
+/* Bubble left/right styles */
+
+.imoview-chatbot .imoview-ctx .imoview-group.imoview-right .imoview-bubble {
+    background-image: linear-gradient(to right, #bc002c, #ea083d);
+
+    color: white;
+}
+
+.imoview-chatbot .imoview-ctx .imoview-group.imoview-left .imoview-bubble {
+    color: black;
+}
+
+
+
+.imoview-chatbot .imoview-ctx .imoview-group.imoview-right .imoview-msg:last-child .imoview-bubble {
+    margin-bottom: 6px;
+}
+
+.imoview-chatbot .imoview-ctx .imoview-group.imoview-left .imoview-msg:last-child .imoview-bubble {
+    margin-bottom: 6px;
+}
+
+
+.imoview-chatbot .imoview-ctx .imoview-group.imoview-right .imoview-msg:first-child .imoview-bubble {
+    margin-top: 0;
+}
+
+.imoview-chatbot .imoview-ctx .imoview-group.imoview-left .imoview-msg:first-child .imoview-bubble {
+    margin-top: 0;
+}
+
+/* Message groups (blocks of speech) */
+
+.imoview-chatbot .imoview-ctx .imoview-group {
+    display: block;
+
+    clear: both;
+
+    max-width: 87%;
+
+    margin: 6px;
+}
+
+.imoview-chatbot .imoview-ctx .imoview-group.imoview-full {
+    display: block;
+
+    clear: both;
+
+    width: 100%;
+    max-width: calc(100% - 48px);
+
+    margin-bottom: 16px;
+    margin-top: 16px;
+}
+
+.imoview-chatbot .imoview-ctx .imoview-group.imoview-nomargin {
+    position: relative;
+    display: block;
+
+    clear: both;
+
+    width: calc(100% + 6px);
+    max-width: calc(100% + 6px);
+
+    right: -6px;
+
+    margin: 0;
+    padding: 0;
+}
+
+/* Left/Right message groups */
+
+.imoview-chatbot .imoview-ctx .imoview-group.imoview-left {
+    float: left;
+    text-align: left;
+}
+
+.imoview-chatbot .imoview-ctx .imoview-group.imoview-right {
+    float: right;
+    text-align: right;
+}
+
+/*
+ * Message containers (inside groups). Used to allow for custom
+ * content like avatars side by side inside message groups.
+ */
+
+.imoview-chatbot .imoview-ctx .imoview-group.imoview-left .imoview-container {
+    max-width: calc(100% - 40px);
+    min-width: 200px;
+}
+
+.imoview-chatbot .imoview-ctx .imoview-group.imoview-full .imoview-container {
+    max-width: 21em;
+    width: 100%;
+}
+
+.imoview-chatbot .imoview-ctx .imoview-group.imoview-left .imoview-container {
+    float: left;
+}
+
+.imoview-chatbot .imoview-ctx .imoview-group.imoview-right .imoview-container {
+    float: right;
+}
+
+/* Message group avatar */
+
+.imoview-chatbot .imoview-group.imoview-left .imoview-msg-avatar {
+    float: left;
+    margin-left: 8px;
+}
+
+.imoview-chatbot .imoview-group.imoview-right .imoview-msg-avatar {
+    float: right;
+    margin-right: 8px;
+}
+
+.imoview-chatbot .imoview-msg-avatar>.imoview-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 16px!important;
+
+    object-fit: cover;
+}
+
+/* Timestamps */
+
+.imoview-chatbot .imoview-timestamp {
+    display: block;
+    color: #979797;
+    font-size: 0.75em!important;
+
+    margin: 6px 0 6px 6px;
+}
+
+.imoview-chatbot .imoview-group.imoview-left .imoview-timestamp {
+    float: right;
+}
+
+.imoview-chatbot .imoview-group.imoview-right .imoview-timestamp {
+    float: right;
+    color: #f5f5f5;
+}
+
+/* Text Input */
+
+.imoview-chatbot .imoview-input {
+    position: absolute;
+
+    left: 0; right: 0;
+
+    bottom: 16px;
+    height: 48px;
+
+    border-radius: 0 0 8px 8px!important;
+}
+
+.imoview-chatbot .imoview-input.imoview-plain {
+    box-shadow: none;
+}
+
+.imoview-chatbot .imoview-input.imoview-hide {
+    height: 0;
+}
+
+.imoview-chatbot .imoview-input.imoview-hide .imoview-submit{
+    display: none;
+}
+
+.imoview-chatbot .imoview-input>.imoview-submit {
+    box-sizing: content-box;
+
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFzSURBVGiB7dkxa9ZQFAbgk9LFycGhg4g6ODpUunXs0PoDtODgIvgX3J2k/0DoIA5uOtil0Klbl24iFDp1KwgODkVUHpeGihb7ff1uvJF7HsiYw3lJbnJzEpFSSimllFJKKZWHRbzCA3S1+xkcdpzZx/3aPQ0K7/xpF8u1exsENs4J3NvBvdo9FoWnfwkMP/AGd2r3WgRWLgjc+4bXuFW755ng5oSBe1/xEgu1e78UzOFkytDwBS9wtXaGqeHjJQL3PuEZrtTOMTG8nyFw7whPMF+yt7mSxX5xWKDGjYjYjIgPeGjMuzY8KnCFf7ePtdrZzoUOj/EWnwsHH/euDfNYxnPs4Xuh4Fu4O20//3xd4FpErETE6ulxfYZyJxFxu+u640lPGOqh1a6x3dKD0NpDy4hfS0Ot4aWCtQ4iYj0ilrqu2y5Ytxwj3loOQksfD1r7PNTgAKC5EU9zQ7zmxrTNDeKb+9XS1s+0lFJKKaWUUkr/o581mM0INt+/SAAAAABJRU5ErkJggg==');
+    background-size: 30px 30px;
+
+    width: 30px;
+    height: 30px;
+
+    display: inline-block;
+    position: absolute;
+    right: 24px;
+    bottom: 6px;
+
+    border-radius: 16px!important;
+    border: 1px solid;
+}
+
+.imoview-chatbot .imoview-input>.imoview-submit:hover {
+    cursor: pointer;
+}
+
+.imoview-chatbot .imoview-input>.imoview-submit.imoview-only {
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: auto;
+    text-align: center;
+    line-height: 30px !important;
+    text-transform: uppercase;
+
+    background: transparent !important;
+}
+
+.imoview-chatbot .imoview-input>input,.imoview-input>textarea {
+    width: calc(100% - 64px) !important;
+    height: 46px !important;
+
+    background: white;
+    color: black!important;
+
+    border-radius: 32px!important;
+    outline: none;
+    border: 2px solid #eee;
+    margin: 0 14px;
+
+    padding: 0 16px !important;
+    padding-bottom: 2px;
+
+    font-size: 1em!important;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    min-width:  calc(100% - 64px) !important;
+}
+
+
+/* Select Box */
+
+.imoview-chatbot .imoview-input select {
+    width: calc(100% - 64px) !important;
+    height: 46px !important;
+
+    background: white;
+    color: black!important;
+    position: relative;
+
+    border-radius: 32px!important;
+    outline: none;
+    border: 2px solid #eee;
+    margin: 0 14px;
+
+    padding: 0 16px !important;
+    padding-bottom: 2px;
+
+    font-size: 1em!important;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.imoview-chatbot .imoview-input > .custom-select {
+    position: relative;
+}
+
+.imoview-chatbot .imoview-input > .custom-select:after {
+    content: "▼";
+    position: absolute;
+    color: #4c4c4c;
+    top: 4px;
+    right: 60px;
+    padding: 12px 7px;
+    pointer-events: none;
+}
+
+.imoview-chatbot .imoview-input>select::-ms-expand {
+    display: none;
+}
+
+/* Selectors (Single/Multi option) */
+
+.imoview-chatbot .imoview-sel {
+    padding: 24px 0;
+    margin: 0;
+    right: 6px;
+    position: relative;
+}
+
+.imoview-chatbot .imoview-sel>.imoview-opt {
+    padding: 12px 24px;
+    border-radius: 24px!important;
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    background-image: linear-gradient(to right, #bc002c, #ea083d);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.15);
+    margin: 3px;
+    text-align: center;
+}
+
+.imoview-chatbot .imoview-sel>.imoview-opt:hover {
+    box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.3);
+}
+
+.imoview-chatbot .imoview-sel.imoview-multi {
+    padding: 12px 0;
+}
+
+.imoview-chatbot .imoview-sel.imoview-multi>.imoview-opt.imoview-selected {
+    background-image: linear-gradient(to right, #f31448, #ff6084);
+}
+
+.imoview-chatbot .imoview-sel.imoview-multi>.imoview-opt {
+    background: transparent;
+    border: 1px solid #f31448;
+    color: #222;
+}
+
+.imoview-chatbot .imoview-secondary {
+    padding: 4px 8px;
+    background: transparent !important;
+    color: #0592ff !important;
+    box-shadow: none !important;
+    border: none!important;
+    font-size: 12px!important;
+    text-decoration: underline!important;
+}
+
+.imoview-chatbot .imoview-secondary:hover {
+    box-shadow: none !important;
+    color: #0277d1!important;
+}
+
+.imoview-chatbot .imoview-secondary.imoview-selected {
+    background-image: none!important;
+}
+
+/* Message-Selector */
+
+.imoview-chatbot .imoview-sel.imoview-messages {
+    padding: 0;
+    margin: 0;
+
+    padding-top: 12px;
+}
+
+.imoview-opt {
+    margin: 6px 6px 0 0;
+    padding: 12px 16px;
+    margin-left: 12px;
+    border-radius: 24px!important;
+
+    display: inline-block;
+
+    cursor: pointer;
+
+    color: white;
+
+    background-image: linear-gradient(to right, #bc002c, #ea083d);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.15);
+}
+
+.imoview-opt:hover {
+    background-image: linear-gradient(to right, #bc002c, #ea083d);
+    box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.3);
+}
+
+.imoview-opt.imoview-selected {
+    background-image: linear-gradient(to right, #f31448, #ff6084);
+}
+
+/* Time Selector */
+
+.imoview-chatbot .imoview-sel.imoview-time {
+    margin-right: 16px;
+
+    border-radius: 8px!important;
+
+    border: 1px solid #bc002c;
+
+    overflow: hidden;
+}
+
+.imoview-chatbot .imoview-timedisplay {
+    background-image: linear-gradient(to right, #bc002c, #ea083d);
+
+    font-size: 3em!important;
+    color: rgba(255, 255, 255, 0.8);
+
+    padding: 6px 24px;
+}
+
+.imoview-chatbot .imoview-timepicker {
+    background: white;
+
+    padding: 6px;
+}
+
+.imoview-chatbot .imoview-timepicker .imoview-clock {
+    width: 14em;
+    height: 14em;
+    border-radius: 7em!important;
+
+    background: #eee;
+
+    position: relative;
+}
+
+.imoview-chatbot .imoview-clock .imoview-num-container {
+    width: 11em;
+    height: 11em;
+
+    top: 1.5em;
+    left: 1.5em;
+
+    position: relative;
+}
+
+.imoview-chatbot .imoview-clock .imoview-pivot {
+    box-sizing: content-box;
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    margin-top: -0.25em;
+    margin-left: -0.25em;
+
+    width: 0.5em;
+    height: 0.5em;
+
+    border-radius: 0.5em!important;
+
+    border: 2px solid #ea083d;
+}
+
+.imoview-chatbot .imoview-clock .imoview-pointer {
+    position: absolute;
+
+    top: 0.25em;
+    left: 0.5em;
+
+    margin-top: -1px;
+
+    width: 4.55em;
+    height: 2px;
+
+    transform-origin: -0.25em 1px;
+
+    background: #ea083d;
+}
+
+.imoview-chatbot .imoview-clock .imoview-clock-num {
+    position: absolute;
+
+    width: 2em;
+    height: 2em;
+
+    margin-top: -1em;
+    margin-left: -1em;
+
+    line-height: 2em !important;
+
+    text-align: center;
+    vertical-align: middle;
+
+    cursor: pointer;
+
+    color: #888;
+
+    border-radius: 1em!important;
+}
+
+.imoview-chatbot .imoview-clock .imoview-clock-num.imoview-disabled {
+    color: #ddd;
+}
+
+.imoview-chatbot .imoview-clock .imoview-clock-num:hover {
+    color: black;
+}
+
+.imoview-chatbot .imoview-clock .imoview-clock-num.imoview-selected {
+    color: white;
+    background: #ea083d;
+}
+
+.imoview-chatbot .imoview-timedisplay .imoview-hours {
+    display: inline-block;
+
+    cursor: pointer;
+}
+
+.imoview-chatbot .imoview-timedisplay .imoview-minutes {
+    display: inline-block;
+
+    cursor: pointer;
+}
+
+.imoview-chatbot .imoview-timedisplay .imoview-sep {
+    display: inline-block;
+
+    color: #eee;
+}
+
+.imoview-chatbot .imoview-hours.imoview-selected {
+    color: white;
+
+    border-bottom: 3px solid white;
+}
+
+.imoview-chatbot .imoview-minutes.imoview-selected {
+    color: white;
+
+    border-bottom: 3px solid white;
+}
+
+.imoview-chatbot .imoview-timedisplay .imoview-period {
+    float: right;
+    font-size: 0.33em!important;
+    margin-top: 0.8em;
+    margin-left: 1em;
+}
+
+.imoview-chatbot .imoview-period .imoview-day {
+    cursor: pointer;
+}
+
+.imoview-chatbot .imoview-period .imoview-night {
+    cursor: pointer;
+}
+
+.imoview-chatbot .imoview-period .imoview-day.imoview-selected {
+    color: white;
+    font-weight: bold !important;
+}
+
+.imoview-chatbot .imoview-period .imoview-night.imoview-selected {
+    color: white;
+    font-weight: bold !important;
+}
+
+/* Date selector */
+
+.imoview-chatbot .imoview-sel.imoview-date {
+    padding: 0;
+    padding-bottom: 12px;
+
+    right: 6px;
+
+    position: relative;
+}
+
+.imoview-chatbot .imoview-cal {
+    position: relative;
+
+    min-width: 18em;
+    width: 100%;
+    height: 16em;
+
+    background: white;
+
+    border-radius: 8px!important;
+
+    border: 1px solid #cf0237;
+
+    color: #444;
+
+    font-size: 0.8em!important;
+
+    overflow: hidden;
+}
+
+.imoview-chatbot .imoview-cal>.imoview-row {
+    width: 100%;
+    height: 2em;
+
+    text-align: center;
+}
+
+.imoview-chatbot .imoview-row.imoview-title {
+    font-weight: bold!important;
+
+    color: white;
+
+    background-image: linear-gradient(to right, #bc002c, #ea083d);
+}
+
+.imoview-chatbot .imoview-row.imoview-header {
+    font-weight: bold!important;
+    color: white;
+    background-image: linear-gradient(to right, #bc002c, #ea083d);
+    border-radius: 6px 6px 0 0!important;
+    vertical-align: middle;
+}
+
+.imoview-chatbot .imoview-row.imoview-header>.imoview-header {
+    padding-top: 0.5em;
+}
+
+.imoview-chatbot .imoview-cal .imoview-prev {
+    float: left;
+    padding-left: 12px;
+
+    cursor: pointer;
+
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+
+    width: 16px;
+    height: 16px;
+
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAB7SURBVFiF7dexCoAgFIXhW/R4bRYO9fj1FEV/i+BiUEPdkHPAxeV8oMjVTHkQoAfWtIIHYCFnA6In4HsEEFKpK2IoIHZgFkIIIYRIiFhAfP5Y3Ua0LxmOwl5jZt1LfTmuRwCMF5dwUrnKVV5Nue9Qyg/GcvePie/XrMqcOOCgDspkl64AAAAASUVORK5CYII=');
+    background-size: 16px;
+
+    background-repeat: no-repeat;
+}
+
+.imoview-chatbot .imoview-cal .imoview-next {
+    float: right;
+    margin-right: 12px;
+
+    cursor: pointer;
+
+    width: 16px;
+    height: 16px;
+
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAB7SURBVFiF7dexCoAgFIXhW/R4bRYO9fj1FEV/i+BiUEPdkHPAxeV8oMjVTHkQoAfWtIIHYCFnA6In4HsEEFKpK2IoIHZgFkIIIYRIiFhAfP5Y3Ua0LxmOwl5jZt1LfTmuRwCMF5dwUrnKVV5Nue9Qyg/GcvePie/XrMqcOOCgDspkl64AAAAASUVORK5CYII=');
+    background-size: 16px;
+}
+
+.imoview-chatbot .imoview-next.imoview-full,.imoview-chatbot .imoview-prev.imoview-full {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACMSURBVFiF7ZdRC0AwFEYv+Xne0B74+fwKcrwoysWwGrlf7WWn9p3aWpuIRQmQA908iqs8hEDLkh5wV3hogU3JGQ8hUMyLqiVnPJREqZQMQOPDTcIkTOIXEk4pWV9Wh/w1EulDh1GZS0Qk8+T3E3ULgGrnkNU+3Mqt3Mo/UR73UcoLnuXRPyZxv2a/ygRSxkAo9hmBFQAAAABJRU5ErkJggg==');
+}
+
+  
+
+.imoview-chatbot .imoview-brand a {
+    padding-top: 8px;
+    background: #eee;
+    margin-top: 1px;
+    box-shadow: 0 0 24px 0 rgb(0 0 0 / 15%);
+    border-radius: 0 0 6px 6px!important;
+    border: 1px solid #ddd;
+    display: inline-block !important;
+}
+
+.chat-alert-danger.imoview-bubble{
+  background: #fef1f4 !important;
+  border: 1px solid #fdd5df;
+}
+.chat-alert-danger.imoview-bubble p{
+  color: #e3496e !important;
+}
+.chat-alert-success.imoview-bubble{
+  background: #ecfbf7 !important;
+  border: 1px solid #c7f2e6;
+}
+.chat-alert-success.imoview-bubble p{
+  color: #14b989 !important;
+}
+.chat-alert-warning.imoview-bubble{
+  background: #fff9f2 !important;
+  border: 1px solid #ffecd8;
+}
+.chat-alert-warning.imoview-bubble p{
+  color: #eba355 !important;
+}
+.indicador{
+  position:fixed;
+  top:0;
+  left: 0;
+  width: 0;
+  height: 10px;
+  background-color: #dedede;
+}
