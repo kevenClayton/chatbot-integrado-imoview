@@ -4243,6 +4243,27 @@ input[type=text] {
 .chat-alert-warning .imoview-bubble p{
   color: #eba355 !important;
 }
+.chat-alert-danger.imoview-bubble{
+  background: #fef1f4 !important;
+  border: 1px solid #fdd5df;
+}
+.chat-alert-danger.imoview-bubble p{
+  color: #e3496e !important;
+}
+.chat-alert-success.imoview-bubble{
+  background: #ecfbf7 !important;
+  border: 1px solid #c7f2e6;
+}
+.chat-alert-success.imoview-bubble p{
+  color: #14b989 !important;
+}
+.chat-alert-warning.imoview-bubble{
+  background: #fff9f2 !important;
+  border: 1px solid #ffecd8;
+}
+.chat-alert-warning.imoview-bubble p{
+  color: #eba355 !important;
+}
 .indicador{
   position:fixed;
   top:0;
