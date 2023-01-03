@@ -1,7 +1,7 @@
 var IMOVIEW = {
 
     BaseUrl: "https://api.imoview.com.br/chatbot/Interagir",    
-    UrlHtml: (location.host == 'modelogold.test' ? "http://modelogold.test/assets/js/home/chatbot.html" : "http://chatbot-imoview.test/chatbot.html"   ) ,
+    UrlHtml: "chatbot.html",
     Maximado: false,    
     
     DadosSession: function () {
