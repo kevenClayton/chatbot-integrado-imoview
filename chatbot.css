@@ -4243,6 +4243,13 @@ input[type=text] {
 .chat-alert-warning .imoview-bubble p{
   color: #eba355 !important;
 }
+.chat-alert-default .imoview-bubble{
+  background: #f3f7fe !important;
+  border: 1px solid #dbe7fc;
+}
+.chat-alert-default .imoview-bubble p{
+  color: #628fe0 !important;
+}
 .chat-alert-danger.imoview-bubble{
   background: #fef1f4 !important;
   border: 1px solid #fdd5df;
@@ -4263,6 +4270,13 @@ input[type=text] {
 }
 .chat-alert-warning.imoview-bubble p{
   color: #eba355 !important;
+}
+.chat-alert-default.imoview-bubble{
+  background: #f3f7fe !important;
+  border: 1px solid #dbe7fc;
+}
+.chat-alert-default.imoview-bubble p{
+  color: #628fe0 !important;
 }
 .indicador{
   position:fixed;
