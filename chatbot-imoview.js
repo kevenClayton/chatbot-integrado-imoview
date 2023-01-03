@@ -239,39 +239,41 @@ var IMOVIEW = {
                         var htmlAjuda = "";
 
                         if(menu.ajuda != "")             {
-                            htmlAjuda = '<p class="removerAposClickBotao" style="color: #c9c9c9;font-size: 13px !important;"><span style="border: 2px solid;border-radius: 63%;padding:1px 7px;margin-right: 2px;">i</span>'+menu.ajuda+'</p>';
+                            htmlAjuda = '<p class="removerAposClickBotao" style="color: #c9c9c9;word-break: break-word;font-size: 13px !important;"><span style="border: 2px solid;border-radius: 63%;padding:1px 7px;margin-right: 2px;">i</span>'+menu.ajuda+'</p>';
                         }
                         switch (menu.tipoMenu){                    
                           
-                            case 'button': 
+                            case 'button':
                                 constanteAtualBotao = menu.constante;
                                 nivelAtualBotao = menu.proximoNivel;
-                                htmlBotoes += '<span id="'+IdBotaoOpcoes+'" class="imoview-opt removerAposClickBotao" onclick=\"IMOVIEW.CarregarConversa('+constanteAtualBotao+','+nivelAtualBotao+', \'' + IdBotaoOpcoes + '\',\''+(valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores)).replace(/'/g, '')) +'\', true, false, '+menu.proximaPagina+')\" style="">'+menu.nome+'<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDYuMC1jMDA2IDc5LjE2NDc1MywgMjAyMS8wMi8xNS0xMTo1MjoxMyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIyLjMgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkUyQzQwQzVEOEFERTExRURBRDUwOTg5MzQ1MjJFNUFBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkUyQzQwQzVFOEFERTExRURBRDUwOTg5MzQ1MjJFNUFBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RTJDNDBDNUI4QURFMTFFREFENTA5ODkzNDUyMkU1QUEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RTJDNDBDNUM4QURFMTFFREFENTA5ODkzNDUyMkU1QUEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6qJ69sAAAA1ElEQVR42qyWPQoCMRBGo+JhLNSbeAVZEZvFg4iNhdtbWngXexE8hFYWO34W4hKTOH8DD0ISeEwmGRKIKCQYgSu4g1VmD5vcwo6+8QRzi6Qf0nHpjIfgAKqgjYx9ABr6jcrzuD64iDibUqKFt8SckSRttUhaRNXRae69OCPtAxOJLO1iD9pINPOWvDlHkqOkrXBiA8bR3EnSVv6xTdSk9qyJSKCRiAVSiUogkagFXIlJwJGYBSVJz0tQkiy9BKUXP+2MW1CDxvsjMQE38ABr67/rJcAAcOPXUw4ZoCcAAAAASUVORK5CYII=" alt="Right Arrow" style="float: right; width: 16px; height: 16px; margin-left: 2px;"></span>' + htmlAjuda;
-                                break
-                            case 'select': 
+                                htmlBotoes += '<span id="' + IdBotaoOpcoes + '" class="imoview-opt removerAposClickBotao" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtualBotao + ',' + nivelAtualBotao + ', \'' + IdBotaoOpcoes + '\',\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores)).replace(/'/g, '')) + '\', true, false, ' + menu.proximaPagina + ')\" style="">' + menu.nome + '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDYuMC1jMDA2IDc5LjE2NDc1MywgMjAyMS8wMi8xNS0xMTo1MjoxMyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIyLjMgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkUyQzQwQzVEOEFERTExRURBRDUwOTg5MzQ1MjJFNUFBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkUyQzQwQzVFOEFERTExRURBRDUwOTg5MzQ1MjJFNUFBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RTJDNDBDNUI4QURFMTFFREFENTA5ODkzNDUyMkU1QUEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RTJDNDBDNUM4QURFMTFFREFENTA5ODkzNDUyMkU1QUEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6qJ69sAAAA1ElEQVR42qyWPQoCMRBGo+JhLNSbeAVZEZvFg4iNhdtbWngXexE8hFYWO34W4hKTOH8DD0ISeEwmGRKIKCQYgSu4g1VmD5vcwo6+8QRzi6Qf0nHpjIfgAKqgjYx9ABr6jcrzuD64iDibUqKFt8SckSRttUhaRNXRae69OCPtAxOJLO1iD9pINPOWvDlHkqOkrXBiA8bR3EnSVv6xTdSk9qyJSKCRiAVSiUogkagFXIlJwJGYBSVJz0tQkiy9BKUXP+2MW1CDxvsjMQE38ABr67/rJcAAcOPXUw4ZoCcAAAAASUVORK5CYII=" alt="Right Arrow" style="float: right; width: 16px; height: 16px; margin-left: 2px;"></span>' + htmlAjuda;
+                                break;
+                            case 'select':
                                 constanteAtualBotao = menu.constante;
                                 nivelAtualBotao = menu.proximoNivel;
-                                htmlBotoes += '<span id="'+IdBotaoOpcoes+'"  class="imoview-opt removerAposClickBotao" data-constante="'+menu.constante+'"  data-label="'+menu.nome+'" data-value="'+menu.proximoValor+'" onclick=\"IMOVIEW.CarregarConversa('+constanteAtual+','+nivelAtualBotao+', \'' + IdBotaoOpcoes + '\',\'' +(valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) +'\', false, false, '+menu.proximaPagina+', true)\" style="">'+menu.nome+'<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACzSURBVFiF7Ze9DcIwEEY/owgJpDQwAwOwAxUTsACjUadCFGQGsgkdVYpHAxIopsA6x0Lc6+3v+U7+k5xfBZgCB+AGnIDF2AI73rmkSEwMndaS2tEq8WhBy5CkSqRKzIBzRKIDli7hEi7xlQRQA0egjwy0pAdWz9zXk3AvaSupylsfVZKamEBZSrUg12LmxO+J/DvBwz38r8LLPskYvoqTwi2P4k7SJoRwNZzzM5T+mDhW3AFTPw4c5r4MygAAAABJRU5ErkJggg==" alt="Right Arrow" style="float: right; width: 16px; height: 16px; margin-top: 4px; margin-left: 2px;"></span>' + htmlAjuda;
-                                break
+                                htmlBotoes += '<span id="' + IdBotaoOpcoes + '"  class="imoview-opt removerAposClickBotao" data-constante="' + menu.constante + '"  data-label="' + menu.nome + '" data-value="' + menu.proximoValor + '" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtual + ',' + nivelAtualBotao + ', \'' + IdBotaoOpcoes + '\',\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\', false, false, ' + menu.proximaPagina + ', true)\" style="">' + menu.nome + '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACzSURBVFiF7Ze9DcIwEEY/owgJpDQwAwOwAxUTsACjUadCFGQGsgkdVYpHAxIopsA6x0Lc6+3v+U7+k5xfBZgCB+AGnIDF2AI73rmkSEwMndaS2tEq8WhBy5CkSqRKzIBzRKIDli7hEi7xlQRQA0egjwy0pAdWz9zXk3AvaSupylsfVZKamEBZSrUg12LmxO+J/DvBwz38r8LLPskYvoqTwi2P4k7SJoRwNZzzM5T+mDhW3AFTPw4c5r4MygAAAABJRU5ErkJggg==" alt="Right Arrow" style="float: right; width: 16px; height: 16px; margin-top: 4px; margin-left: 2px;"></span>' + htmlAjuda;
+                                break;
                             case 'card': //card
                                 constanteAtualBotao = menu.constante;
                                 nivelAtualBotao = menu.proximoNivel;
                                 htmlItens = "";
                                 
-                                if(menu.itens.length >0){
-                                    menu.itens.forEach(function(item){
-                                        htmlItens += '<span style="color: #c9c9c9;font-size: 13px;margin-right: 10px;display: inline-block;margin-bottom: 10px;"><strong style="color: #c9c9c9;font-size: 13px !important;border: 2px solid;border-radius: 63%;padding:1px 7px;margin-right: 2px;">i</strong>'+item.label+': <span style="color: #979797 !important">'+item.valor+'</span></span>';
+                                if (menu.itens.length > 0) {
+                                    menu.itens.forEach(function (item) {
+                                        htmlItens += '<span style="color: #c9c9c9;font-size: 13px;margin-right: 10px;display: inline-block;margin-bottom: 10px;"><strong style="color: #c9c9c9;font-size: 13px !important;border: 2px solid;border-radius: 63%;padding:1px 7px;margin-right: 2px;">i</strong>' + item.label + ': <span style="color: #979797 !important">' + item.valor + '</span></span>';
                                     })
                                 }
 
-                                htmlBotoes += '<span class="card-chatbot-imoview" style="display: inline-block;border-radius: 24px!important;margin-left: 12px;margin: 6px 6px 0 0; background: #e3e9ef !important;margin-bottom: 8px;color: #6e6e6e !important;padding: 15px;font-size: 13px !important;">'+
-                                                    '<p style="color: #979797 !important;line-height: 18px !important;margin-bottom: 10px;">'+
-                                                        menu.nome +
-                                                    '</p>'+
-                                                    htmlItens+
-                                                    '<span class="removerAposClickBotao imoview-opt" data-constante="'+menu.constante+'" data-codigo="'+menu.proximoValor+'" data-label="'+menu.nome+'" id="'+IdBotaoOpcoes+'" onclick=\"IMOVIEW.CarregarConversa('+constanteAtualBotao+','+nivelAtualBotao+', \'' + IdBotaoOpcoes + '\',\'' +(valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) +'\', false, true )\" >Detalhes<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACzSURBVFiF7Ze9DcIwEEY/owgJpDQwAwOwAxUTsACjUadCFGQGsgkdVYpHAxIopsA6x0Lc6+3v+U7+k5xfBZgCB+AGnIDF2AI73rmkSEwMndaS2tEq8WhBy5CkSqRKzIBzRKIDli7hEi7xlQRQA0egjwy0pAdWz9zXk3AvaSupylsfVZKamEBZSrUg12LmxO+J/DvBwz38r8LLPskYvoqTwi2P4k7SJoRwNZzzM5T+mDhW3AFTPw4c5r4MygAAAABJRU5ErkJggg==" alt="Right Arrow" style="float: right; width: 16px; height: 16px; margin-top: 4px; margin-left: 2px;"></span>'+
-                                                '</span>' + htmlAjuda;
-                                break
+                                htmlBotoes += '<span class="card-chatbot-imoview" style="max-width: 100%;display: inline-block;border-radius: 24px!important;margin-left: 12px;margin: 6px 6px 0 0; background: #e3e9ef !important;margin-bottom: 8px;color: #6e6e6e !important;padding: 15px;font-size: 13px !important;">' +
+                                    '<p style="color: #979797 !important;line-height: 18px !important;margin-bottom: 10px;">' +
+                                        menu.nome +
+                                    '</p>' +
+                                        htmlItens +
+                                        htmlAjuda+
+                                        '<span class="removerAposClickBotao imoview-opt" data-constante="' + menu.constante + '" data-codigo="' + menu.proximoValor + '" data-label="' + menu.nome + '" id="' + IdBotaoOpcoes + '" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtualBotao + ',' + nivelAtualBotao + ', \'' + IdBotaoOpcoes + '\',\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\', false, true )\" >Detalhes<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDYuMC1jMDA2IDc5LjE2NDc1MywgMjAyMS8wMi8xNS0xMTo1MjoxMyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIyLjMgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkUyQzQwQzVEOEFERTExRURBRDUwOTg5MzQ1MjJFNUFBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkUyQzQwQzVFOEFERTExRURBRDUwOTg5MzQ1MjJFNUFBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RTJDNDBDNUI4QURFMTFFREFENTA5ODkzNDUyMkU1QUEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RTJDNDBDNUM4QURFMTFFREFENTA5ODkzNDUyMkU1QUEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6qJ69sAAAA1ElEQVR42qyWPQoCMRBGo+JhLNSbeAVZEZvFg4iNhdtbWngXexE8hFYWO34W4hKTOH8DD0ISeEwmGRKIKCQYgSu4g1VmD5vcwo6+8QRzi6Qf0nHpjIfgAKqgjYx9ABr6jcrzuD64iDibUqKFt8SckSRttUhaRNXRae69OCPtAxOJLO1iD9pINPOWvDlHkqOkrXBiA8bR3EnSVv6xTdSk9qyJSKCRiAVSiUogkagFXIlJwJGYBSVJz0tQkiy9BKUXP+2MW1CDxvsjMQE38ABr67/rJcAAcOPXUw4ZoCcAAAAASUVORK5CYII=" alt="Right Arrow" style="float: right; width: 16px; height: 16px; margin-left: 2px;"></span>' +
+                                        '<div class="imoview-clear"></div>'+
+                                    '</span>';
+                                    break;
                             case 'details': //card
                                 constanteAtualBotao = menu.constante;
                                 nivelAtualBotao = menu.proximoNivel;
@@ -287,30 +289,31 @@ var IMOVIEW = {
                                                     '<p style="color: #979797 !important;line-height: 18px !important;margin-bottom: 10px;">'+
                                                         menu.nome +
                                                     '</p>'+
-                                                    htmlItens+                                                
-                                                '</span>' + htmlAjuda;
+                                                    htmlItens +     
+                                                    htmlAjuda +
+                                                '</span>' ;
                                 break
                             case 'input': 
                                 propriedades = "";
                                 //Inserindo as mascáras
                                 switch(menu.tipoMascara){
                                     case 'cpf':
-                                        propriedades =  'maxlength="18" onkeypress="IMOVIEW.MascaraMutuario(this, IMOVIEW.CpfCnpj)"  onblur="clearTimeout()"';
-                                        break
+                                        propriedades = 'maxlength="18" onkeypress="IMOVIEW.MascaraMutuario(this, IMOVIEW.CpfCnpj)"  onblur="clearTimeout()"';
+                                        break;
                                     case 'celular':
-                                        propriedades =  'maxlength="18" onkeypress="IMOVIEW.MascaraMutuario(this, IMOVIEW.Telefone)"  onblur="clearTimeout()"';
-                                        break
+                                        propriedades = 'maxlength="18" onkeypress="IMOVIEW.MascaraMutuario(this, IMOVIEW.Telefone)"  onblur="clearTimeout()"';
+                                        break;
                                     case 'email':
-                                        break
+                                        break;
                                 }
                                 htmlInput += '<input class="limparChat"  id="'+idInput+'" value="" '+propriedades+' data-constante="'+menu.constante+'" type="text"  autocomplete="name" placeholder="'+menu.nome+'" list="" style="border-color: rgb(76, 175, 80);"><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa('+constanteAtual+','+nivelAtual+', \'' + idInput + '\' ,\'' +(valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) +'\')\"></div>'+ htmlAjuda;                        
                                 break
-                            case 'textarea': 
-                                htmlInput += '<textarea class="limparChat"  id="'+idInput+'"  data-constante="'+menu.constante+'" placeholder="'+menu.nome+'" style="border-color: rgb(76, 175, 80);"></textarea><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa('+constanteAtual+','+nivelAtual+', \'' + idInput + '\' ,\'' +(valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) +'\')\"></div>'+ htmlAjuda;                        
-                                break
-                            case 'password': 
-                                htmlInput += '<input class="limparChat" id="'+idInput+'" value="" data-constante="'+menu.constante+'" type="password" autocomplete="name" onblur="clearTimeout()" placeholder="'+menu.nome+'" list="" style="border-color: rgb(76, 175, 80);"><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa('+constanteAtual+','+nivelAtual+', \'' + idInput + '\' ,\'' +(valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) +'\')\"></div>'+ htmlAjuda;                        
-                                break
+                            case 'textarea':
+                                htmlInput += '<textarea class="limparChat"  id="' + idInput + '"  data-constante="' + menu.constante + '" placeholder="' + menu.nome + '" style="border-color: rgb(76, 175, 80);"></textarea><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtual + ',' + nivelAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\')\"></div>' + htmlAjuda;
+                                break;
+                            case 'password':
+                                htmlInput += '<input class="limparChat" id="' + idInput + '" value="" data-constante="' + menu.constante + '" type="password" autocomplete="name" onblur="clearTimeout()" placeholder="' + menu.nome + '" list="" style="border-color: rgb(76, 175, 80);"><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtual + ',' + nivelAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\')\"></div>' + htmlAjuda;
+                                break;
                             case 'file': 
                                 htmlBotoes += '<span class="card-chatbot-imoview limparChat" style="display: inline-block;border-radius: 24px!important;margin-left: 12px;margin: 6px 6px 0 0; background: #e3e9ef !important;margin-bottom: 8px;color: #6e6e6e !important;padding: 15px;font-size: 13px !important;"><p style="color: #979797 !important;line-height: 18px !important;">'+menu.nome+'</p><a href="'+menu.url+'" target="_blank" download="'+menu.nome+'" class="imoview-opt">Download<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACzSURBVFiF7Ze9DcIwEEY/owgJpDQwAwOwAxUTsACjUadCFGQGsgkdVYpHAxIopsA6x0Lc6+3v+U7+k5xfBZgCB+AGnIDF2AI73rmkSEwMndaS2tEq8WhBy5CkSqRKzIBzRKIDli7hEi7xlQRQA0egjwy0pAdWz9zXk3AvaSupylsfVZKamEBZSrUg12LmxO+J/DvBwz38r8LLPskYvoqTwi2P4k7SJoRwNZzzM5T+mDhW3AFTPw4c5r4MygAAAABJRU5ErkJggg==" alt="Right Arrow" style="float: right; width: 16px; height: 16px; margin-top: 4px; margin-left: 2px;"></a></span>' + htmlAjuda;
                                 break;
@@ -323,8 +326,7 @@ var IMOVIEW = {
                                             '</div>'+
                                             '<div class="imoview-clear"></div>'+
                                         '</div>'+
-                                    '</div>';                              
-                                    
+                                    '</div>';                                                                  
                                 break;
                         }
                     });
