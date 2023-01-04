@@ -309,13 +309,13 @@ var IMOVIEW = {
                                     case 'email':
                                         break;
                                 }
-                                htmlInput += '<input class="limparChat"  id="'+idInput+'" value="" '+propriedades+' data-constante="'+menu.constante+'" type="text"  autocomplete="name" placeholder="'+menu.nome+'" list="" style="border-color: rgb(76, 175, 80);"><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa('+constanteAtual+','+nivelAtual+', \'' + idInput + '\' ,\'' +(valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) +'\')\"></div>'+ htmlAjuda;                        
+                                htmlInput += '<input onkeyup="javascript: if(event.keyCode == 13) IMOVIEW.CarregarConversa('+constanteAtual+','+nivelAtual+', \'' + idInput + '\' ,\'' +(valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) +'\');" class="limparChat input-chat"  id="'+idInput+'" value="" '+propriedades+' data-constante="'+menu.constante+'" type="text"  autocomplete="name" placeholder="'+menu.nome+'" list="" style="border-color: rgb(76, 175, 80);"><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa('+constanteAtual+','+nivelAtual+', \'' + idInput + '\' ,\'' +(valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) +'\')\"></div>'+ htmlAjuda;                        
                                 break
                             case 'textarea':
-                                htmlInput += '<textarea class="limparChat"  id="' + idInput + '"  data-constante="' + menu.constante + '" placeholder="' + menu.nome + '" style="border-color: rgb(76, 175, 80);"></textarea><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtual + ',' + nivelAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\')\"></div>' + htmlAjuda;
+                                htmlInput += '<textarea onkeyup="javascript: if(event.keyCode == 13) IMOVIEW.CarregarConversa('+constanteAtual+','+nivelAtual+', \'' + idInput + '\' ,\'' +(valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) +'\');" class="limparChat input-chat"  id="' + idInput + '"  data-constante="' + menu.constante + '" placeholder="' + menu.nome + '" style="border-color: rgb(76, 175, 80);"></textarea><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtual + ',' + nivelAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\')\"></div>' + htmlAjuda;
                                 break;
                             case 'password':
-                                htmlInput += '<input class="limparChat" id="' + idInput + '" value="" data-constante="' + menu.constante + '" type="password" autocomplete="name" onblur="clearTimeout()" placeholder="' + menu.nome + '" list="" style="border-color: rgb(76, 175, 80);"><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtual + ',' + nivelAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\')\"></div>' + htmlAjuda;
+                                htmlInput += '<input  onkeyup="javascript: if(event.keyCode == 13) IMOVIEW.CarregarConversa('+constanteAtual+','+nivelAtual+', \'' + idInput + '\' ,\'' +(valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) +'\');" class="limparChat input-chat" id="' + idInput + '" value="" data-constante="' + menu.constante + '" type="password" autocomplete="name" onblur="clearTimeout()" placeholder="' + menu.nome + '" list="" style="border-color: rgb(76, 175, 80);"><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtual + ',' + nivelAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\')\"></div>' + htmlAjuda;
                                 break;
                             case 'file': 
                                 htmlBotoes += '<span class="card-chatbot-imoview limparChat" style="display: inline-block;border-radius: 24px!important;margin-left: 12px;margin: 6px 6px 0 0; background: #e3e9ef !important;margin-bottom: 8px;color: #6e6e6e !important;padding: 15px;font-size: 13px !important;"><p style="color: #979797 !important;line-height: 18px !important;">'+menu.nome+'</p><a href="'+menu.url+'" target="_blank" download="'+menu.nome+'" class="imoview-opt">Download<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACzSURBVFiF7Ze9DcIwEEY/owgJpDQwAwOwAxUTsACjUadCFGQGsgkdVYpHAxIopsA6x0Lc6+3v+U7+k5xfBZgCB+AGnIDF2AI73rmkSEwMndaS2tEq8WhBy5CkSqRKzIBzRKIDli7hEi7xlQRQA0egjwy0pAdWz9zXk3AvaSupylsfVZKamEBZSrUg12LmxO+J/DvBwz38r8LLPskYvoqTwi2P4k7SJoRwNZzzM5T+mDhW3AFTPw4c5r4MygAAAABJRU5ErkJggg==" alt="Right Arrow" style="float: right; width: 16px; height: 16px; margin-top: 4px; margin-left: 2px;"></a></span>' + htmlAjuda;
@@ -380,6 +380,10 @@ var IMOVIEW = {
                     } 
                         
                     IMOVIEW.ScrollBottom();
+                    
+                    if (document.querySelector('.input-chat') != null) {
+                        document.querySelector('.input-chat').focus();
+                    }
 
                     }catch (e){
                         console.log(e);
@@ -402,9 +406,7 @@ var IMOVIEW = {
                                 '<div class="imoview-clear"></div>'+
                             '</div>';    
                         document.querySelector('.imoview-scrollable').lastElementChild.insertAdjacentHTML("afterend", htmlErroAPlicacao); 
-                        $(function scroll() {
-                            document.querySelector('.imoview-scrollable').scrollTo(0, document.querySelector('.imoview-scrollable').scrollHeight);
-                        });
+                        IMOVIEW.ScrollBottom();
                         
                     }
                 });
@@ -433,6 +435,12 @@ var IMOVIEW = {
         
         IMOVIEW.CarregarConversa();
    
+    },
+
+    PressionarEnter: function (e) {
+         if(e.which == 13){
+          console.log('a tecla enter foi pressionada');
+       }
     },
 
     MaximarJanelaChat: function () {
@@ -581,325 +589,8 @@ var IMOVIEW = {
         return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
     },
 
-    Post: function(param) {
+    
 
-        var dataTmp1 = decodeURIComponent(JSON.stringify(param));
-        dataTmp1 = dataTmp1.substr(1, dataTmp1.length - 2);
-
-        var data = JSON.parse(dataTmp1);
-
-        var formTmp = document.getElementById("frmIMOVIEW");
-
-        if (formTmp != null || formTmp != undefined) {
-            formTmp.remove();
-        }
-
-        var form = document.createElement("FORM");
-        form.setAttribute("name", "frmIMOVIEW");
-        form.setAttribute("id", "frmIMOVIEW");
-        form.setAttribute("method", "post");
-
-        if (data.target !== null && data.target !== undefined && data.target !== "") {
-            form.setAttribute("target", data.target);
-        } else {
-            form.setAttribute("target", "_blank");
-        }
-        //alert(data.target);
-        //form.style.display = "none";
-        form.action = IMOVIEW.BaseUrl + "Init";
-        document.body.appendChild(form);
-
-        var input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "clienteConvenio";
-        input.value = data.clienteConvenio == null ? "" : data.clienteConvenio;
-        form.appendChild(input);
-
-        var input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "clienteRota";
-        input.value = data.clienteRota === null ? "" : data.clienteRota;
-        form.appendChild(input);
-
-        input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "imovelId";
-        input.value = data.imovelId == null ? "" : data.imovelId;
-        form.appendChild(input);
-
-        input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "acaoBotao";
-        input.value = data.acaoBotao == null ? "" : data.acaoBotao;
-        form.appendChild(input);
-
-        // RemoveSpecialCaracter
-        input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "urlImovelnoSite";
-        input.value = data.urlImovelnoSite == null ? "" : data.urlImovelnoSite;
-        form.appendChild(input);
-
-        form.submit();
-    },
-
-    AbrirChat: function(param) {
-
-        var dataTmp1 = decodeURIComponent(JSON.stringify(param));
-        dataTmp1 = dataTmp1.substr(1, dataTmp1.length - 2);
-
-        var data = JSON.parse(dataTmp1);
-
-        var formTmp = document.getElementById("frmIMOVIEW");
-
-        if (formTmp != null || formTmp != undefined) {
-            formTmp.remove();
-        }
-
-        var form = document.createElement("FORM");
-        form.setAttribute("name", "frmIMOVIEW");
-        form.setAttribute("id", "frmIMOVIEW");
-        form.setAttribute("method", "post");
-
-        if (data.target !== null && data.target !== undefined && data.target !== "") {
-            form.setAttribute("target", data.target);
-        } else {
-            form.setAttribute("target", "_blank");
-        }
-        //alert(data.target);
-        //form.style.display = "none";
-        form.action = IMOVIEW.BaseUrl + "Init";
-        document.body.appendChild(form);
-
-        var input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "clienteConvenio";
-        input.value = data.clienteConvenio == null ? "" : data.clienteConvenio;
-        form.appendChild(input);
-
-        var input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "clienteRota";
-        input.value = data.clienteRota === null ? "" : data.clienteRota;
-        form.appendChild(input);
-
-        input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "imovelId";
-        input.value = data.imovelId == null ? "" : data.imovelId;
-        form.appendChild(input);
-
-        input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "acaoBotao";
-        input.value = data.acaoBotao == null ? "" : data.acaoBotao;
-        form.appendChild(input);
-
-        // RemoveSpecialCaracter
-        input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "urlImovelnoSite";
-        input.value = data.urlImovelnoSite == null ? "" : data.urlImovelnoSite;
-        form.appendChild(input);
-
-        form.submit();
-    },
-
-    PostFake: function(param) {
-
-        var dataTmp1 = decodeURIComponent(JSON.stringify(param));
-        dataTmp1 = dataTmp1.substr(1, dataTmp1.length - 2);
-
-        var data = JSON.parse(dataTmp1);
-
-        var formTmp = document.getElementById("frmIMOVIEW");
-
-        if (formTmp != null || formTmp != undefined) {
-            formTmp.remove();
-        }
-
-        var form = document.createElement("FORM");
-        form.setAttribute("name", "frmIMOVIEW");
-        form.setAttribute("id", "frmIMOVIEW");
-        form.setAttribute("method", "post");
-
-        if (data.target !== null && data.target !== undefined && data.target !== "") {
-            form.setAttribute("target", data.target);
-        } else {
-            form.setAttribute("target", "_blank");
-        }
-
-        //form.style.display = "none";
-        form.action = IMOVIEW.BaseUrl + "InitFake";
-        document.body.appendChild(form);
-
-        var input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "clienteConvenio";
-        input.value = data.clienteConvenio === null ? "" : data.clienteConvenio;
-        form.appendChild(input);
-
-        var input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "clienteRota";
-        input.value = data.clienteRota === null ? "" : data.clienteRota;
-        form.appendChild(input);
-
-
-        input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "empresaId";
-        input.value = data.empresaId === null ? "" : data.empresaId;
-        form.appendChild(input);
-
-
-        input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "acaoBotao";
-        input.value = data.acaoBotao == null ? "" : data.acaoBotao;
-        form.appendChild(input);
-
-        input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "email";
-        input.value = data.email === null ? "" : data.email;
-        form.appendChild(input);
-
-
-
-        input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "imovelId";
-        input.value = data.imovelId === null ? "" : data.imovelId;
-        form.appendChild(input);
-
-        input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "imovelFinalidade";
-        input.value = data.imovelFinalidade === null ? "" : data.imovelFinalidade;
-        form.appendChild(input);
-
-        input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "imovelUrlFotoPrincipal";
-        input.value = data.imovelUrlFotoPrincipal === null ? "" : data.imovelUrlFotoPrincipal;
-        form.appendChild(input);
-
-        input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "urlImovelnoSite";
-        input.value = data.urlImovelnoSite == null ? "" : data.urlImovelnoSite;
-        form.appendChild(input);
-
-        input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "imovelEndereco";
-        input.value = data.imovelEndereco === null ? "" : data.imovelEndereco;
-        form.appendChild(input);
-
-        input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "imovelNumero";
-        input.value = data.imovelNumero === null ? "" : data.imovelNumero;
-        form.appendChild(input);
-
-        input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "imovelComplemento";
-        input.value = data.imovelComplemento === null ? "" : data.imovelComplemento;
-        form.appendChild(input);
-
-        input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "imovelBairro";
-        input.value = data.imovelBairro === null ? "" : data.imovelBairro;
-        form.appendChild(input);
-
-        input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "imovelCidade";
-        input.value = data.imovelCidade === null ? "" : data.imovelCidade;
-        form.appendChild(input);
-
-        input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "imovelEstado";
-        input.value = data.imovelEstado === null ? "" : data.imovelEstado;
-        form.appendChild(input);
-
-        input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "imovelDormitorios";
-        input.value = data.imovelDormitorios === null ? "" : data.imovelDormitorios;
-        form.appendChild(input);
-
-        input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "imovelVagas";
-        input.value = data.imovelVagas === null ? "" : data.imovelVagas;
-        form.appendChild(input);
-
-        input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "imovelCep";
-        input.value = data.imovelCep === null ? "" : data.imovelCep;
-        form.appendChild(input);
-
-        input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "imovelCondominio";
-        input.value = data.imovelCondominio === null ? "" : data.imovelCondominio;
-        form.appendChild(input);
-
-        input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "imovelIptu";
-        input.value = data.imovelIptu === null ? "" : data.imovelIptu;
-        form.appendChild(input);
-
-        input = document.createElement("INPUT");
-        input.type = "hidden";
-        input.name = "visitaAcompanhada";
-        input.value = data.visitaAcompanhada === null ? "" : data.visitaAcompanhada;
-        form.appendChild(input);
-
-        if (data.modulo !== null && data.modulo !== undefined) {
-            input = document.createElement("INPUT");
-            input.type = "hidden";
-            input.name = "modulo";
-            input.value = data.modulo === null ? "" : data.modulo;
-            form.appendChild(input);
-        }
-        if (data.ModalidadeCredPago !== null && data.ModalidadeCredPago !== undefined) {
-            input = document.createElement("INPUT");
-            input.type = "hidden";
-            input.name = "ModalidadeCredPago";
-            input.value = data.ModalidadeCredPago;
-            form.appendChild(input);
-        }
-        if (data.ModalidadeFianca !== null && data.ModalidadeFianca !== undefined) {
-            input = document.createElement("INPUT");
-            input.type = "hidden";
-            input.name = "ModalidadeFianca";
-            input.value = data.ModalidadeFianca;
-            form.appendChild(input);
-        }
-        if (data.ModalidadeFiador !== null && data.ModalidadeFiador !== undefined) {
-            input = document.createElement("INPUT");
-            input.type = "hidden";
-            input.name = "ModalidadeFiador";
-            input.value = data.ModalidadeFiador;
-            form.appendChild(input);
-        }
-        if (data.ModalidadeTituloCap !== null && data.ModalidadeTituloCap !== undefined) {
-            input = document.createElement("INPUT");
-            input.type = "hidden";
-            input.name = "ModalidadeTituloCap";
-            input.value = data.ModalidadeTituloCap;
-            form.appendChild(input);
-        }
-
-        form.submit();
-    }
+    
 
 };

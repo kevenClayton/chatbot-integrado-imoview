@@ -554,29 +554,19 @@
 
 .imoview-chatbot .imoview-brand {
     position: absolute;
-
     display: inline-block;
     width: 100%;
-
     margin: 0;
-
     text-align: center;
-
-    bottom: -1.70em;
+    bottom: -1.5em;
+    background: #eee;
+    box-shadow: 0 0 24px 0 rgb(0 0 0 / 15%);
+    border-radius: 0 0 6px 6px!important;
 }
 
 .imoview-chatbot .imoview-brand a {
-    padding-top: 8px;
-    background: #eee;
-
     margin-top: 1px;
-
-    box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.15);
-
     border-radius: 0 0 6px 6px!important;
-
-    border: 1px solid #ddd;
-
     display: inline-block !important;
 }
 
@@ -678,7 +668,7 @@
 
 .imoview-chatbot .imoview-ctx>div>.imoview-container.imoview-full {
     bottom: 0;
-    border-radius: 8px 8px 8px 8px!important;
+    border-radius: 0px!important;
 }
 
 .imoview-chatbot .imoview-ctx>div>.imoview-overlay {
@@ -3351,70 +3341,6 @@ input[type=text] {
     transform: scale(-1, 1);
 }
 
-.imoview-chatbot .imoview-mobile-brand {
-    position: absolute;
-
-    bottom: 0; left: 0;
-
-    width: 100%;
-    text-align: center;
-
-    margin-bottom: -28px;
-}
-
-.imoview-chatbot .imoview-mobile-brand .imoview-logo {
-    width: 160px;
-    opacity: 0.5;
-}
-
-.imoview-chatbot .imoview-brand {
-    position: absolute;
-
-    display: inline-block;
-    width: 100%;
-
-    margin: 0;
-
-    text-align: center;
-
-    bottom: -1.70em;
-}
-
-.imoview-chatbot .imoview-brand a {
-    padding-top: 8px;
-    background: #eee;
-
-    margin-top: 1px;
-
-    box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.15);
-
-    border-radius: 0 0 6px 6px!important;
-
-    border: 1px solid #ddd;
-
-    display: inline-block !important;
-}
-
-.imoview-chatbot .imoview-brand a img {
-    padding: 0;
-    margin: 0;
-    vertical-align: baseline;
-    opacity: 0.7;
-}
-
-.imoview-chatbot .imoview-brand a img:hover {
-    opacity: 1;
-}
-
-.imoview-chatbot img.imoview-3rdparty-branding {
-    height: 58px;
-    width: auto !important;
-
-    margin: 0 auto;
-    padding-top: 6px;
-
-    display: none;
-}
 
 .imoview-chatbot .imoview-logo {
     width: 200px;
@@ -3482,7 +3408,7 @@ input[type=text] {
     padding-bottom: 60px;
     border-radius: 8px 8px 0 0!important;
 
-    background-color: white;
+    background-color: #e3e3e3;
 
     overflow: hidden;
 }
@@ -3493,7 +3419,8 @@ input[type=text] {
 
 .imoview-chatbot .imoview-ctx>div>.imoview-container.imoview-full {
     bottom: 0;
-    border-radius: 8px 8px 8px 8px!important;
+    border-radius: 0 !important;
+    box-shadow: 0 0 24px 0 rgb(0 0 0 / 15%);
 }
 
 .imoview-chatbot .imoview-ctx>div>.imoview-overlay {
@@ -3519,7 +3446,7 @@ input[type=text] {
     margin: 12px;
     margin-bottom: 0;
 
-    background: #f0f0f0;
+    background: #ffffff;
 
     line-height: 1.5 !important;
     font-size: 0.9em !important;
@@ -4211,16 +4138,6 @@ input[type=text] {
 }
 
   
-
-.imoview-chatbot .imoview-brand a {
-    padding-top: 8px;
-    background: #eee;
-    margin-top: 1px;
-    box-shadow: 0 0 24px 0 rgb(0 0 0 / 15%);
-    border-radius: 0 0 6px 6px!important;
-    border: 1px solid #ddd;
-    display: inline-block !important;
-}
 
 .chat-alert-danger .imoview-bubble{
   background: #fef1f4 !important;
