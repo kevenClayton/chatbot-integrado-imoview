@@ -1107,11 +1107,6 @@ input[type=text] {
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.15);
 }
 
-.imoview-opt:hover {
-    background-image: linear-gradient(to right, #bc002c, #ea083d);
-    box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.3);
-}
-
 .imoview-opt.imoview-selected {
     background-image: linear-gradient(to right, #f31448, #ff6084);
 }
@@ -3860,8 +3855,8 @@ input[type=text] {
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.15);
 }
 
-.imoview-opt:hover {
-    background-image: linear-gradient(to right, #bc002c, #ea083d);
+.imoview-opt:hover {  
+    filter: brightness(1.1);
     box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.3);
 }
 
@@ -4202,4 +4197,26 @@ input[type=text] {
   width: 0;
   height: 10px;
   background-color: #dedede;
+}
+
+
+.imoview-container .imoview-opt.btn-success{
+    background-color: #16c995 !important;
+    border-color: #16c995 !important;    
+}
+.imoview-container .imoview-opt.btn-info{
+    background-color: #4683f1 !important;
+    border-color: #4683f1 !important;    
+}
+.imoview-container .imoview-opt.btn-danger{
+    background-color: #f52a5c !important;
+    border-color: #f52a5c !important;    
+}
+.imoview-container .imoview-opt.btn-warning{
+    background-color: #ff9f36 !important;
+    border-color: #ff9f36 !important;    
+}
+.imoview-container .imoview-opt.btn-dark{
+    background-color: #272838 !important;
+    border-color: #272838 !important;    
 }
