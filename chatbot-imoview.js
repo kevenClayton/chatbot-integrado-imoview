@@ -265,7 +265,7 @@ var IMOVIEW = {
                                 }
 
                                 htmlBotoes +=
-                                    '<span class="card-chatbot-imoview" style="max-width: 100%;display: inline-block;border-radius: 24px!important;margin-left: 12px;margin: 6px 6px 0 0; background: #e3e9ef !important;margin-bottom: 8px;color: #6e6e6e !important;padding: 15px;font-size: 13px !important;">' +
+                                    '<span class="card-chatbot-imoview" style="">' +
                                         '<p style="color: #979797 !important;line-height: 18px !important;margin-bottom: 10px;">' +
                                             menu.nome +
                                         '</p>' +
@@ -288,7 +288,7 @@ var IMOVIEW = {
                                 }
 
                                 htmlBotoes +=
-                                    '<span class="card-chatbot-imoview limparChat class="limparChat"" style="display: inline-block;max-width:100%;border-radius: 24px!important;margin-left: 12px;margin: 6px 6px 0 0; background: #e3e9ef !important;margin-bottom: 8px;color: #6e6e6e !important;padding: 15px;font-size: 13px !important;">' +
+                                    '<span class="card-chatbot-imoview limparChat class="limparChat"" style="">' +
                                         '<p style="color: #979797 !important;line-height: 18px !important;margin-bottom: 10px;">'+
                                             menu.nome +
                                         '</p>'+

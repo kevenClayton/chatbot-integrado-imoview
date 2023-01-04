@@ -210,8 +210,8 @@
     content: "";
 
     /* Form */
-    width: 15px;
-    height: 15px;
+    width: 12px;
+    height: 12px;
     border-radius: 9px !important;
 
     /* Position */
@@ -4219,4 +4219,16 @@ input[type=text] {
 .imoview-container .imoview-opt.btn-dark{
     background-color: #272838 !important;
     border-color: #272838 !important;    
+}
+
+.card-chatbot-imoview{
+    display: inline-block;
+    border-radius: 24px!important;    
+    margin: 6px 6px 0 0;
+    background: #f5f5f5;
+    margin-bottom: 8px;
+    color: #6e6e6e !important;
+    padding: 15px;
+    font-size: 13px !important;
+    border: 1px solid #fff;
 }
