@@ -130,11 +130,11 @@
 .imoview-chatbot {
     color: inherit;
     font: inherit;
-    font-family: "Helvetica Neue", "Neue Helvetica W01", Helvetica, Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    font-family: "Segoe UI",Helvetica, "Helvetica Neue", "Neue Helvetica W01", Arial, -apple-system, BlinkMacSystemFont, Roboto, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
     box-sizing: content-box;
 }
 
-.imoview-chatbot * {
+.imoview-chatbot * {    
     font: inherit!important;
     color: inherit;
     margin: initial;
@@ -269,9 +269,6 @@
     font-size: 16px!important;
 }
 
-.imoview-chatbot .imoview-invite-message-text {
-    font-family: "Helvetica Neue", "Neue Helvetica W01", Helvetica, Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !important;
-}
 
 .imoview-chatbot .imoview-invite-message-text strong {
     font-weight: bold !important
@@ -3037,7 +3034,7 @@ input[type=text] {
 }
 
 .imoview-chatbot .imoview-invite-message-text {
-    font-family: "Helvetica Neue", "Neue Helvetica W01", Helvetica, Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !important;
+    font-family: Roboto, "Helvetica Neue", "Neue Helvetica W01", Helvetica, Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !important;
 }
 
 .imoview-chatbot .imoview-invite-message-text strong {
@@ -3354,18 +3351,6 @@ input[type=text] {
     align-items: center;
 }
 
-.imoview-chatbot .imoview-infobar>.imoview-avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 25px!important;
-
-    left: 12px;
-    top: 11px;
-
-    position: absolute;
-
-    background-size: cover;
-}
 
 .imoview-chatbot .imoview-infobar>.imoview-avatar::after {
     border: 2px solid #cf0237;
