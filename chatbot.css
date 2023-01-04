@@ -155,7 +155,7 @@
 }
 
 .imoview-chatbot p {
-    color: #555;
+    color: #000;
 }
 .card-chatbot-imoview .imoview-opt{
   float: right;
@@ -206,27 +206,19 @@
     cursor: pointer;
 }
 
-.imoview-chatbot .imoview-avatar::after {
+/* .imoview-chatbot .imoview-avatar::after {
     content: "";
-
-    /* Form */
     width: 12px;
     height: 12px;
     border-radius: 9px !important;
-
-    /* Position */
     position: absolute;
-    bottom: 0;
-    right: 0;
-
-    /* Looks */
+    bottom: -4px;
+    right: -4px;
     background-color: #2ecc71;
-
     animation: imoview-super-pop-in 0.5s cubic-bezier(0,.35,.28,.9) forwards;
     animation-delay: 1s;
-
     transform: scale(0, 0);
-}
+} */
 
 .imoview-chatbot .imoview-clear {
     clear: both;
