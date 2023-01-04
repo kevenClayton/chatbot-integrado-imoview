@@ -559,7 +559,7 @@
     margin: 0;
     text-align: center;
     bottom: -1.5em;
-    background: #eee;
+    background: #fff;
     box-shadow: 0 0 24px 0 rgb(0 0 0 / 15%);
     border-radius: 0 0 6px 6px!important;
 }
@@ -3644,7 +3644,7 @@ input[type=text] {
 
     left: 0; right: 0;
 
-    bottom: 16px;
+    bottom: 9px;
     height: 48px;
 
     border-radius: 0 0 8px 8px!important;
