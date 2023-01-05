@@ -67,7 +67,12 @@ var IMOVIEW = {
         var novoValor = "";
         var valoresAnterioresObjeto = new Array();
         // valoresAnterioresObjeto = valoresAnteriores;
-        
+        if (seletorInput != "") {
+             var itemConteudo = document.querySelector('#'+seletorInput);
+        }
+       
+
+
          if (IMOVIEW.Maximado == false) {
             document.querySelector('.botaoMaximar').addEventListener("click", IMOVIEW.MaximarJanelaChat);  
         }
@@ -127,11 +132,10 @@ var IMOVIEW = {
             IMOVIEW.RetonarSelecionado((ehSelect ? label : valorInput), 'Resposta');
 
     
-        }else if(seletorInput != "" && botao == true){
-            conteudoBotao = document.querySelector('#' + seletorInput).textContent; 
-            
-            IMOVIEW.RetonarSelecionado(conteudoBotao);
-
+        }else if(seletorInput != "" && botao == true){            
+            IMOVIEW.RetonarSelecionado(itemConteudo.textContent);
+            var contanteLimpar = itemConteudo.dataset.limpar;
+            valoresAnterioresObjeto = valoresAnterioresObjeto.filter(item => item.constante != contanteLimpar)
             // htmlSelecionado = '<div class="imoview-group imoview-right"><div class="imoview-container"><div class="imoview-msg"><div class="imoview-bubble" style="background: #4c4c4c;color: white !important;"><div><div><p style="color:white !important;">Selecionado: '+conteudoBotao+'</p></div><div class="imoview-clear"></div></div></div></div></div><div class="imoview-clear"></div></div>';
             // botoesNaTela = document.querySelectorAll('.removerAposClickBotao');
             // botoesNaTela.forEach(function(botaoNaTela){
@@ -143,8 +147,7 @@ var IMOVIEW = {
         console.log(valorInput);
         console.log('PARAMETROS: ' + constanteAtual, seletorInput, valoresAnteriores);
         
-        IMOVIEW.Loading();
-        
+        IMOVIEW.Loading();        
         IMOVIEW.ScrollBottom();
 
         data = {
@@ -215,7 +218,7 @@ var IMOVIEW = {
                           
                             case 'button':
                                 constanteAtualBotao = menu.constante;                                
-                                htmlBotoes += '<span id="' + IdBotaoOpcoes + '" class="imoview-opt btn-chatbot-imoview-'+menu.estilo+' removerAposClickBotao" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtualBotao + ', \'' + IdBotaoOpcoes + '\',\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores)).replace(/'/g, '')) + '\', true, false, ' + menu.proximaPagina + ')\" style="">' + menu.nome + '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDYuMC1jMDA2IDc5LjE2NDc1MywgMjAyMS8wMi8xNS0xMTo1MjoxMyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIyLjMgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkUyQzQwQzVEOEFERTExRURBRDUwOTg5MzQ1MjJFNUFBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkUyQzQwQzVFOEFERTExRURBRDUwOTg5MzQ1MjJFNUFBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RTJDNDBDNUI4QURFMTFFREFENTA5ODkzNDUyMkU1QUEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RTJDNDBDNUM4QURFMTFFREFENTA5ODkzNDUyMkU1QUEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6qJ69sAAAA1ElEQVR42qyWPQoCMRBGo+JhLNSbeAVZEZvFg4iNhdtbWngXexE8hFYWO34W4hKTOH8DD0ISeEwmGRKIKCQYgSu4g1VmD5vcwo6+8QRzi6Qf0nHpjIfgAKqgjYx9ABr6jcrzuD64iDibUqKFt8SckSRttUhaRNXRae69OCPtAxOJLO1iD9pINPOWvDlHkqOkrXBiA8bR3EnSVv6xTdSk9qyJSKCRiAVSiUogkagFXIlJwJGYBSVJz0tQkiy9BKUXP+2MW1CDxvsjMQE38ABr67/rJcAAcOPXUw4ZoCcAAAAASUVORK5CYII=" alt="Right Arrow" style="float: right; width: 16px; height: 16px; margin-left: 2px;"></span>' + htmlAjuda;
+                                htmlBotoes += '<span id="' + IdBotaoOpcoes + '" data-limpar="'+ menu.constanteALimpar +'" class="imoview-opt btn-chatbot-imoview-'+menu.estilo+' removerAposClickBotao" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtualBotao + ', \'' + IdBotaoOpcoes + '\',\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores)).replace(/'/g, '')) + '\', true, false, ' + menu.proximaPagina + ')\" style="">' + menu.nome + '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDYuMC1jMDA2IDc5LjE2NDc1MywgMjAyMS8wMi8xNS0xMTo1MjoxMyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIyLjMgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkUyQzQwQzVEOEFERTExRURBRDUwOTg5MzQ1MjJFNUFBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkUyQzQwQzVFOEFERTExRURBRDUwOTg5MzQ1MjJFNUFBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RTJDNDBDNUI4QURFMTFFREFENTA5ODkzNDUyMkU1QUEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RTJDNDBDNUM4QURFMTFFREFENTA5ODkzNDUyMkU1QUEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6qJ69sAAAA1ElEQVR42qyWPQoCMRBGo+JhLNSbeAVZEZvFg4iNhdtbWngXexE8hFYWO34W4hKTOH8DD0ISeEwmGRKIKCQYgSu4g1VmD5vcwo6+8QRzi6Qf0nHpjIfgAKqgjYx9ABr6jcrzuD64iDibUqKFt8SckSRttUhaRNXRae69OCPtAxOJLO1iD9pINPOWvDlHkqOkrXBiA8bR3EnSVv6xTdSk9qyJSKCRiAVSiUogkagFXIlJwJGYBSVJz0tQkiy9BKUXP+2MW1CDxvsjMQE38ABr67/rJcAAcOPXUw4ZoCcAAAAASUVORK5CYII=" alt="Right Arrow" style="float: right; width: 16px; height: 16px; margin-left: 2px;"></span>' + htmlAjuda;
                                 break;
                             case 'card': //card
                                 constanteAtualBotao = menu.constante;                                
@@ -322,28 +325,8 @@ var IMOVIEW = {
                     }
 
                     }catch (e){
-                        console.log(e);
-                        htmlErroAPlicacao = 
-                            '<div class="imoview-group imoview-left chat-alert-danger">'+
-                                '<div class="imoview-msg-avatar"><img class="imoview-img" src="'+localStorage.getItem("chatBotImoviewAvatarUrl")+'" alt="Avatar"></div>'+
-                                    '<div class="imoview-container">'+
-                                        '<div class="imoview-msg">'+
-                                            '<div class="imoview-bubble">'+
-                                                '<div>'+
-                                                    '<div>'+
-                                                    '<p>'+e.message+'</p>'+
-                                                    '</div>'+
-                                                    '<div class="imoview-clear"></div>'+
-                                                '</div>'+
-                                            '</div>'+
-                                            '<span id="botaoErroDirecionar" class="imoview-opt removerAposClickBotao" onclick=\"IMOVIEW.CarregarConversa(0,0, \'botaoErroDirecionar\',0, true )\" style="">Voltar ao menu principal<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACzSURBVFiF7Ze9DcIwEEY/owgJpDQwAwOwAxUTsACjUadCFGQGsgkdVYpHAxIopsA6x0Lc6+3v+U7+k5xfBZgCB+AGnIDF2AI73rmkSEwMndaS2tEq8WhBy5CkSqRKzIBzRKIDli7hEi7xlQRQA0egjwy0pAdWz9zXk3AvaSupylsfVZKamEBZSrUg12LmxO+J/DvBwz38r8LLPskYvoqTwi2P4k7SJoRwNZzzM5T+mDhW3AFTPw4c5r4MygAAAABJRU5ErkJggg==" alt="Right Arrow" style="float: right; width: 16px; height: 16px; margin-top: 4px; margin-left: 2px;"></span>';
-                                        '</div>'+
-                                    '</div>'+
-                                '<div class="imoview-clear"></div>'+
-                            '</div>';    
-                        document.querySelector('.imoview-scrollable').lastElementChild.insertAdjacentHTML("afterend", htmlErroAPlicacao); 
-                        IMOVIEW.ScrollBottom();
-                        
+                    console.log(e);
+                        IMOVIEW.RetornandoAlert('danger', e.message, true);                                                
                     }
                 });
 
@@ -454,7 +437,19 @@ var IMOVIEW = {
         IMOVIEW.CarregarConversa();
    
     },
+    EsconderConversacao:  function(){
+        var ho = "imoview-hidden-slide",
+        ka = "imoview-nodisplay",
+        fo = "imoview-shown-slide";
 
+        conversacaoSeletor.classList.remove(fo);
+        conversacaoSeletor.classList.add(ho);
+        conversacaoSeletor.classList.add(ka);
+        
+        abrirConversaSeletor = document.querySelector(".imoview-chatbot-invite-message, .imoview-avatar");                
+        abrirConversaSeletor.addEventListener("click", IMOVIEW.MostrarConversacao);
+
+    },
     PressionarEnter: function (e) {
          if(e.which == 13){
           console.log('a tecla enter foi pressionada');
@@ -480,19 +475,7 @@ var IMOVIEW = {
         IMOVIEW.Maximado = false;
     },
 
-    EsconderConversacao:  function(){
-        var ho = "imoview-hidden-slide",
-        ka = "imoview-nodisplay",
-        fo = "imoview-shown-slide";
-
-        conversacaoSeletor.classList.remove(fo);
-        conversacaoSeletor.classList.add(ho);
-        conversacaoSeletor.classList.add(ka);
-        
-        abrirConversaSeletor = document.querySelector(".imoview-chatbot-invite-message, .imoview-avatar");                
-        abrirConversaSeletor.addEventListener("click", IMOVIEW.MostrarConversacao);
-
-    },
+  
     ScrollBottom: function(){
         document.querySelector('.imoview-scrollable').scrollTo(0, document.querySelector('.imoview-scrollable').scrollHeight);
     },
@@ -526,27 +509,14 @@ var IMOVIEW = {
         dataTmp1 = dataTmp1.substr(1, dataTmp1.length - 2);
         var data = JSON.parse(dataTmp1);
 
-        var textoBotaoOriginal = (data.textoBotaoOriginal != '' ? data.textoBotaoOriginal : 'Agende sua visita e alugue online');
-
         var html = "";
         var elId = IMOVIEW.GenareateId();
         var htmlTemp = "<div id=\"" + elId + "\">...</div>";
+        document.write(htmlTemp);
+        
+      
 
-        if (objId != null && objId != undefined) {
-            var objTemp = document.getElementById(objId);
-            objTemp.innerHTML = htmlTemp;
-        } else {
-            document.write(htmlTemp);
-        }
-        html = '';
-
-       
-
-        if (data.htmlPersonalizado != null && data.htmlPersonalizado.length > 0) {
-            html = "<DIV onclick=\"IMOVIEW.Post('" + encodeURIComponent(JSON.stringify(param)) + "');" + data.funcName + "\">" + data.htmlPersonalizado + "</DIV>";
-        } else {
-            html = "<DIV style=\"cursor: pointer;border:0px solid #999; text-align: center; font-size: 15px;  padding: 10px;color: white; background-color: #37CF71; font-weight: bold; border-radius: 3px;\" onclick=\"IMOVIEW.Post('" + encodeURIComponent(JSON.stringify(param)) + "');" + data.funcName + "\">" + textoBotaoOriginal + "</DIV>";
-        }
+     
         var elemento = document.getElementById(elId);
         
         var style = '<style>.imoview-input input,textarea{border-color: '+data.corFundo+' !important}.imoview-submit{background-color: '+data.corFundo+'}.imoview-opt{background: '+data.corFundo+';}.imoview-chatbot .imoview-handle{background: '+data.corFundo+' !important;}.imoview-chatbot .imoview-sel.imoview-messages>.imoview-opt{background-image: none !important; background-color: '+data.corFundo+';}.imoview-conversation-header{background-color:'+data.corFundo+';}.imoview-infobar .imoview-avatar::after{border: 2px solid '+data.corFundo+'!important;}.imoview-avatar{background-color:'+data.corFundo+'; background-image: url('+data.avatarUrlChat+');}</style>';
