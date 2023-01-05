@@ -4170,23 +4170,23 @@ input[type=text] {
 }
 
 
-.imoview-container .imoview-opt.btn-success{
+.imoview-container .imoview-opt.btn-chatbot-imoview-success{
     background-color: #16c995 !important;
     border-color: #16c995 !important;    
 }
-.imoview-container .imoview-opt.btn-info{
+.imoview-container .imoview-opt.btn-chatbot-imoview-info{
     background-color: #4683f1 !important;
     border-color: #4683f1 !important;    
 }
-.imoview-container .imoview-opt.btn-danger{
+.imoview-container .imoview-opt.btn-chatbot-imoview-danger{
     background-color: #f52a5c !important;
     border-color: #f52a5c !important;    
 }
-.imoview-container .imoview-opt.btn-warning{
+.imoview-container .imoview-opt.btn-chatbot-imoview-warning{
     background-color: #ff9f36 !important;
     border-color: #ff9f36 !important;    
 }
-.imoview-container .imoview-opt.btn-dark{
+.imoview-container .imoview-opt.btn-chatbot-imoview-dark{
     background-color: #272838 !important;
     border-color: #272838 !important;    
 }

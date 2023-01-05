@@ -1,6 +1,6 @@
 var IMOVIEW = {
 
-    BaseUrl: "https://api.imoview.com.br/chatbot/Interagir",    
+    BaseUrl: (window.location.host.includes('.com') ? "https://api.imoview.com.br/chatbot/Interagir" : 'http://localhost:51472/chatbot/Interagir'),    
     UrlHtml: "chatbot.html",
     Maximado: false,    
     
@@ -48,7 +48,7 @@ var IMOVIEW = {
         return v
     
     },
-
+    
     Telefone: function(v){
         v = v.replace(/\D/g, "")
 
@@ -100,7 +100,7 @@ var IMOVIEW = {
 
             valoresAnterioresObjeto.push(novoValor);
             
-            htmlSelecionado = '<div class="imoview-group imoview-right"><div class="imoview-container"><div class="imoview-msg"><div class="imoview-bubble" style="background: #4c4c4c;color: white !important;"><div><div><p style="color:white !important;">Selecionado - '+label+'</p></div><div class="imoview-clear"></div></div></div></div></div><div class="imoview-clear"></div></div>';
+            htmlSelecionado = '<div class="imoview-group imoview-right"><div class="imoview-container"><div class="imoview-msg"><div class="imoview-bubble" style="background: #4c4c4c;color: white !important;"><div><div><p style="color:white !important;">Selecionado: '+label+'</p></div><div class="imoview-clear"></div></div></div></div></div><div class="imoview-clear"></div></div>';
             botoesNaTela = document.querySelectorAll('.removerAposClickBotao');
             botoesNaTela.forEach(function(botaoNaTela){
                 botaoNaTela.remove()
@@ -113,6 +113,11 @@ var IMOVIEW = {
             inputDados = document.querySelector('#'+seletorInput);
             valorInput = (ehSelect ? inputDados.dataset.value : inputDados.value);
             label = (ehSelect ? inputDados.dataset.label : inputDados.placeholder);
+
+            if (valorInput == "") {
+                 IMOVIEW.RetornandoAlert('danger', 'Informação obrigatória')
+                return false;
+            }
             
             var novoValor = {
                 "constante": (botao == true ? constanteAtual : inputDados.dataset.constante),
@@ -122,12 +127,16 @@ var IMOVIEW = {
             if(botao == false){
                 valoresAnterioresObjeto = valoresAnterioresObjeto.filter(item => item.constante != inputDados.dataset.constante)
             }
-
             valoresAnterioresObjeto.push(novoValor);
+            conteudoBotao = document.querySelector('#' + seletorInput).value; 
+            htmlSelecionado = '<div class="imoview-group imoview-right"><div class="imoview-container"><div class="imoview-msg"><div class="imoview-bubble" style="background: #4c4c4c;color: white !important;"><div><div><p style="color:white !important;">Reposta:  ' + conteudoBotao + '</p></div><div class="imoview-clear"></div></div></div></div></div><div class="imoview-clear"></div></div>';
+            document.querySelector('.imoview-scrollable').lastElementChild.insertAdjacentHTML("afterend", htmlSelecionado);
+
+          
     
         }else if(seletorInput != "" && botao == true){
             conteudoBotao =  document.querySelector('#'+seletorInput).textContent; 
-            htmlSelecionado = '<div class="imoview-group imoview-right"><div class="imoview-container"><div class="imoview-msg"><div class="imoview-bubble" style="background: #4c4c4c;color: white !important;"><div><div><p style="color:white !important;">selecionado - '+conteudoBotao+'</p></div><div class="imoview-clear"></div></div></div></div></div><div class="imoview-clear"></div></div>';
+            htmlSelecionado = '<div class="imoview-group imoview-right"><div class="imoview-container"><div class="imoview-msg"><div class="imoview-bubble" style="background: #4c4c4c;color: white !important;"><div><div><p style="color:white !important;">Selecionado: '+conteudoBotao+'</p></div><div class="imoview-clear"></div></div></div></div></div><div class="imoview-clear"></div></div>';
             botoesNaTela = document.querySelectorAll('.removerAposClickBotao');
             botoesNaTela.forEach(function(botaoNaTela){
                 botaoNaTela.remove()
@@ -155,6 +164,7 @@ var IMOVIEW = {
             '</div>';
         
         document.querySelector('.imoview-scrollable').lastElementChild.insertAdjacentHTML("afterend", htmlLoading);
+        
         IMOVIEW.ScrollBottom();
 
         data = {
@@ -177,39 +187,22 @@ var IMOVIEW = {
             credentials: 'same-origin', // include, *same-origin, omit
             headers: new Headers({
                 'Content-Type': 'application/json;charset=utf-8',
-                'Accept': '*/*',
-                'Origin':'http://modelogold.test',
-                'Referer':'http://modelogold.test',
+                'Accept': '/',
+                'Origin':'http://modelogold.test/',
+                'Referer':'http://modelogold.test/',
                 'Connection':'keep-alive',
-                'Cache': 'no-cache', //
+                'Cache': 'no-cache', //,
             })
           })
           .then(function(response) {
             console.log(response);           
             if(response.status != 200){
                 response.text().then((text) => { 
-                    retornoJson = JSON.parse(text);                        
-                    htmlErroAPlicacao = 
-                        '<div class="imoview-group imoview-left chat-alert-danger">'+
-                            '<div class="imoview-msg-avatar"><img class="imoview-img" src="'+localStorage.getItem("chatBotImoviewAvatarUrl")+'" alt="Avatar"></div>'+
-                                '<div class="imoview-container">'+
-                                    '<div class="imoview-msg">'+
-                                        '<div class="imoview-bubble">'+
-                                            '<div>'+
-                                                '<div>'+
-                                                '<p>'+ retornoJson.mensagem +'</p>'+
-                                                '</div>'+
-                                                '<div class="imoview-clear"></div>'+
-                                            '</div>'+
-                                        '</div>'+
-                                        '<span id="botaoErroDirecionar" class="imoview-opt removerAposClickBotao" onclick=\"IMOVIEW.CarregarConversa(0,0, \'botaoErroDirecionar\',0, true )\" style="">Voltar ao menu principal<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACzSURBVFiF7Ze9DcIwEEY/owgJpDQwAwOwAxUTsACjUadCFGQGsgkdVYpHAxIopsA6x0Lc6+3v+U7+k5xfBZgCB+AGnIDF2AI73rmkSEwMndaS2tEq8WhBy5CkSqRKzIBzRKIDli7hEi7xlQRQA0egjwy0pAdWz9zXk3AvaSupylsfVZKamEBZSrUg12LmxO+J/DvBwz38r8LLPskYvoqTwi2P4k7SJoRwNZzzM5T+mDhW3AFTPw4c5r4MygAAAABJRU5ErkJggg==" alt="Right Arrow" style="float: right; width: 16px; height: 16px; margin-top: 4px; margin-left: 2px;"></span>';
-                                    '</div>'+
-                                '</div>'+
-                            '<div class="imoview-clear"></div>'+
-                        '</div>';    
-                    document.querySelector('.imoview-scrollable').lastElementChild.insertAdjacentHTML("afterend", htmlErroAPlicacao); 
+                    retornoJson = JSON.parse(text); 
+                    IMOVIEW.RetornandoAlert('danger', retornoJson.mensagem, true);
                     
-                    IMOVIEW.ScrollBottom();
+                    IMOVIEW.RemoverLoading();
+                    
                     return false;
                 });
             } 
@@ -246,7 +239,7 @@ var IMOVIEW = {
                             case 'button':
                                 constanteAtualBotao = menu.constante;
                                 nivelAtualBotao = menu.proximoNivel;
-                                htmlBotoes += '<span id="' + IdBotaoOpcoes + '" class="imoview-opt btn-'+menu.estilo+' removerAposClickBotao" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtualBotao + ',' + nivelAtualBotao + ', \'' + IdBotaoOpcoes + '\',\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores)).replace(/'/g, '')) + '\', true, false, ' + menu.proximaPagina + ')\" style="">' + menu.nome + '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDYuMC1jMDA2IDc5LjE2NDc1MywgMjAyMS8wMi8xNS0xMTo1MjoxMyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIyLjMgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkUyQzQwQzVEOEFERTExRURBRDUwOTg5MzQ1MjJFNUFBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkUyQzQwQzVFOEFERTExRURBRDUwOTg5MzQ1MjJFNUFBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RTJDNDBDNUI4QURFMTFFREFENTA5ODkzNDUyMkU1QUEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RTJDNDBDNUM4QURFMTFFREFENTA5ODkzNDUyMkU1QUEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6qJ69sAAAA1ElEQVR42qyWPQoCMRBGo+JhLNSbeAVZEZvFg4iNhdtbWngXexE8hFYWO34W4hKTOH8DD0ISeEwmGRKIKCQYgSu4g1VmD5vcwo6+8QRzi6Qf0nHpjIfgAKqgjYx9ABr6jcrzuD64iDibUqKFt8SckSRttUhaRNXRae69OCPtAxOJLO1iD9pINPOWvDlHkqOkrXBiA8bR3EnSVv6xTdSk9qyJSKCRiAVSiUogkagFXIlJwJGYBSVJz0tQkiy9BKUXP+2MW1CDxvsjMQE38ABr67/rJcAAcOPXUw4ZoCcAAAAASUVORK5CYII=" alt="Right Arrow" style="float: right; width: 16px; height: 16px; margin-left: 2px;"></span>' + htmlAjuda;
+                                htmlBotoes += '<span id="' + IdBotaoOpcoes + '" class="imoview-opt btn-chatbot-imoview-'+menu.estilo+' removerAposClickBotao" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtualBotao + ',' + nivelAtualBotao + ', \'' + IdBotaoOpcoes + '\',\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores)).replace(/'/g, '')) + '\', true, false, ' + menu.proximaPagina + ')\" style="">' + menu.nome + '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDYuMC1jMDA2IDc5LjE2NDc1MywgMjAyMS8wMi8xNS0xMTo1MjoxMyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIyLjMgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkUyQzQwQzVEOEFERTExRURBRDUwOTg5MzQ1MjJFNUFBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkUyQzQwQzVFOEFERTExRURBRDUwOTg5MzQ1MjJFNUFBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RTJDNDBDNUI4QURFMTFFREFENTA5ODkzNDUyMkU1QUEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RTJDNDBDNUM4QURFMTFFREFENTA5ODkzNDUyMkU1QUEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6qJ69sAAAA1ElEQVR42qyWPQoCMRBGo+JhLNSbeAVZEZvFg4iNhdtbWngXexE8hFYWO34W4hKTOH8DD0ISeEwmGRKIKCQYgSu4g1VmD5vcwo6+8QRzi6Qf0nHpjIfgAKqgjYx9ABr6jcrzuD64iDibUqKFt8SckSRttUhaRNXRae69OCPtAxOJLO1iD9pINPOWvDlHkqOkrXBiA8bR3EnSVv6xTdSk9qyJSKCRiAVSiUogkagFXIlJwJGYBSVJz0tQkiy9BKUXP+2MW1CDxvsjMQE38ABr67/rJcAAcOPXUw4ZoCcAAAAASUVORK5CYII=" alt="Right Arrow" style="float: right; width: 16px; height: 16px; margin-left: 2px;"></span>' + htmlAjuda;
                                 break;
                             case 'select':
                                 constanteAtualBotao = menu.constante;
@@ -301,44 +294,42 @@ var IMOVIEW = {
                                 //Inserindo as mascáras
                                 switch(menu.tipoMascara){
                                     case 'cpf':
-                                        propriedades = 'maxlength="18" onkeypress="IMOVIEW.MascaraMutuario(this, IMOVIEW.CpfCnpj)"  onblur="clearTimeout()"';
+                                        propriedades = 'maxlength="18" onkeyup="IMOVIEW.MascaraMutuario(this, IMOVIEW.CpfCnpj)"  onblur="clearTimeout()"';
                                         break;
-                                    case 'celular':
-                                        propriedades = 'maxlength="18" onkeypress="IMOVIEW.MascaraMutuario(this, IMOVIEW.Telefone)"  onblur="clearTimeout()"';
+                                    case 'telefone':
+                                        propriedades = 'maxlength="15" onkeyup="IMOVIEW.MascaraMutuario(this, IMOVIEW.Telefone)"  onblur="clearTimeout()"';
                                         break;
                                     case 'email':
                                         break;
                                 }
-                                htmlInput += '<input onkeyup="javascript: if(event.keyCode == 13) IMOVIEW.CarregarConversa('+constanteAtual+','+nivelAtual+', \'' + idInput + '\' ,\'' +(valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) +'\');" class="limparChat input-chat"  id="'+idInput+'" value="" '+propriedades+' data-constante="'+menu.constante+'" type="text"  autocomplete="name" placeholder="'+menu.nome+'" list="" style="border-color: rgb(76, 175, 80);"><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa('+constanteAtual+','+nivelAtual+', \'' + idInput + '\' ,\'' +(valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) +'\')\"></div>'+ htmlAjuda;                        
+                                htmlInput += '<input onkeypress="javascript: if(event.keyCode == 13) IMOVIEW.CarregarConversa('+constanteAtual+','+nivelAtual+', \'' + idInput + '\' ,\'' +(valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) +'\');" class="limparChat input-chat"  id="'+idInput+'" value="" '+propriedades+' data-constante="'+menu.constante+'" type="text"  autocomplete="name" placeholder="'+menu.nome+'" list="" style="border-color: rgb(76, 175, 80);"><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa('+constanteAtual+','+nivelAtual+', \'' + idInput + '\' ,\'' +(valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) +'\')\"></div>'+ htmlAjuda;                        
                                 break
                             case 'textarea':
-                                htmlInput += '<textarea onkeyup="javascript: if(event.keyCode == 13) IMOVIEW.CarregarConversa('+constanteAtual+','+nivelAtual+', \'' + idInput + '\' ,\'' +(valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) +'\');" class="limparChat input-chat"  id="' + idInput + '"  data-constante="' + menu.constante + '" placeholder="' + menu.nome + '" style="border-color: rgb(76, 175, 80);"></textarea><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtual + ',' + nivelAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\')\"></div>' + htmlAjuda;
+                                htmlInput += '<textarea onkeypress="javascript: if(event.keyCode == 13) IMOVIEW.CarregarConversa('+constanteAtual+','+nivelAtual+', \'' + idInput + '\' ,\'' +(valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) +'\');" class="limparChat input-chat"  id="' + idInput + '"  data-constante="' + menu.constante + '" placeholder="' + menu.nome + '" style="border-color: rgb(76, 175, 80);"></textarea><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtual + ',' + nivelAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\')\"></div>' + htmlAjuda;
                                 break;
                             case 'password':
-                                htmlInput += '<input  onkeyup="javascript: if(event.keyCode == 13) IMOVIEW.CarregarConversa('+constanteAtual+','+nivelAtual+', \'' + idInput + '\' ,\'' +(valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) +'\');" class="limparChat input-chat" id="' + idInput + '" value="" data-constante="' + menu.constante + '" type="password" autocomplete="name" onblur="clearTimeout()" placeholder="' + menu.nome + '" list="" style="border-color: rgb(76, 175, 80);"><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtual + ',' + nivelAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\')\"></div>' + htmlAjuda;
+                                htmlInput += '<input  onkeypress="javascript: if(event.keyCode == 13) IMOVIEW.CarregarConversa('+constanteAtual+','+nivelAtual+', \'' + idInput + '\' ,\'' +(valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) +'\');" class="limparChat input-chat" id="' + idInput + '" value="" data-constante="' + menu.constante + '" type="password" autocomplete="name" onblur="clearTimeout()" placeholder="' + menu.nome + '" list="" style="border-color: rgb(76, 175, 80);"><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtual + ',' + nivelAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\')\"></div>' + htmlAjuda;
                                 break;
                             case 'file': 
                                 htmlBotoes += '<span class="card-chatbot-imoview limparChat" style="display: inline-block;border-radius: 24px!important;margin-left: 12px;margin: 6px 6px 0 0; background: #e3e9ef !important;margin-bottom: 8px;color: #6e6e6e !important;padding: 15px;font-size: 13px !important;"><p style="color: #979797 !important;line-height: 18px !important;">'+menu.nome+'</p><a href="'+menu.url+'" target="_blank" download="'+menu.nome+'" class="imoview-opt">Download<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACzSURBVFiF7Ze9DcIwEEY/owgJpDQwAwOwAxUTsACjUadCFGQGsgkdVYpHAxIopsA6x0Lc6+3v+U7+k5xfBZgCB+AGnIDF2AI73rmkSEwMndaS2tEq8WhBy5CkSqRKzIBzRKIDli7hEi7xlQRQA0egjwy0pAdWz9zXk3AvaSupylsfVZKamEBZSrUg12LmxO+J/DvBwz38r8LLPskYvoqTwi2P4k7SJoRwNZzzM5T+mDhW3AFTPw4c5r4MygAAAABJRU5ErkJggg==" alt="Right Arrow" style="float: right; width: 16px; height: 16px; margin-top: 4px; margin-left: 2px;"></a></span>' + htmlAjuda;
                                 break;
-                            case 'alert':                            
-                                htmlBotoes += 
-                                    '<div class="imoview-bubble chat-alert-'+menu.estilo+'" style="margin-top: 10px">'+
-                                        '<div>'+
-                                            '<div>'+
-                                            '<p>'+menu.nome+'</p>'+
-                                            '</div>'+
-                                            '<div class="imoview-clear"></div>'+
-                                        '</div>'+
-                                    '</div>';                                                                  
+                            case 'alert':  
+                                IMOVIEW.RetornandoAlert(menu.estilo, menu.nome);    
+                                // htmlBotoes += 
+                                //     '<div class="imoview-bubble chat-alert-'+menu.estilo+'" style="margin-top: 10px">'+
+                                //         '<div>'+
+                                //             '<div>'+
+                                //             '<p>'+menu.nome+'</p>'+
+                                //             '</div>'+
+                                //             '<div class="imoview-clear"></div>'+
+                                //         '</div>'+
+                                //     '</div>';                                                                  
                                 break;
                         }
                     });
                         
                         
-                    loadingPagina = document.querySelectorAll('.loading-chat');
-                    loadingPagina.forEach(function(loadingPag){
-                        loadingPag.remove();
-                    });
+                    IMOVIEW.RemoverLoading();
 
                     htmlMensagemPrincipal += 
                         '<div class="imoview-group imoview-left">'+
@@ -421,6 +412,38 @@ var IMOVIEW = {
         
     },
     
+    RemoverLoading: function () {
+        loadingPagina = document.querySelectorAll('.loading-chat');
+        loadingPagina.forEach(function(loadingPag){
+            loadingPag.remove();
+        });
+    },
+    
+    RetornandoAlert: function (tipo, mensagem, retornarBotaoVoltarPrincipal = false) {
+       htmlAlert = 
+            '<div class="imoview-group imoview-left chat-alert-'+tipo+'">'+
+                '<div class="imoview-msg-avatar"><img class="imoview-img" src="'+localStorage.getItem("chatBotImoviewAvatarUrl")+'" alt="Avatar"></div>'+
+                    '<div class="imoview-container">'+
+                        '<div class="imoview-msg">'+
+                            '<div class="imoview-bubble">'+
+                                '<div>'+
+                                    '<div>'+
+                                    '<p>'+ mensagem +'</p>'+
+                                    '</div>'+
+                                    '<div class="imoview-clear"></div>'+
+                                '</div>'+
+                        '</div>' +
+                        (retornarBotaoVoltarPrincipal ? 
+                            '<span id="botaoErroDirecionar" class="imoview-opt btn-chatbot-imoview-dark removerAposClickBotao" onclick=\"IMOVIEW.CarregarConversa(0,0, \'botaoErroDirecionar\',0, true )\" style="">Voltar ao menu principal<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACzSURBVFiF7Ze9DcIwEEY/owgJpDQwAwOwAxUTsACjUadCFGQGsgkdVYpHAxIopsA6x0Lc6+3v+U7+k5xfBZgCB+AGnIDF2AI73rmkSEwMndaS2tEq8WhBy5CkSqRKzIBzRKIDli7hEi7xlQRQA0egjwy0pAdWz9zXk3AvaSupylsfVZKamEBZSrUg12LmxO+J/DvBwz38r8LLPskYvoqTwi2P4k7SJoRwNZzzM5T+mDhW3AFTPw4c5r4MygAAAABJRU5ErkJggg==" alt="Right Arrow" style="float: right; width: 16px; height: 16px; margin-top: 4px; margin-left: 2px;"></span>'
+                        : '') +
+                        '</div>'+
+                    '</div>'+
+                '<div class="imoview-clear"></div>'+
+            '</div>';    
+        document.querySelector('.imoview-scrollable').lastElementChild.insertAdjacentHTML("afterend", htmlAlert); 
+        IMOVIEW.ScrollBottom();
+    },
+
     MostrarConversacao:  function(){
         var ho = "imoview-hidden-slide",
         fo = "imoview-shown-slide",
