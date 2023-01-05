@@ -62,7 +62,7 @@ var IMOVIEW = {
     
     },
 
-    CarregarConversa: function(constanteAtual = 0, seletorInput = "", valoresAnteriores = "", botao = false, card = false, pagina = 1, ehSelect = false){
+    CarregarConversa: function(constanteAtual = 0, seletorInput = "", valoresAnteriores = "", botao = false, card = false, pagina = 1, ehSelect = false, tipo){
         var valorInput = "";
         var novoValor = "";
         var valoresAnterioresObjeto = new Array();
@@ -94,6 +94,7 @@ var IMOVIEW = {
                 "label": label,
                 "valor": valorInput
             }
+
             if(botao == false){
                 valoresAnterioresObjeto = valoresAnterioresObjeto.filter(item => item.constante != inputDados.dataset.constante)
             }
@@ -142,23 +143,7 @@ var IMOVIEW = {
         console.log(valorInput);
         console.log('PARAMETROS: ' + constanteAtual, seletorInput, valoresAnteriores);
         
-        htmlLoading = 
-            '<div class="imoview-group imoview-left loading-chat">'+
-                '<div class="imoview-msg-avatar"><img class="imoview-img" src="'+localStorage.getItem("chatBotImoviewAvatarUrl")+'" alt="Avatar"></div>'+
-                '<div class="imoview-container">'+
-                '<div class="imoview-msg">'+
-                    '<div class="imoview-bubble">'+
-                        '<div>'+
-                            '<div class="imoview-typing-indicator"><span style="background: rgb(170, 170, 170);"></span><span style="background: rgb(170, 170, 170);"></span><span style="background: rgb(170, 170, 170);"></span></div>'+
-                            '<div class="imoview-clear"></div>'+
-                        '</div>'+
-                    '</div>'+                
-                '</div>'+
-                '</div>'+
-                '<div class="imoview-clear"></div>'+
-            '</div>';
-        
-        document.querySelector('.imoview-scrollable').lastElementChild.insertAdjacentHTML("afterend", htmlLoading);
+        IMOVIEW.Loading();
         
         IMOVIEW.ScrollBottom();
 
@@ -194,7 +179,6 @@ var IMOVIEW = {
                 response.text().then((text) => { 
                     retornoJson = JSON.parse(text); 
                     IMOVIEW.RetornandoAlert('danger', retornoJson.mensagem, true);
-                    
                     IMOVIEW.RemoverLoading();
                     
                     return false;
@@ -372,7 +356,24 @@ var IMOVIEW = {
         
         
     },
-    
+    Loading: function () {
+         htmlLoading = 
+            '<div class="imoview-group imoview-left loading-chat">'+
+                '<div class="imoview-msg-avatar"><img class="imoview-img" src="'+localStorage.getItem("chatBotImoviewAvatarUrl")+'" alt="Avatar"></div>'+
+                '<div class="imoview-container">'+
+                '<div class="imoview-msg">'+
+                    '<div class="imoview-bubble">'+
+                        '<div>'+
+                            '<div class="imoview-typing-indicator"><span style="background: rgb(170, 170, 170);"></span><span style="background: rgb(170, 170, 170);"></span><span style="background: rgb(170, 170, 170);"></span></div>'+
+                            '<div class="imoview-clear"></div>'+
+                        '</div>'+
+                    '</div>'+                
+                '</div>'+
+                '</div>'+
+                '<div class="imoview-clear"></div>'+
+            '</div>';
+            document.querySelector('.imoview-scrollable').lastElementChild.insertAdjacentHTML("afterend", htmlLoading);
+    },
     RemoverLoading: function () {
         loadingPagina = document.querySelectorAll('.loading-chat');
         loadingPagina.forEach(function(loadingPag){
@@ -402,7 +403,7 @@ var IMOVIEW = {
                                 '</div>'+
                         '</div>' +
                         (retornarBotaoVoltarPrincipal ? 
-                            '<span id="botaoErroDirecionar" class="imoview-opt btn-chatbot-imoview-dark removerAposClickBotao" onclick=\"IMOVIEW.CarregarConversa(0,0, \'botaoErroDirecionar\',0, true )\" style="">Voltar ao menu principal<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACzSURBVFiF7Ze9DcIwEEY/owgJpDQwAwOwAxUTsACjUadCFGQGsgkdVYpHAxIopsA6x0Lc6+3v+U7+k5xfBZgCB+AGnIDF2AI73rmkSEwMndaS2tEq8WhBy5CkSqRKzIBzRKIDli7hEi7xlQRQA0egjwy0pAdWz9zXk3AvaSupylsfVZKamEBZSrUg12LmxO+J/DvBwz38r8LLPskYvoqTwi2P4k7SJoRwNZzzM5T+mDhW3AFTPw4c5r4MygAAAABJRU5ErkJggg==" alt="Right Arrow" style="float: right; width: 16px; height: 16px; margin-top: 4px; margin-left: 2px;"></span>'
+                            '<span id="botaoErroDirecionar" class="imoview-opt btn-chatbot-imoview-dark removerAposClickBotao" onclick=\"IMOVIEW.CarregarConversa(0,\'botaoErroDirecionar\',0, true )\" style="">Voltar ao menu principal<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACzSURBVFiF7Ze9DcIwEEY/owgJpDQwAwOwAxUTsACjUadCFGQGsgkdVYpHAxIopsA6x0Lc6+3v+U7+k5xfBZgCB+AGnIDF2AI73rmkSEwMndaS2tEq8WhBy5CkSqRKzIBzRKIDli7hEi7xlQRQA0egjwy0pAdWz9zXk3AvaSupylsfVZKamEBZSrUg12LmxO+J/DvBwz38r8LLPskYvoqTwi2P4k7SJoRwNZzzM5T+mDhW3AFTPw4c5r4MygAAAABJRU5ErkJggg==" alt="Right Arrow" style="float: right; width: 16px; height: 16px; margin-top: 4px; margin-left: 2px;"></span>'
                         : '') +
                         '</div>'+
                     '</div>'+
