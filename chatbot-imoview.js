@@ -1,6 +1,6 @@
 var IMOVIEW = {
 
-    BaseUrl: (window.location.host.includes('.com') ? "https://api.imoview.com.br/chatbot/Interagir" : 'http://localhost:51472/chatbot/Interagir'),    
+    BaseUrl: (window.location.host.includes('.io') ? "https://api.imoview.com.br/chatbot/Interagir" : 'http://localhost:51472/chatbot/Interagir'),    
     UrlHtml: "chatbot.html",
     Maximado: false,    
     
