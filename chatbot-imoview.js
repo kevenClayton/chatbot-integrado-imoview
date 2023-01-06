@@ -61,7 +61,50 @@ var IMOVIEW = {
         return v
     
     },
+    FormatarMoeda: function(valor) {
+        valor = valor + '';
+        valor = parseInt(valor.replace(/[\D]+/g, ''));
+        valor = valor + '';
+        valor = valor.replace(/([0-9]{2})$/g, ",$1");
 
+        if (valor.length > 6) {
+            valor = valor.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
+        }
+
+        return 'R$ '+valor;
+    },
+    FormatarPercentual: function(valor) {
+        
+        valor = valor + '';
+        valor = parseInt(valor.replace(/[\D]+/g, ''));
+        valor = valor + '';
+        valor = valor.replace(/([0-9]{2})$/g, ",$1");
+
+        if (valor.length > 6) {
+            valor = valor.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
+        }
+
+        return valor + '%';
+    },
+    FormatarValor: function(valor) {
+        
+        valor = valor + '';
+        valor = parseInt(valor.replace(/[\D]+/g, ''));
+        valor = valor + '';
+        valor = valor.replace(/([0-9]{2})$/g, ",$1");
+
+        if (valor.length > 6) {
+            valor = valor.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
+        }        
+        
+        return valor;
+    },
+    FormatarCep: function(valor) {
+        
+        var valor= valor.replace(/\D/g,"")                
+        valor = valor.replace(/^(\d{5})(\d)/,"$1-$2") 
+       return valor;
+    },
     CarregarConversa: function(constanteAtual = 0, seletorInput = "", valoresAnteriores = "", botao = false, card = false, pagina = 1, ehSelect = false, tipo){
         var valorInput = "";
         var novoValor = "";
@@ -274,6 +317,18 @@ var IMOVIEW = {
                                         break;
                                     case 'telefone':
                                         propriedades = 'maxlength="15" onkeyup="IMOVIEW.MascaraMutuario(this, IMOVIEW.Telefone)"  onblur="clearTimeout()"';
+                                        break;
+                                    case 'moeda':
+                                        propriedades = 'onkeyup="IMOVIEW.MascaraMutuario(this, IMOVIEW.FormatarMoeda)"  onblur="clearTimeout()"';
+                                        break;
+                                    case 'valor':
+                                        propriedades = 'onkeyup="IMOVIEW.MascaraMutuario(this, IMOVIEW.FormatarValor)"  onblur="clearTimeout()"';
+                                        break;
+                                    case 'cep':
+                                        propriedades = 'onkeyup="IMOVIEW.MascaraMutuario(this, IMOVIEW.FormatarCep)"  onblur="clearTimeout()"';
+                                        break;
+                                    case 'percentual':
+                                        propriedades = 'onkeyup="IMOVIEW.MascaraMutuario(this, IMOVIEW.FormatarPercentual)"  onblur="clearTimeout()"';
                                         break;
                                     case 'email':
                                         break;

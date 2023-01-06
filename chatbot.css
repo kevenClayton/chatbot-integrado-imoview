@@ -292,25 +292,6 @@
     background-size: 32px 32px;
 }
 
-.imoview-chatbot .imoview-conversation {
-    /* Form */
-    width: 420px;
-    max-height: 370px;
-    min-height: 300px;
-    height: calc(100vh - 72px);
-    border-radius: 12px!important;
-
-    /* Position */
-    z-index: 32767;
-    position: fixed;
-    bottom: 48px;
-    right: 24px;
-
-    /* Looks */
-    background: white;
-    box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.15);
-}
-
 .imoview-chatbot .imoview-bg {
     position: absolute;
 
@@ -1673,6 +1654,9 @@ input[type=text] {
     .imoview-chatbot.imoview-center>.imoview-avatar {
         left: 0!important;
         margin-left: 0!important;
+    }
+    .imoview-maximar{
+      display: none !important;
     }
 }
 
@@ -3062,7 +3046,7 @@ input[type=text] {
 .imoview-chatbot .imoview-conversation {
     /* Form */
     width: 420px;
-    max-height: 420px;
+    max-height: 550px;
     min-height: 300px;
     height: calc(100vh - 72px);
     border-radius: 48px!important;
@@ -3810,7 +3794,7 @@ input[type=text] {
 }
 
 .imoview-opt {
-    margin: 6px 6px 0 0;
+    margin: 6px 0 0 0;
     padding: 12px 16px;
     margin-left: 12px;
     border-radius: 15px!important;
