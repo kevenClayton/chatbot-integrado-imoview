@@ -61,49 +61,62 @@ var IMOVIEW = {
         return v
     
     },
+    FormatarInteiro: function(valor) {
+        valor = valor + '';
+        if (valor != "") {
+            valor = valor.replace(/[\D]+/g, '');
+        }
+        return (valor == "NaN" || valor == NaN ? '' : valor);
+    },
     FormatarMoeda: function(valor) {
         valor = valor + '';
         valor = parseInt(valor.replace(/[\D]+/g, ''));
         valor = valor + '';
-        valor = valor.replace(/([0-9]{2})$/g, ",$1");
+        if (valor.length > 2) {
+            valor = valor.replace(/([0-9]{2})$/g, ",$1");
+        }
 
         if (valor.length > 6) {
             valor = valor.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
         }
 
-        return 'R$ '+valor;
+        return (valor == "NaN" ? 'R$ ' : 'R$ ' +valor);
     },
     FormatarPercentual: function(valor) {
         
         valor = valor + '';
         valor = parseInt(valor.replace(/[\D]+/g, ''));
         valor = valor + '';
-        valor = valor.replace(/([0-9]{2})$/g, ",$1");
+        if (valor.length > 2) {
+            valor = valor.replace(/([0-9]{2})$/g, ",$1");
+        }
 
         if (valor.length > 6) {
             valor = valor.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
         }
 
-        return valor + '%';
+        return (valor == NaN ? valor+ '%' : '%');
     },
     FormatarValor: function(valor) {
         
         valor = valor + '';
         valor = parseInt(valor.replace(/[\D]+/g, ''));
         valor = valor + '';
-        valor = valor.replace(/([0-9]{2})$/g, ",$1");
+        if (valor.length > 2) {
+            valor = valor.replace(/([0-9]{2})$/g, ",$1");
+        }
 
         if (valor.length > 6) {
             valor = valor.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
-        }        
-        
-        return valor;
+        }
+
+        return (valor == "NaN" ? ' ' : valor);
     },
     FormatarCep: function(valor) {
         
         var valor= valor.replace(/\D/g,"")                
         valor = valor.replace(/^(\d{5})(\d)/,"$1-$2") 
-       return valor;
+       return (valor == NaN ? valor : '');
     },
     CarregarConversa: function(constanteAtual = 0, seletorInput = "", valoresAnteriores = "", botao = false, card = false, pagina = 1, ehSelect = false, tipo){
         var valorInput = "";
@@ -325,12 +338,16 @@ var IMOVIEW = {
                                         propriedades = 'onkeyup="IMOVIEW.MascaraMutuario(this, IMOVIEW.FormatarValor)"  onblur="clearTimeout()"';
                                         break;
                                     case 'cep':
-                                        propriedades = 'onkeyup="IMOVIEW.MascaraMutuario(this, IMOVIEW.FormatarCep)"  onblur="clearTimeout()"';
+                                        propriedades = 'maxlength="9" onkeyup="IMOVIEW.MascaraMutuario(this, IMOVIEW.FormatarCep)"  onblur="clearTimeout()"';
                                         break;
                                     case 'percentual':
                                         propriedades = 'onkeyup="IMOVIEW.MascaraMutuario(this, IMOVIEW.FormatarPercentual)"  onblur="clearTimeout()"';
-                                        break;
-                                    case 'email':
+                                        break;                                    
+                                    case 'inteiro':
+                                        propriedades = 'onkeyup="IMOVIEW.MascaraMutuario(this, IMOVIEW.FormatarInteiro)"  onblur="clearTimeout()"';
+                                        break;                                    
+                                    default:
+                                        propriedades = "";
                                         break;
                                 }
                                 htmlInput += '<input onkeypress="javascript: if(event.keyCode == 13) IMOVIEW.CarregarConversa('+constanteAtual+', \'' + idInput + '\' ,\'' +(valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) +'\');" class="limparChat input-chat"  id="'+idInput+'" value="'+menu.valorPadrao+'" '+propriedades+' data-constante="'+menu.constante+'" type="text"  autocomplete="name" placeholder="'+menu.nome+'" list="" style="border-color: rgb(76, 175, 80);"><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa('+constanteAtual+', \'' + idInput + '\' ,\'' +(valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) +'\')\"></div>'+ htmlAjuda;                        
@@ -604,15 +621,6 @@ var IMOVIEW = {
              
             });
           });
-
-          
-
-
-
-        // elemento.innerHTML = html;
-
-
-        
     },
 
 
