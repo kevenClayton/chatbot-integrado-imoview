@@ -310,7 +310,7 @@ var IMOVIEW = {
 
                                 htmlBotoes +=
                                     '<span class="card-chatbot-imoview" style="">' +
-                                    '<img src=""></img>'+
+                                        '<img style="max-width: 100%; width:100%;max-height: 475px;object-fit: cover;" src="'+(menu.url == "" ? '' : menu.url)+'">'+
                                         '<p style="color: #979797 !important;line-height: 18px !important;margin-bottom: 10px;">' +
                                             menu.nome +
                                         '</p>' +
@@ -333,6 +333,10 @@ var IMOVIEW = {
 
                                 htmlBotoes +=
                                     '<span class="card-chatbot-imoview limparChat class="limparChat"" style="">' +
+                                        (menu.url != "" ?
+                                            '<img style="max-width: 100%; width:100%;max-height: 475px;object-fit: cover;" src="' + menu.url  + '">'
+                                            : ''
+                                        ) +
                                         '<p style="color: #979797 !important;line-height: 18px !important;margin-bottom: 10px;">'+
                                             menu.nome +
                                         '</p>'+

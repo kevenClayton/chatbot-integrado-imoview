@@ -4179,10 +4179,10 @@ input[type=text] {
     display: inline-block;
     border-radius: 24px!important;    
     margin: 6px 6px 0 0;
-    background: #f5f5f5;
+    background: #ffffff;
     margin-bottom: 8px;
     color: #6e6e6e !important;
     padding: 15px;
     font-size: 13px !important;
-    border: 1px solid #fff;
+    border: 1px solid #d5d5d5;
 }
