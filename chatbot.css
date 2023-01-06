@@ -4185,4 +4185,5 @@ input[type=text] {
     padding: 15px;
     font-size: 13px !important;
     border: 1px solid #d5d5d5;
+    width: 100%;
 }
