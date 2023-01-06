@@ -116,7 +116,7 @@ var IMOVIEW = {
         
         var valor= valor.replace(/\D/g,"")                
         valor = valor.replace(/^(\d{5})(\d)/,"$1-$2") 
-       return (valor == NaN ? valor : '');
+       return (valor != NaN ? valor : '');
     },
     CarregarConversa: function(constanteAtual = 0, seletorInput = "", valoresAnteriores = "", botao = false, card = false, pagina = 1, ehSelect = false, tipo){
         var valorInput = "";
@@ -310,6 +310,7 @@ var IMOVIEW = {
 
                                 htmlBotoes +=
                                     '<span class="card-chatbot-imoview" style="">' +
+                                    '<img src=""></img>'+
                                         '<p style="color: #979797 !important;line-height: 18px !important;margin-bottom: 10px;">' +
                                             menu.nome +
                                         '</p>' +
