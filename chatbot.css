@@ -4186,4 +4186,5 @@ input[type=text] {
     font-size: 13px !important;
     border: 1px solid #d5d5d5;
     width: 100%;
+    max-width: 400px;
 }
