@@ -624,7 +624,7 @@
     left: 0;
     right:0;
     bottom: 64px;
-    padding-bottom: 60px;
+    /* padding-bottom: 60px; */
     border-radius: 8px 8px 0 0!important;
 
     background-color: white;
@@ -3361,7 +3361,7 @@ input[type=text] {
     left: 0;
     right:0;
     bottom: 64px;
-    padding-bottom: 60px;
+    /* padding-bottom: 60px; */
     border-radius: 8px 8px 0 0!important;
 
     background-color: #e3e3e3;
