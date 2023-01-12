@@ -118,16 +118,34 @@ var IMOVIEW = {
         valor = valor.replace(/^(\d{5})(\d)/,"$1-$2") 
        return (valor != NaN ? valor : '');
     },
-    CarregarConversa: function(constanteAtual = 0, seletorInput = "", valoresAnteriores = "", botao = false, card = false, pagina = 1, ehSelect = false, tipo){
+    CarregarConversa: function(constanteAtual = 0, seletorInput = "", valoresAnteriores = "", botao = false, card = false, pagina = 1, ehSelect = false, tipo = ""){
         var valorInput = "";
         var novoValor = "";
         var valoresAnterioresObjeto = new Array();
         // valoresAnterioresObjeto = valoresAnteriores;
+        
+        if (tipo == "upload") {
+             input = document.querySelector('#' + id+'');
+            const file = input.files[0];
+            const reader = new FileReader();
+            reader.onload = function () {
+                const base64 = btoa(reader.result);
+                console.log(base64);
+            };
+            reader.readAsBinaryString(file);
+
+            valoresAnteriores = JSON.parse(decodeURIComponent(valoresAnteriores));
+            Object.assign(valoresAnterioresObjeto, valoresAnteriores);
+            
+            var novoValor = {
+                "constante": input.dataset.constante,
+                "label": input.dataset.label,
+                "valor": base64
+            }
+        }
         if (seletorInput != "") {
              var itemConteudo = document.querySelector('#'+seletorInput);
-        }
-       
-
+        }     
 
          if (IMOVIEW.Maximado == false) {
             document.querySelector('.botaoMaximar').addEventListener("click", IMOVIEW.MaximarJanelaChat);  
@@ -424,7 +442,7 @@ var IMOVIEW = {
                             case 'upload': 
                                 propriedades = "";
                                
-                                htmlInput += '<input type="file" class="limparChat input-chat"  id="' + idInput + '" value="' + menu.valorPadrao + '" ' + propriedades + ' data-constante="' + menu.constante + '" type="text"  autocomplete="name" placeholder="' + menu.nome + '" list="" style="border-color: rgb(76, 175, 80);"><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\')\"></div>' + htmlAjuda;                        
+                                htmlInput += '<input onchange="IMOVIEW.FileBase64(\''+idInput+'\')" type="file" class="limparChat input-chat"  id="' + idInput + '" value="' + menu.valorPadrao + '" ' + propriedades + ' data-constante="' + menu.constante + '" type="text"  autocomplete="name" placeholder="' + menu.nome + '" list="" style="border-color: rgb(76, 175, 80);"><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\')\"></div>' + htmlAjuda;                        
                                 document.querySelector('.imoview-chatbot .imoview-ctx>div>.imoview-container').style.paddingBottom = '60px';
                                 document.querySelector('.imoview-input').style.display = 'block';
                                 break
@@ -513,6 +531,30 @@ var IMOVIEW = {
             botaoNaTela.remove()
         });
         document.querySelector('.imoview-scrollable').lastElementChild.insertAdjacentHTML("afterend", htmlSelecionado);  
+    },
+    GetBase64: function (file) {
+         var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+        console.log(reader.result);
+    };
+    reader.onerror = function (error) {
+        console.log('Error: ', error);
+        };
+    var file = document.querySelector('#files > input[type="file"]').files[0];
+    getBase64(file); // prints the base64 string
+    },   
+    FileBase64: function (id) {
+        input = document.querySelector('#' + id+'');
+
+        const file = input.files[0];
+        const reader = new FileReader();
+        reader.onload = function () {
+            const base64 = btoa(reader.result);
+            console.log(base64);
+        };
+        reader.readAsBinaryString(file);
+
     },
     RetornandoAlert: function (tipo, mensagem, retornarBotaoVoltarPrincipal = false) {
        htmlAlert = 

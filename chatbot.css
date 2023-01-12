@@ -4188,3 +4188,15 @@ input[type=text] {
     width: 100%;
     max-width: 400px;
 }
+
+input#file-upload-button{
+      margin: 6px 0 0 0;
+    padding: 12px 16px;
+    margin-left: 12px;
+    border-radius: 15px!important;
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    background-image: linear-gradient(to right, #bc002c, #ea083d);
+    box-shadow: 0 3px 6px 0 rgb(0 0 0 / 15%);
+}
