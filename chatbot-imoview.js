@@ -190,8 +190,20 @@ var IMOVIEW = {
     
         }else if(seletorInput != "" && botao == true){            
             IMOVIEW.RetonarSelecionado(itemConteudo.textContent);
-            var contanteLimpar = itemConteudo.dataset.limpar;
-            valoresAnterioresObjeto = valoresAnterioresObjeto.filter(item => item.constante != contanteLimpar)
+            var constanteLimpar = itemConteudo.dataset.limpar;
+            if(constanteLimpar != ""){
+                constanteLimpar = constanteLimpar.split(',');
+            }
+
+            if(constanteLimpar.length > 0 ){
+                constanteLimpar.forEach(function(constanteALimpar){
+                  valoresAnterioresObjeto = valoresAnterioresObjeto.filter(item => item.constante != constanteALimpar);
+                });
+            }else{
+                valoresAnterioresObjeto = valoresAnterioresObjeto.filter(item => item.constante != constanteLimpar);
+            }
+
+           
             // htmlSelecionado = '<div class="imoview-group imoview-right"><div class="imoview-container"><div class="imoview-msg"><div class="imoview-bubble" style="background: #4c4c4c;color: white !important;"><div><div><p style="color:white !important;">Selecionado: '+conteudoBotao+'</p></div><div class="imoview-clear"></div></div></div></div></div><div class="imoview-clear"></div></div>';
             // botoesNaTela = document.querySelectorAll('.removerAposClickBotao');
             // botoesNaTela.forEach(function(botaoNaTela){
@@ -406,6 +418,13 @@ var IMOVIEW = {
                                         break;
                                 }
                                 htmlInput += '<input onkeypress="javascript: if(event.keyCode == 13) IMOVIEW.CarregarConversa(' + constanteAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\');" class="limparChat input-chat"  id="' + idInput + '" value="' + menu.valorPadrao + '" ' + propriedades + ' data-constante="' + menu.constante + '" type="text"  autocomplete="name" placeholder="' + menu.nome + '" list="" style="border-color: rgb(76, 175, 80);"><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\')\"></div>' + htmlAjuda;                        
+                                document.querySelector('.imoview-chatbot .imoview-ctx>div>.imoview-container').style.paddingBottom = '60px';
+                                document.querySelector('.imoview-input').style.display = 'block';
+                                break
+                            case 'upload': 
+                                propriedades = "";
+                               
+                                htmlInput += '<input type="file" class="limparChat input-chat"  id="' + idInput + '" value="' + menu.valorPadrao + '" ' + propriedades + ' data-constante="' + menu.constante + '" type="text"  autocomplete="name" placeholder="' + menu.nome + '" list="" style="border-color: rgb(76, 175, 80);"><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\')\"></div>' + htmlAjuda;                        
                                 document.querySelector('.imoview-chatbot .imoview-ctx>div>.imoview-container').style.paddingBottom = '60px';
                                 document.querySelector('.imoview-input').style.display = 'block';
                                 break
