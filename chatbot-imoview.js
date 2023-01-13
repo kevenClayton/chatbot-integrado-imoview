@@ -183,7 +183,7 @@ var IMOVIEW = {
             inputDados = document.querySelector('#'+seletorInput);
             valorInput = (ehSelect ? inputDados.dataset.value : inputDados.value);
             label = (ehSelect ? inputDados.dataset.label : inputDados.placeholder);
-            if(tipo == 'password'){
+            if(tipo == 'passwordmd5'){
                 valorInput = IMOVIEW.MD5(valorInput);
             }
 
@@ -201,7 +201,7 @@ var IMOVIEW = {
                 valoresAnterioresObjeto = valoresAnterioresObjeto.filter(item => item.constante != inputDados.dataset.constante)
             }
             valoresAnterioresObjeto.push(novoValor);
-            if(tipo == 'password'){
+            if(tipo == 'password' || tipo == 'passwordmd5'){
                 IMOVIEW.RetonarSelecionado('*********', 'Resposta');
             }else{
                 IMOVIEW.RetonarSelecionado((ehSelect ? label : valorInput), 'Resposta');
@@ -437,24 +437,29 @@ var IMOVIEW = {
                                         propriedades = "";
                                         break;
                                 }
-                                htmlInput += '<input onkeypress="javascript: if(event.keyCode == 13) IMOVIEW.CarregarConversa(' + constanteAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\');" class="limparChat input-chat"  id="' + idInput + '" value="' + menu.valorPadrao + '" ' + propriedades + ' data-constante="' + menu.constante + '" type="text"  autocomplete="name" placeholder="' + menu.nome + '" list="" style="border-color: rgb(76, 175, 80);"><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\')\"></div>' + htmlAjuda;                        
+                                htmlInput += '<input onkeypress="javascript: if(event.keyCode == 13) IMOVIEW.CarregarConversa(' + constanteAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\');" class="limparChat input-chat"  id="' + idInput + '" value="' + menu.valorPadrao + '" ' + propriedades + ' data-constante="' + menu.constante + '" type="text"  autocomplete="name" placeholder="' + menu.nome + '" list="" ><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\')\"></div>' + htmlAjuda;                        
                                 document.querySelector('.imoview-chatbot .imoview-ctx>div>.imoview-container').style.paddingBottom = '60px';
                                 document.querySelector('.imoview-input').style.display = 'block';
                                 break
                             case 'upload': 
                                 propriedades = "";
                                
-                                htmlInput += '<input id="'+IdBotaoOpcoes+'" onchange=\"IMOVIEW.FileToBase64Input(\'' + IdBotaoOpcoes + '\')\" type="file" class="limparChat input-chat"  value="" ' + propriedades + ' data-base64="" data-nome="" data-constante="' + menu.constante + '" autocomplete="name" placeholder="' + menu.nome + '" list="" style="border-color: rgb(76, 175, 80);"><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtual + ', \'' + IdBotaoOpcoes + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\', false, false, 1, true, \'upload\')\"></div>' + htmlAjuda;                        
+                                htmlInput += '<input id="'+IdBotaoOpcoes+'" style="margin-top: 10px;" onchange=\"IMOVIEW.FileToBase64Input(\'' + IdBotaoOpcoes + '\')\" type="file" class="limparChat input-chat"  value="" ' + propriedades + ' data-base64="" data-nome="" data-constante="' + menu.constante + '" autocomplete="name" placeholder="' + menu.nome + '" list="" ><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtual + ', \'' + IdBotaoOpcoes + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\', false, false, 1, true, \'upload\')\"></div>' + htmlAjuda;                        
                                 document.querySelector('.imoview-chatbot .imoview-ctx>div>.imoview-container').style.paddingBottom = '60px';
                                 document.querySelector('.imoview-input').style.display = 'block';
                                 break
                             case 'textarea':
-                                htmlInput += '<textarea onkeypress="javascript: if(event.keyCode == 13) IMOVIEW.CarregarConversa(' + constanteAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\');" class="limparChat input-chat"  id="' + idInput + '"  data-constante="' + menu.constante + '" placeholder="' + menu.nome + '" style="border-color: rgb(76, 175, 80);">' + menu.valorPadrao + '</textarea><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\')\"></div>' + htmlAjuda;
+                                htmlInput += '<textarea onkeypress="javascript: if(event.keyCode == 13) IMOVIEW.CarregarConversa(' + constanteAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\');" class="limparChat input-chat"  id="' + idInput + '"  data-constante="' + menu.constante + '" placeholder="' + menu.nome + '" >' + menu.valorPadrao + '</textarea><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\')\"></div>' + htmlAjuda;
                                 document.querySelector('.imoview-chatbot .imoview-ctx>div>.imoview-container').style.paddingBottom = '60px';
                                 document.querySelector('.imoview-input').style.display = 'block';
                                 break;
                             case 'password':
-                                htmlInput += '<input  onkeypress="javascript: if(event.keyCode == 13) IMOVIEW.CarregarConversa(' + constanteAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\',false, false, 1, false, \'password\');" class="limparChat input-chat" id="' + idInput + '" value="" data-constante="' + menu.constante + '" type="password" autocomplete="name" onblur="clearTimeout()" placeholder="' + menu.nome + '" list="" style="border-color: rgb(76, 175, 80);"><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\',false, false, 1, false, \'password\')\"></div>' + htmlAjuda;
+                                htmlInput += '<input  onkeypress="javascript: if(event.keyCode == 13) IMOVIEW.CarregarConversa(' + constanteAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\',false, false, 1, false, \'password\');" class="limparChat input-chat" id="' + idInput + '" value="" data-constante="' + menu.constante + '" type="password" autocomplete="name" onblur="clearTimeout()" placeholder="' + menu.nome + '" list="" ><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\',false, false, 1, false, \'password\')\"></div>' + htmlAjuda;
+                                document.querySelector('.imoview-chatbot .imoview-ctx>div>.imoview-container').style.paddingBottom = '60px';
+                                document.querySelector('.imoview-input').style.display = 'block';
+                                break;
+                            case 'passwordmd5':
+                                htmlInput += '<input  onkeypress="javascript: if(event.keyCode == 13) IMOVIEW.CarregarConversa(' + constanteAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\',false, false, 1, false, \'password\');" class="limparChat input-chat" id="' + idInput + '" value="" data-constante="' + menu.constante + '" type="password" autocomplete="name" onblur="clearTimeout()" placeholder="' + menu.nome + '" list="" ><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\',false, false, 1, false, \'passwordmd5\')\"></div>' + htmlAjuda;
                                 document.querySelector('.imoview-chatbot .imoview-ctx>div>.imoview-container').style.paddingBottom = '60px';
                                 document.querySelector('.imoview-input').style.display = 'block';
                                 break;
@@ -747,7 +752,7 @@ var IMOVIEW = {
      
         var elemento = document.getElementById(elId);
         
-        var style = '<style>.imoview-input input,textarea{border-color: '+data.corFundo+' !important}.imoview-submit{background-color: '+data.corFundo+'}.imoview-opt{background: '+data.corFundo+';}.imoview-chatbot .imoview-handle{background: '+data.corFundo+' !important;}.imoview-chatbot .imoview-sel.imoview-messages>.imoview-opt{background-image: none !important; background-color: '+data.corFundo+';}.imoview-conversation-header{background-color:'+data.corFundo+';}.imoview-infobar .imoview-avatar::after{border: 2px solid '+data.corFundo+'!important;}.imoview-avatar{background-color:'+data.corFundo+'; background-image: url('+data.avatarUrlChat+');}</style>';
+        var style = '<style>.imoview-input{border-color: '+data.corFundo+' !important}.imoview-submit{background-color: '+data.corFundo+'}.imoview-opt{background: '+data.corFundo+';}.imoview-chatbot .imoview-handle{background: '+data.corFundo+' !important;}.imoview-chatbot .imoview-sel.imoview-messages>.imoview-opt{background-image: none !important; background-color: '+data.corFundo+';}.imoview-conversation-header{background-color:'+data.corFundo+';}.imoview-infobar .imoview-avatar::after{border: 2px solid '+data.corFundo+'!important;}.imoview-avatar{background-color:'+data.corFundo+'; background-image: url('+data.avatarUrlChat+');}</style>';
         
         if(data.posicao == '' || data.posicao == 'direito'){
             lado = 'imoview-lado-right';
