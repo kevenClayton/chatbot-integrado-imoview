@@ -1482,7 +1482,7 @@ input[type=text] {
     box-sizing: content-box;
 
     overflow-y: scroll;
-
+    padding-right: 6px;
     /* margin-right: -50px;
     padding-right: 50px; */
     /* scrollbar-width: thin;
