@@ -1483,8 +1483,12 @@ input[type=text] {
 
     overflow-y: scroll;
 
-    margin-right: -50px;
-    padding-right: 50px;
+    /* margin-right: -50px;
+    padding-right: 50px; */
+    /* scrollbar-width: thin;
+
+    scrollbar-color: #6969dd #e0e0e0;
+    scrollbar-width: thin; */
 }
 
 .imoview-chatbot .imoview-scrollbar {
@@ -4190,4 +4194,25 @@ input#file-upload-button{
     color: white;
     background-image: linear-gradient(to right, #bc002c, #ea083d);
     box-shadow: 0 3px 6px 0 rgb(0 0 0 / 15%);
+}
+
+
+.imoview-scrollable::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+.imoview-scrollable::-webkit-scrollbar-track {
+  background: #cfcfcf;
+}
+ 
+/* Handle */
+.imoview-scrollable::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+.imoview-scrollable::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }

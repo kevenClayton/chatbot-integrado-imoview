@@ -499,8 +499,11 @@ var IMOVIEW = {
                 });
 
               document.querySelector('.imoview-scrollable').onscroll = (scrool) => {
-                    IMOVIEW.ScrollBar();
-                  
+                    IMOVIEW.ScrollBar();                  
+              }
+              document.querySelector('.imoview-handle').onmousemove = (scrool) => {
+                console.log('mouse')
+                    IMOVIEW.ScrollMove();                  
               }
             // tratar a response
           }); 
@@ -720,6 +723,41 @@ var IMOVIEW = {
                     var i = e / n;
                     (document.querySelector('.imoview-handle').style.height = n / i + "px"), (document.querySelector('.imoview-handle').style.top = t / i + "px");
     },
+    ScrollMove: function(){
+                var t = document.querySelector('.imoview-scrollable').scrollTop,
+                    n = document.querySelector('.imoview-scrollable').offsetHeight,
+                    e = document.querySelector('.imoview-scrollable').scrollHeight;
+                if (e < n) return;
+                var i = e / n;
+                (document.querySelector('.imoview-handle').style.height = n / i + "px"), (document.querySelector('.imoview-handle').style.top = t / i + "px");
+
+
+                 var n = t.clientY - this.handleGrabPosition,
+                            e = document.querySelector('.imoview-scrollable').offsetHeight,
+                            i = document.querySelector('.imoview-scrollable').scrollHeight;
+                        (document.querySelector('.imoview-scrollable').scrollTop = this.grabScrollTop + (n * i) / e), t.preventDefault();
+
+        //   var t = document.querySelector('.imoview-scrollable').scrollTop,
+        //                 n = document.querySelector('.imoview-scrollable').offsetHeight,
+        //                 e = document.querySelector('.imoview-scrollable').scrollHeight;
+        //             if (e < n) return;
+        //             var i = e / n;
+        //             (document.querySelector('.imoview-handle').scrollTop = n / i + "px"), (document.querySelector('.imoview-handle').style.top = t / i + "px");
+
+        //                 var t = document.querySelector('.imoview-scrollable').scrollTop,
+        //                             n = document.querySelector('.imoview-scrollable').offsetHeight,
+        //                             e = document.querySelector('.imoview-scrollable').scrollHeight;
+        //                         if (e < n) return;
+        //                         var i = e / n;
+        //                         (document.querySelector('.imoview-handle').style.height = n / i + "px"), (document.querySelector('.imoview-handle').style.top = t / i + "px");
+
+                    //   var n = t.clientY - this.handleGrabPosition,
+                    //                 e = this.messagesContainer.offsetHeight,
+                    //                 i = this.messagesContainer.scrollHeight;
+                    //             (this.messagesContainer.scrollTop = this.grabScrollTop + (n * i) / e), t.preventDefault();
+
+
+    },
     ReplaceCaracteresEspeciais: function(str){        
         return encodeURIComponent(str).replace(/[!'()*]/g, function(c) {
             return '%' + c.charCodeAt(0).toString(16);
@@ -752,7 +790,7 @@ var IMOVIEW = {
      
         var elemento = document.getElementById(elId);
         
-        var style = '<style>.imoview-input{border-color: '+data.corFundo+' !important}.imoview-submit{background-color: '+data.corFundo+'}.imoview-opt{background: '+data.corFundo+';}.imoview-chatbot .imoview-handle{background: '+data.corFundo+' !important;}.imoview-chatbot .imoview-sel.imoview-messages>.imoview-opt{background-image: none !important; background-color: '+data.corFundo+';}.imoview-conversation-header{background-color:'+data.corFundo+';}.imoview-infobar .imoview-avatar::after{border: 2px solid '+data.corFundo+'!important;}.imoview-avatar{background-color:'+data.corFundo+'; background-image: url('+data.avatarUrlChat+');}</style>';
+        var style = '<style>.imoview-scrollable::-webkit-scrollbar-thumb{background: '+data.corFundo+'} .imoview-input{border-color: '+data.corFundo+' !important}.imoview-submit{background-color: '+data.corFundo+'}.imoview-opt{background: '+data.corFundo+';}.imoview-chatbot .imoview-handle{background: '+data.corFundo+' !important;}.imoview-chatbot .imoview-sel.imoview-messages>.imoview-opt{background-image: none !important; background-color: '+data.corFundo+';}.imoview-conversation-header{background-color:'+data.corFundo+';}.imoview-infobar .imoview-avatar::after{border: 2px solid '+data.corFundo+'!important;}.imoview-avatar{background-color:'+data.corFundo+'; background-image: url('+data.avatarUrlChat+');}</style>';
         
         if(data.posicao == '' || data.posicao == 'direito'){
             lado = 'imoview-lado-right';
