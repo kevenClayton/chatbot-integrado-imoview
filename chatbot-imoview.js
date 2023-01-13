@@ -201,8 +201,11 @@ var IMOVIEW = {
                 valoresAnterioresObjeto = valoresAnterioresObjeto.filter(item => item.constante != inputDados.dataset.constante)
             }
             valoresAnterioresObjeto.push(novoValor);
-            
-            IMOVIEW.RetonarSelecionado((ehSelect ? label : valorInput), 'Resposta');
+            if(tipo == 'password'){
+                IMOVIEW.RetonarSelecionado('*********', 'Resposta');
+            }else{
+                IMOVIEW.RetonarSelecionado((ehSelect ? label : valorInput), 'Resposta');
+            }
 
     
         }else if(seletorInput != "" && botao == true){            
@@ -451,7 +454,7 @@ var IMOVIEW = {
                                 document.querySelector('.imoview-input').style.display = 'block';
                                 break;
                             case 'password':
-                                htmlInput += '<input  onkeypress="javascript: if(event.keyCode == 13) IMOVIEW.CarregarConversa(' + constanteAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\');" class="limparChat input-chat" id="' + idInput + '" value="" data-constante="' + menu.constante + '" type="password" autocomplete="name" onblur="clearTimeout()" placeholder="' + menu.nome + '" list="" style="border-color: rgb(76, 175, 80);"><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\',false, false, 1, false, \'password\')\"></div>' + htmlAjuda;
+                                htmlInput += '<input  onkeypress="javascript: if(event.keyCode == 13) IMOVIEW.CarregarConversa(' + constanteAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\',false, false, 1, false, \'password\');" class="limparChat input-chat" id="' + idInput + '" value="" data-constante="' + menu.constante + '" type="password" autocomplete="name" onblur="clearTimeout()" placeholder="' + menu.nome + '" list="" style="border-color: rgb(76, 175, 80);"><div class="imoview-submit" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtual + ', \'' + idInput + '\' ,\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores))) + '\',false, false, 1, false, \'password\')\"></div>' + htmlAjuda;
                                 document.querySelector('.imoview-chatbot .imoview-ctx>div>.imoview-container').style.paddingBottom = '60px';
                                 document.querySelector('.imoview-input').style.display = 'block';
                                 break;
