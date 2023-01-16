@@ -363,7 +363,7 @@ var IMOVIEW = {
                                 
                                 if (menu.itens.length > 0) {
                                     menu.itens.forEach(function (item) {
-                                        htmlItens += '<span style="color: #c9c9c9;font-size: 13px;margin-right: 10px;display: inline-block;margin-bottom: 10px;"><strong style="color: #c9c9c9;font-size: 13px !important;border: 2px solid;border-radius: 63%;padding:1px 7px;margin-right: 2px;">i</strong>' + item.label + ': <span style="color: #979797 !important">' + item.valor + '</span></span>';
+                                        htmlItens += '<span style="word-break: break-all;color: #c9c9c9;font-size: 13px;margin-right: 10px;display: inline-block;margin-bottom: 10px;"><strong style="color: #c9c9c9;font-size: 13px !important;border: 2px solid;border-radius: 63%;padding:1px 7px;margin-right: 2px;">i</strong>' + item.label + ': <span style="color: #979797 !important">' + item.valor + '</span></span>';
                                     })
                                 }
 

@@ -4199,6 +4199,7 @@ input#file-upload-button{
 
 .imoview-scrollable::-webkit-scrollbar {
   width: 6px;
+  height: 0;
 }
 
 /* Track */
