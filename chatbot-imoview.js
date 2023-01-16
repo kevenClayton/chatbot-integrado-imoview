@@ -303,7 +303,7 @@ var IMOVIEW = {
                         var htmlAjuda = "";
 
                         if(menu.ajuda != "")             {
-                            htmlAjuda = '<p class="removerAposClickBotao" style="color: #c9c9c9;word-break: break-word;font-size: 13px !important;"><span style="border: 2px solid;border-radius: 63%;padding:1px 7px;margin-right: 2px;">i</span>'+menu.ajuda+'</p>';
+                            htmlAjuda = '<p class="removerAposClickBotao" style="color: #a599a5;word-break: break-word;font-size: 13px !important;"><span style="border: 2px solid;border-radius: 63%;padding:1px 7px;margin-right: 2px;">i</span>'+menu.ajuda+'</p>';
                         }
 
                         switch (menu.tipoMenu){                    
@@ -318,13 +318,13 @@ var IMOVIEW = {
                                 
                                 if (menu.itens.length > 0) {
                                     menu.itens.forEach(function (item) {
-                                        htmlItens += '<span style="word-break: break-all;color: #c9c9c9;font-size: 13px;margin-right: 10px;display: inline-block;margin-bottom: 10px;"><strong style="color: #c9c9c9;font-size: 13px !important;border: 2px solid;border-radius: 63%;padding:1px 7px;margin-right: 2px;">i</strong>' + item.label + ': <span style="color: #979797 !important">' + item.valor + '</span></span>';
+                                        htmlItens += '<span style="word-break: break-all;color: #a599a5;font-size: 13px;margin-right: 10px;display: inline-block;margin-bottom: 10px;"><strong style="color: #a599a5;font-size: 13px !important;border: 2px solid;border-radius: 63%;padding:1px 7px;margin-right: 2px;">i</strong>' + item.label + ': <span style="color: #515151 !important">' + item.valor + '</span></span>';
                                     })
                                 }
 
                                 htmlBotoes +=
                                     '<span class="card-chatbot-imoview" style="">' +
-                                        '<p style="color: #979797 !important;line-height: 18px !important;margin-bottom: 10px;">' +
+                                        '<p style="color: #515151 !important;line-height: 18px !important;margin-bottom: 10px;">' +
                                             menu.nome +
                                         '</p>' +
                                         htmlItens +
@@ -340,14 +340,14 @@ var IMOVIEW = {
                                 
                                 if (menu.itens.length > 0) {
                                     menu.itens.forEach(function (item) {
-                                        htmlItens += '<span style="word-break: break-all;color: #c9c9c9;font-size: 13px;margin-right: 10px;display: inline-block;margin-bottom: 10px;"><strong style="color: #c9c9c9;font-size: 13px !important;border: 2px solid;border-radius: 63%;padding:1px 7px;margin-right: 2px;">i</strong>' + item.label + ': <span style="color: #979797 !important">' + item.valor + '</span></span>';
+                                        htmlItens += '<span style="word-break: break-all;color: #a599a5;font-size: 13px;margin-right: 10px;display: inline-block;margin-bottom: 10px;"><strong style="color: #a599a5;font-size: 13px !important;border: 2px solid;border-radius: 63%;padding:1px 7px;margin-right: 2px;">i</strong>' + item.label + ': <span style="color: #515151 !important">' + item.valor + '</span></span>';
                                     })
                                 }
 
                                 htmlBotoes +=
                                     '<span class="card-chatbot-imoview" style="">' +
                                         '<img style="max-width: 100%; width:100%;max-height: 275px;object-fit: cover;" src="'+(menu.url == "" ? '' : menu.url)+'">'+
-                                        '<p style="color: #979797 !important;line-height: 18px !important;margin-bottom: 10px;">' +
+                                        '<p style="color: #515151 !important;line-height: 18px !important;margin-bottom: 10px;">' +
                                             menu.nome +
                                         '</p>' +
                                         htmlItens +
@@ -363,14 +363,14 @@ var IMOVIEW = {
                                 
                                 if (menu.itens.length > 0) {
                                     menu.itens.forEach(function (item) {
-                                        htmlItens += '<span style="word-break: break-all;color: #c9c9c9;font-size: 13px;margin-right: 10px;display: inline-block;margin-bottom: 10px;"><strong style="color: #c9c9c9;font-size: 13px !important;border: 2px solid;border-radius: 63%;padding:1px 7px;margin-right: 2px;">i</strong>' + item.label + ': <span style="color: #979797 !important">' + item.valor + '</span></span>';
+                                        htmlItens += '<span style="word-break: break-all;color: #a599a5;font-size: 13px;margin-right: 10px;display: inline-block;margin-bottom: 10px;"><strong style="color: #a599a5;font-size: 13px !important;border: 2px solid;border-radius: 63%;padding:1px 7px;margin-right: 2px;">i</strong>' + item.label + ': <span style="color: #515151 !important">' + item.valor + '</span></span>';
                                     })
                                 }
 
                                 htmlBotoes +=
                                     '<span class="card-chatbot-imoview" style="">' +
                                         '<img style="max-width: 100%; width:100%;max-height: 275px;object-fit: cover;" src="'+(menu.url == "" ? '' : menu.url)+'">'+
-                                        '<p style="color: #979797 !important;line-height: 18px !important;margin-bottom: 10px;">' +
+                                        '<p style="color: #515151 !important;line-height: 18px !important;margin-bottom: 10px;">' +
                                             menu.nome +
                                         '</p>' +
                                         htmlItens +
@@ -386,7 +386,7 @@ var IMOVIEW = {
                                 
                                 if(menu.itens.length >0){
                                     menu.itens.forEach(function(item){
-                                        htmlItens += '<span style="color: #c9c9c9;font-size: 13px;margin-right: 10px;display: inline-block;margin-bottom: 10px;"><strong style="color: #c9c9c9;font-size: 13px !important;border: 2px solid;border-radius: 63%;padding:1px 7px;margin-right: 2px;">i</strong>'+item.label+': <span style="color: #979797 !important;line-height: 17px !important;word-break: break-word;">'+item.valor+'</span></span>';
+                                        htmlItens += '<span style="color: #a599a5;font-size: 13px;margin-right: 10px;display: inline-block;margin-bottom: 10px;"><strong style="color: #a599a5;font-size: 13px !important;border: 2px solid;border-radius: 63%;padding:1px 7px;margin-right: 2px;">i</strong>'+item.label+': <span style="color: #515151 !important;line-height: 17px !important;word-break: break-word;">'+item.valor+'</span></span>';
                                     })
                                 }
 
@@ -396,7 +396,7 @@ var IMOVIEW = {
                                             '<img style="max-width: 100%; width:100%;max-height: 275px;object-fit: cover;" src="' + menu.url  + '">'
                                             : ''
                                         ) +
-                                        '<p style="color: #979797 !important;line-height: 18px !important;margin-bottom: 10px;">'+
+                                        '<p style="color: #515151 !important;line-height: 18px !important;margin-bottom: 10px;">'+
                                             menu.nome +
                                         '</p>'+
                                         htmlItens +     
@@ -464,7 +464,7 @@ var IMOVIEW = {
                                 document.querySelector('.imoview-input').style.display = 'block';
                                 break;
                             case 'file': 
-                                htmlBotoes += '<span class="card-chatbot-imoview limparChat" style="display: inline-block;border-radius: 24px!important;margin-left: 12px;margin: 6px 6px 0 0; background: #e3e9ef !important;margin-bottom: 8px;color: #6e6e6e !important;padding: 15px;font-size: 13px !important;"><p style="color: #979797 !important;line-height: 18px !important;">'+menu.nome+'</p><a href="'+menu.url+'" target="_blank" download="'+menu.nome+'" class="imoview-opt">Download<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACzSURBVFiF7Ze9DcIwEEY/owgJpDQwAwOwAxUTsACjUadCFGQGsgkdVYpHAxIopsA6x0Lc6+3v+U7+k5xfBZgCB+AGnIDF2AI73rmkSEwMndaS2tEq8WhBy5CkSqRKzIBzRKIDli7hEi7xlQRQA0egjwy0pAdWz9zXk3AvaSupylsfVZKamEBZSrUg12LmxO+J/DvBwz38r8LLPskYvoqTwi2P4k7SJoRwNZzzM5T+mDhW3AFTPw4c5r4MygAAAABJRU5ErkJggg==" alt="Right Arrow" style="float: right; width: 16px; height: 16px; margin-top: 4px; margin-left: 2px;"></a></span>' + htmlAjuda;
+                                htmlBotoes += '<span class="card-chatbot-imoview limparChat" style="display: inline-block;border-radius: 24px!important;margin-left: 12px;margin: 6px 6px 0 0; background: #e3e9ef !important;margin-bottom: 8px;color: #6e6e6e !important;padding: 15px;font-size: 13px !important;"><p style="color: #515151 !important;line-height: 18px !important;">'+menu.nome+'</p><a href="'+menu.url+'" target="_blank" download="'+menu.nome+'" class="imoview-opt">Download<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACzSURBVFiF7Ze9DcIwEEY/owgJpDQwAwOwAxUTsACjUadCFGQGsgkdVYpHAxIopsA6x0Lc6+3v+U7+k5xfBZgCB+AGnIDF2AI73rmkSEwMndaS2tEq8WhBy5CkSqRKzIBzRKIDli7hEi7xlQRQA0egjwy0pAdWz9zXk3AvaSupylsfVZKamEBZSrUg12LmxO+J/DvBwz38r8LLPskYvoqTwi2P4k7SJoRwNZzzM5T+mDhW3AFTPw4c5r4MygAAAABJRU5ErkJggg==" alt="Right Arrow" style="float: right; width: 16px; height: 16px; margin-top: 4px; margin-left: 2px;"></a></span>' + htmlAjuda;
                                 break;
                             case 'alert':  
                                 IMOVIEW.RetornandoAlert(menu.estilo, menu.nome);                                                                              
