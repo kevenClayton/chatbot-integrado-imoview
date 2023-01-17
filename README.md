@@ -28,7 +28,7 @@ Exemplo:
 <script type="text/javascript">
   IMOVIEW.Exec({
     corFundo: "#533D8B", //Opcional - Cor hexadecimal primária do chat, recomendamos a cor primário do site.
-    avatarUrlChat: "https://framework.keven.dev.br/img/blog/avatar/04.jpg", //Cole a URL completa do avatar que aparecerá no chat ao abri-lo"
+    avatarUrlChat: "https://s3.imoview.com.br/avatar.jpg", //Cole a URL completa do avatar que aparecerá no chat ao abri-lo"
     mensagemChatFechado: "Como podemos <strong>te ajudar</strong> ?", //Texto que irá aparecer para o cliente clicar no chat
     posicao: "direito", //Lado que o botão ficará -- direito ou esquerda
     nomeHeaderChat: "XXX", // Nome que aparecerá do chat ao abri-lo
