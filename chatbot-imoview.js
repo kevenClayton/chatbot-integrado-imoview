@@ -1,7 +1,7 @@
 var IMOVIEW = {
 
     BaseUrl: "https://api.imoview.com.br/chatbot/Interagir",    
-    UrlHtml: "http://localhost:51472//chatbot/RetornarHtml",
+    UrlHtml: "https://api.imoview.com.br/chatbot/RetornarHtml",
     Maximado: false,    
     DadosParametros: '',
 
