@@ -474,6 +474,10 @@ var IMOVIEW = {
                         
                       IMOVIEW.RemoverLoading();
                       IMOVIEW.RetornarHtmlMensagemPrincipal(titulo, htmlBotoes);
+
+                      if (constanteAtual == 0) {                      
+                          IMOVIEW.RetornarHtmlMensagemPrincipal('Ao clicar em uma das ações, você está de acordo com nossas <a href="https://www.universalsoftware.com.br/politica-de-privacidade" target="_blank">políticas de privacidade.</a>', '');
+                      }
                         
                       // document.querySelector('.imoview-scrollable').lastElementChild.insertAdjacentHTML("afterend", htmlPrincipalAlert);
                       // document.querySelector('.imoview-group').insertAdjacentHTML("afterend", htmlBotoes);
@@ -500,11 +504,7 @@ var IMOVIEW = {
               document.querySelector('.imoview-scrollable').onscroll = (scrool) => {
                   IMOVIEW.ScrollBar();                  
               }
-              document.querySelector('.imoview-handle').onmousemove = (scrool) => {
-                  console.log('mouse')
-                  IMOVIEW.ScrollMove();                  
-              }
-              // tratar a response
+             
           }); 
         
         
