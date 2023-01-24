@@ -1,7 +1,13 @@
 var IMOVIEW = {
 
+    //ONLINE
     BaseUrl: "https://api.imoview.com.br/chatbot/Interagir",    
     UrlHtml: "https://api.imoview.com.br/chatbot/RetornarHtml",
+    
+    //LOCAL
+    //BaseUrl: "http://localhost:51472/chatbot/Interagir", 
+    //UrlHtml: "http://localhost:51472/chatbot/RetornarHtml",
+
     Maximado: false,    
     DadosParametros: '',
 
@@ -198,6 +204,7 @@ var IMOVIEW = {
                 "label": label,
                 "valor": valorInput
             }
+
             if(botao == false){
                 valoresAnterioresObjeto = valoresAnterioresObjeto.filter(item => item.constante != inputDados.dataset.constante)
             }
@@ -210,6 +217,17 @@ var IMOVIEW = {
 
     
         }else if(seletorInput != "" && botao == true){            
+
+            inputDados = document.querySelector('#'+seletorInput);
+            valorInput = inputDados.dataset.value;
+            label = inputDados.dataset.label;
+            
+            var novoValor = {
+                "constante": inputDados.dataset.constante,
+                "label": label,
+                "valor": valorInput
+            }
+
             IMOVIEW.RetonarSelecionado(itemConteudo.textContent);
             var constanteLimpar = itemConteudo.dataset.limpar;
             if(constanteLimpar != ""){
@@ -222,6 +240,10 @@ var IMOVIEW = {
                 });
             }else{
                 valoresAnterioresObjeto = valoresAnterioresObjeto.filter(item => item.constante != constanteLimpar);
+            }
+
+            if (valorInput != "" || valorInput != undefined) {
+                valoresAnterioresObjeto.push(novoValor);
             }
 
            
@@ -309,7 +331,7 @@ var IMOVIEW = {
                           
                               case 'button':
                                   constanteAtualBotao = menu.constante;                                
-                                  htmlBotoes += '<span id="' + IdBotaoOpcoes + '" data-limpar="'+ menu.constanteALimpar +'" class="imoview-opt btn-chatbot-imoview-'+menu.estilo+' removerAposClickBotao" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtualBotao + ', \'' + IdBotaoOpcoes + '\',\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores)).replace(/'/g, '')) + '\', true, false, ' + menu.proximaPagina + ')\" style="">' + menu.nome + '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDYuMC1jMDA2IDc5LjE2NDc1MywgMjAyMS8wMi8xNS0xMTo1MjoxMyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIyLjMgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkUyQzQwQzVEOEFERTExRURBRDUwOTg5MzQ1MjJFNUFBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkUyQzQwQzVFOEFERTExRURBRDUwOTg5MzQ1MjJFNUFBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RTJDNDBDNUI4QURFMTFFREFENTA5ODkzNDUyMkU1QUEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RTJDNDBDNUM4QURFMTFFREFENTA5ODkzNDUyMkU1QUEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6qJ69sAAAA1ElEQVR42qyWPQoCMRBGo+JhLNSbeAVZEZvFg4iNhdtbWngXexE8hFYWO34W4hKTOH8DD0ISeEwmGRKIKCQYgSu4g1VmD5vcwo6+8QRzi6Qf0nHpjIfgAKqgjYx9ABr6jcrzuD64iDibUqKFt8SckSRttUhaRNXRae69OCPtAxOJLO1iD9pINPOWvDlHkqOkrXBiA8bR3EnSVv6xTdSk9qyJSKCRiAVSiUogkagFXIlJwJGYBSVJz0tQkiy9BKUXP+2MW1CDxvsjMQE38ABr67/rJcAAcOPXUw4ZoCcAAAAASUVORK5CYII=" alt="Right Arrow" style="float: right; width: 16px; height: 16px; margin-left: 2px;"></span>' + htmlAjuda;
+                                  htmlBotoes += '<span id="' + IdBotaoOpcoes + '"  data-value="' + menu.proximoValor + '" data-constante="' + menu.constante + '" data-value="' + menu.proximoValor + '" data-label="' + menu.nome + '" data-limpar="'+ menu.constanteALimpar +'" class="imoview-opt btn-chatbot-imoview-'+menu.estilo+' removerAposClickBotao" onclick=\"IMOVIEW.CarregarConversa(' + constanteAtualBotao + ', \'' + IdBotaoOpcoes + '\',\'' + (valoresAnteriores == "" ? 0 : encodeURIComponent(JSON.stringify(valoresAnteriores)).replace(/'/g, '')) + '\', true, false, ' + menu.proximaPagina + ')\" style="">' + menu.nome + '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDYuMC1jMDA2IDc5LjE2NDc1MywgMjAyMS8wMi8xNS0xMTo1MjoxMyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIyLjMgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkUyQzQwQzVEOEFERTExRURBRDUwOTg5MzQ1MjJFNUFBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkUyQzQwQzVFOEFERTExRURBRDUwOTg5MzQ1MjJFNUFBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RTJDNDBDNUI4QURFMTFFREFENTA5ODkzNDUyMkU1QUEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RTJDNDBDNUM4QURFMTFFREFENTA5ODkzNDUyMkU1QUEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6qJ69sAAAA1ElEQVR42qyWPQoCMRBGo+JhLNSbeAVZEZvFg4iNhdtbWngXexE8hFYWO34W4hKTOH8DD0ISeEwmGRKIKCQYgSu4g1VmD5vcwo6+8QRzi6Qf0nHpjIfgAKqgjYx9ABr6jcrzuD64iDibUqKFt8SckSRttUhaRNXRae69OCPtAxOJLO1iD9pINPOWvDlHkqOkrXBiA8bR3EnSVv6xTdSk9qyJSKCRiAVSiUogkagFXIlJwJGYBSVJz0tQkiy9BKUXP+2MW1CDxvsjMQE38ABr67/rJcAAcOPXUw4ZoCcAAAAASUVORK5CYII=" alt="Right Arrow" style="float: right; width: 16px; height: 16px; margin-left: 2px;"></span>' + htmlAjuda;
                                   break;
                               case 'card': //card
                                   constanteAtualBotao = menu.constante;                                
@@ -473,12 +495,13 @@ var IMOVIEW = {
                         
                         
                       IMOVIEW.RemoverLoading();
-                      IMOVIEW.RetornarHtmlMensagemPrincipal(titulo, htmlBotoes);
 
                       if (constanteAtual == 0) {                      
                           IMOVIEW.RetornarHtmlMensagemPrincipal('Ao clicar em uma das ações, você está de acordo com nossas <a href="https://www.universalsoftware.com.br/politica-de-privacidade" target="_blank">políticas de privacidade.</a>', '');
                       }
-                        
+
+                      IMOVIEW.RetornarHtmlMensagemPrincipal(titulo, htmlBotoes);
+
                       // document.querySelector('.imoview-scrollable').lastElementChild.insertAdjacentHTML("afterend", htmlPrincipalAlert);
                       // document.querySelector('.imoview-group').insertAdjacentHTML("afterend", htmlBotoes);
                       document.querySelector('.imoview-input').innerHTML = "";
