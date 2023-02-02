@@ -1,5 +1,7 @@
 var IMOVIEWESTEIRA = IMOVIEW;
-delete IMOVIEW.Exec
+if (IMOVIEWESTEIRA != undefined) {
+    delete IMOVIEW.Exec
+}
 
     
 // (function () {
@@ -10,7 +12,7 @@ delete IMOVIEW.Exec
 
 var IMOVIEW = {
 
-    BaseUrl: "https://api.imoview.com.br/chatbot/Interagir",    
+    BaseUrlChat: "https://api.imoview.com.br/chatbot/Interagir",    
     UrlHtml: "https://api.imoview.com.br/chatbot/RetornarHtml",
     
     Maximado: false,    
@@ -276,7 +278,7 @@ var IMOVIEW = {
         };
 
         
-        fetch(IMOVIEW.BaseUrl, {
+        fetch(IMOVIEW.BaseUrlChat, {
             method: 'POST',
             mode: 'cors', // pode ser cors ou basic(default)
             body: JSON.stringify(data),
