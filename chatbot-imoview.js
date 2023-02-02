@@ -1,5 +1,5 @@
 var IMOVIEWESTEIRA = IMOVIEW;
-IMOVIEWESTEIRA.Executar = IMOVIEW.Exec
+delete IMOVIEW.Exec
 
     
 // (function () {
